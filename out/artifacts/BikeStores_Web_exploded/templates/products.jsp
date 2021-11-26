@@ -9,8 +9,8 @@
                 <!--Start for shop sidebar-->
                 <div class="tz-shop-sidebar">
                     <aside class="widget widget_product_categories">
-                        <h3 class="widget-title">Bikes productEntity</h3>
-                        <ul class="productEntity-categories">
+                        <h3 class="widget-title">Bikes product</h3>
+                        <ul class="product-categories">
                             <li>
                                 <a href="shop.html">On-Road</a>
                             </li>
@@ -42,7 +42,7 @@
                             </li>
                         </ul>
                     </aside>
-                    <aside class="productEntity-catlog widget">
+                    <aside class="product-catlog widget">
                         <h3 class="widget-title">Catalog</h3>
                         <div class="widget_price_filter">
                             <h4 class="widget-title-children">
@@ -134,11 +134,11 @@
                         </div>
                     </aside>
                     <aside class="widget widget_product">
-                        <h3 class="widget-title">Featured productEntity</h3>
+                        <h3 class="widget-title">Featured product</h3>
                         <ul>
                             <li>
                                 <a href="shop.html">
-                                    <img src="<c:url value="/templates/images/productEntity/widget1.jpg" />" alt="Defy Advanced">
+                                    <img src="<c:url value="/templates/images/product/widget1.jpg" />" alt="Defy Advanced">
                                     <div class="item-info">
                                         <h5>Defy Advanced</h5>
                                         <span class="p-vote">
@@ -154,7 +154,7 @@
                             </li>
                             <li>
                                 <a href="shop.html">
-                                    <img src="<c:url value="/templates/images/productEntity/widget2.jpg" />" alt="Defy Advanced">
+                                    <img src="<c:url value="/templates/images/product/widget2.jpg" />" alt="Defy Advanced">
                                     <div class="item-info">
                                         <h5>Liv Race Day Short</h5>
                                         <span class="p-vote">
@@ -170,7 +170,7 @@
                             </li>
                             <li>
                                 <a href="shop.html">
-                                    <img src="<c:url value="/templates/images/productEntity/widget3.jpg" />" alt="Defy Advanced">
+                                    <img src="<c:url value="/templates/images/product/widget3.jpg" />" alt="Defy Advanced">
                                     <div class="item-info">
                                         <h5>City Pedals Sport</h5>
                                         <span class="p-vote">
@@ -186,7 +186,7 @@
                             </li>
                             <li>
                                 <a href="shop.html">
-                                    <img src="<c:url value="/templates/images/productEntity/widget4.jpg" />" alt="Defy Advanced">
+                                    <img src="<c:url value="/templates/images/product/widget4.jpg" />" alt="Defy Advanced">
                                     <div class="item-info">
                                         <h5>Gloss</h5>
                                         <span class="p-vote">
@@ -202,7 +202,7 @@
                             </li>
                             <li>
                                 <a href="shop.html">
-                                    <img src="<c:url value="/templates/images/productEntity/widget5.jpg" />" alt="Defy Advanced">
+                                    <img src="<c:url value="/templates/images/product/widget5.jpg" />" alt="Defy Advanced">
                                     <div class="item-info">
                                         <h5>Cruiser Bells</h5>
                                         <span class="p-vote">
@@ -236,7 +236,7 @@
                         </li>
                     </ul>
                     <div class="shop-banner">
-                        <img src="<c:url value="/templates/images/productEntity/banner.jpg" />" alt="banner">
+                        <img src="<c:url value="/templates/images/product/banner.jpg" />" alt="banner">
                     </div>
                     <div class="catalog-meta">
                         <div class="catalog_top">
@@ -263,17 +263,17 @@
                         </div>
                     </div>
 
-                    <div class="tz-productEntity row grid-eff">
+                    <div class="tz-product row grid-eff">
 
-                        <!--ProductEntity item-->
-                        <div class="productEntity-item col-md-4 col-sm-6">
+                        <!--product item-->
+                        <div class="product-item col-md-4 col-sm-6">
                             <div class="item">
-                                <div class="productEntity-item-inner">
-                                    <div class="productEntity-thumb">
-                                        <img src="<c:url value="/templates/images/productEntity/shop1.jpg" />" alt="Liv Race Day Short Finger..">
+                                <div class="product-item-inner">
+                                    <div class="product-thumb">
+                                        <img src="<c:url value="/templates/images/product/shop1.jpg" />" alt="Liv Race Day Short Finger..">
                                     </div>
-                                    <div class="productEntity-info">
-                                        <h4><a href="/productEntity">Liv Race Day Short Finger..</a></h4>
+                                    <div class="product-info">
+                                        <h4><a href="/product">Liv Race Day Short Finger..</a></h4>
                                         <span class="p-meta">
                                                 <span class="p-price">$30.00</span>
                                                 <span class="p-vote">
@@ -305,17 +305,17 @@
                                 </div>
                             </div>
                         </div>
-                        <!--End productEntity item-->
+                        <!--End product item-->
 
-                        <!--ProductEntity item-->
-                        <div class="productEntity-item col-md-4 col-sm-6">
+                        <!--product item-->
+                        <div class="product-item col-md-4 col-sm-6">
                             <div class="item">
-                                <div class="productEntity-item-inner">
-                                    <div class="productEntity-thumb">
-                                        <img src="<c:url value="/templates/images/productEntity/shop2.jpg" />" alt="Team Hoody">
+                                <div class="product-item-inner">
+                                    <div class="product-thumb">
+                                        <img src="<c:url value="/templates/images/product/shop2.jpg" />" alt="Team Hoody">
                                     </div>
-                                    <div class="productEntity-info">
-                                        <h4><a href="/productEntity">Team Hoody</a></h4>
+                                    <div class="product-info">
+                                        <h4><a href="/product">Team Hoody</a></h4>
                                         <span class="p-meta">
                                                 <span class="p-price">$105.00</span>
                                                 <span class="p-vote">
@@ -347,17 +347,17 @@
                                 </div>
                             </div>
                         </div>
-                        <!--End productEntity item-->
+                        <!--End product item-->
 
-                        <!--ProductEntity item-->
-                        <div class="productEntity-item col-md-4 col-sm-6">
+                        <!--product item-->
+                        <div class="product-item col-md-4 col-sm-6">
                             <div class="item">
-                                <div class="productEntity-item-inner">
-                                    <div class="productEntity-thumb">
-                                        <img src="<c:url value="/templates/images/productEntity/shop3.jpg" />" alt="Team Hoody">
+                                <div class="product-item-inner">
+                                    <div class="product-thumb">
+                                        <img src="<c:url value="/templates/images/product/shop3.jpg" />" alt="Team Hoody">
                                     </div>
-                                    <div class="productEntity-info">
-                                        <h4><a href="/productEntity">Defy Advanced</a></h4>
+                                    <div class="product-info">
+                                        <h4><a href="/product">Defy Advanced</a></h4>
                                         <span class="p-meta">
                                                 <span class="p-price">$2650.00</span>
                                                 <span class="p-vote">
@@ -389,17 +389,17 @@
                                 </div>
                             </div>
                         </div>
-                        <!--End productEntity item-->
+                        <!--End product item-->
 
-                        <!--ProductEntity item-->
-                        <div class="productEntity-item col-md-4 col-sm-6">
+                        <!--product item-->
+                        <div class="product-item col-md-4 col-sm-6">
                             <div class="item">
-                                <div class="productEntity-item-inner">
-                                    <div class="productEntity-thumb">
-                                        <img src="<c:url value="/templates/images/productEntity/shop4.jpg" />" alt="Team Hoody">
+                                <div class="product-item-inner">
+                                    <div class="product-thumb">
+                                        <img src="<c:url value="/templates/images/product/shop4.jpg" />" alt="Team Hoody">
                                     </div>
-                                    <div class="productEntity-info">
-                                        <h4><a href="/productEntity">Defy Advanced 2</a></h4>
+                                    <div class="product-info">
+                                        <h4><a href="/product">Defy Advanced 2</a></h4>
                                         <span class="p-meta">
                                                 <span class="p-price">$2125.00</span>
                                                 <span class="p-vote">
@@ -431,17 +431,17 @@
                                 </div>
                             </div>
                         </div>
-                        <!--End productEntity item-->
+                        <!--End product item-->
 
-                        <!--ProductEntity item-->
-                        <div class="productEntity-item col-md-4 col-sm-6">
+                        <!--product item-->
+                        <div class="product-item col-md-4 col-sm-6">
                             <div class="item">
-                                <div class="productEntity-item-inner">
-                                    <div class="productEntity-thumb">
-                                        <img src="<c:url value="/templates/images/productEntity/shop5.jpg" />" alt="Team Hoody">
+                                <div class="product-item-inner">
+                                    <div class="product-thumb">
+                                        <img src="<c:url value="/templates/images/product/shop5.jpg" />" alt="Team Hoody">
                                     </div>
-                                    <div class="productEntity-info">
-                                        <h4><a href="/productEntity">City Pedals Sport</a></h4>
+                                    <div class="product-info">
+                                        <h4><a href="/product">City Pedals Sport</a></h4>
                                         <span class="p-meta">
                                                 <span class="p-price">$18.00</span>
                                                 <span class="p-vote">
@@ -473,17 +473,17 @@
                                 </div>
                             </div>
                         </div>
-                        <!--End productEntity item-->
+                        <!--End product item-->
 
-                        <!--ProductEntity item-->
-                        <div class="productEntity-item col-md-4 col-sm-6">
+                        <!--product item-->
+                        <div class="product-item col-md-4 col-sm-6">
                             <div class="item">
-                                <div class="productEntity-item-inner">
-                                    <div class="productEntity-thumb">
-                                        <img src="<c:url value="/templates/images/productEntity/shop6.jpg" />" alt="Neos Ant+ Wireless">
+                                <div class="product-item-inner">
+                                    <div class="product-thumb">
+                                        <img src="<c:url value="/templates/images/product/shop6.jpg" />" alt="Neos Ant+ Wireless">
                                     </div>
-                                    <div class="productEntity-info">
-                                        <h4><a href="/productEntity">Neos Ant+ Wireless</a></h4>
+                                    <div class="product-info">
+                                        <h4><a href="/product">Neos Ant+ Wireless</a></h4>
                                         <span class="p-meta">
                                                 <span class="p-price">$70.00</span>
                                                 <span class="p-vote">
@@ -515,17 +515,17 @@
                                 </div>
                             </div>
                         </div>
-                        <!--End productEntity item-->
+                        <!--End product item-->
 
-                        <!--ProductEntity item-->
-                        <div class="productEntity-item col-md-4 col-sm-6">
+                        <!--product item-->
+                        <div class="product-item col-md-4 col-sm-6">
                             <div class="item">
-                                <div class="productEntity-item-inner">
-                                    <div class="productEntity-thumb">
-                                        <img src="<c:url value="/templates/images/productEntity/shop7.jpg" />" alt="Neos Ant+ Wireless">
+                                <div class="product-item-inner">
+                                    <div class="product-thumb">
+                                        <img src="<c:url value="/templates/images/product/shop7.jpg" />" alt="Neos Ant+ Wireless">
                                     </div>
-                                    <div class="productEntity-info">
-                                        <h4><a href="/productEntity">Rack-It Tour Rack</a></h4>
+                                    <div class="product-info">
+                                        <h4><a href="/product">Rack-It Tour Rack</a></h4>
                                         <span class="p-meta">
                                                 <span class="p-price">$480.00</span>
                                                 <span class="p-vote">
@@ -557,17 +557,17 @@
                                 </div>
                             </div>
                         </div>
-                        <!--End productEntity item-->
+                        <!--End product item-->
 
-                        <!--ProductEntity item-->
-                        <div class="productEntity-item col-md-4 col-sm-6">
+                        <!--product item-->
+                        <div class="product-item col-md-4 col-sm-6">
                             <div class="item">
-                                <div class="productEntity-item-inner">
-                                    <div class="productEntity-thumb">
-                                        <img src="<c:url value="/templates/images/productEntity/shop8.jpg" />" alt="Lust Advanced">
+                                <div class="product-item-inner">
+                                    <div class="product-thumb">
+                                        <img src="<c:url value="/templates/images/product/shop8.jpg" />" alt="Lust Advanced">
                                     </div>
-                                    <div class="productEntity-info">
-                                        <h4><a href="/productEntity">Lust Advanced</a></h4>
+                                    <div class="product-info">
+                                        <h4><a href="/product">Lust Advanced</a></h4>
                                         <span class="p-meta">
                                                 <span class="p-price">$8050.00</span>
                                                 <span class="p-vote">
@@ -599,17 +599,17 @@
                                 </div>
                             </div>
                         </div>
-                        <!--End productEntity item-->
+                        <!--End product item-->
 
-                        <!--ProductEntity item-->
-                        <div class="productEntity-item col-md-4 col-sm-6">
+                        <!--product item-->
+                        <div class="product-item col-md-4 col-sm-6">
                             <div class="item">
-                                <div class="productEntity-item-inner">
-                                    <div class="productEntity-thumb">
-                                        <img src="<c:url value="/templates/images/productEntity/shop9.jpg" />" alt="Cruiser Bells">
+                                <div class="product-item-inner">
+                                    <div class="product-thumb">
+                                        <img src="<c:url value="/templates/images/product/shop9.jpg" />" alt="Cruiser Bells">
                                     </div>
-                                    <div class="productEntity-info">
-                                        <h4><a href="/productEntity">Cruiser Bells</a></h4>
+                                    <div class="product-info">
+                                        <h4><a href="/product">Cruiser Bells</a></h4>
                                         <span class="p-meta">
                                                 <span class="p-price">$10.00</span>
                                                 <span class="p-vote">
@@ -641,17 +641,17 @@
                                 </div>
                             </div>
                         </div>
-                        <!--End productEntity item-->
+                        <!--End product item-->
 
-                        <!--ProductEntity item-->
-                        <div class="productEntity-item col-md-4 col-sm-6">
+                        <!--product item-->
+                        <div class="product-item col-md-4 col-sm-6">
                             <div class="item">
-                                <div class="productEntity-item-inner">
-                                    <div class="productEntity-thumb">
-                                        <img src="<c:url value="/templates/images/productEntity/shop10.jpg" />" alt="GFR">
+                                <div class="product-item-inner">
+                                    <div class="product-thumb">
+                                        <img src="<c:url value="/templates/images/product/shop10.jpg" />" alt="GFR">
                                     </div>
-                                    <div class="productEntity-info">
-                                        <h4><a href="/productEntity">GFR F/W</a></h4>
+                                    <div class="product-info">
+                                        <h4><a href="/product">GFR F/W</a></h4>
                                         <span class="p-meta">
                                                 <span class="p-price">$270.00</span>
                                                 <span class="p-vote">
@@ -683,17 +683,17 @@
                                 </div>
                             </div>
                         </div>
-                        <!--End productEntity item-->
+                        <!--End product item-->
 
-                        <!--ProductEntity item-->
-                        <div class="productEntity-item col-md-4 col-sm-6">
+                        <!--product item-->
+                        <div class="product-item col-md-4 col-sm-6">
                             <div class="item">
-                                <div class="productEntity-item-inner">
-                                    <div class="productEntity-thumb">
-                                        <img src="<c:url value="/templates/images/productEntity/shop11.jpg" />" alt="Race Day Tri Suit">
+                                <div class="product-item-inner">
+                                    <div class="product-thumb">
+                                        <img src="<c:url value="/templates/images/product/shop11.jpg" />" alt="Race Day Tri Suit">
                                     </div>
-                                    <div class="productEntity-info">
-                                        <h4><a href="/productEntity">Race Day Tri Suit</a></h4>
+                                    <div class="product-info">
+                                        <h4><a href="/product">Race Day Tri Suit</a></h4>
                                         <span class="p-meta">
                                                 <span class="p-price">$270.00</span>
                                                 <span class="p-vote">
@@ -725,17 +725,17 @@
                                 </div>
                             </div>
                         </div>
-                        <!--End productEntity item-->
+                        <!--End product item-->
 
-                        <!--ProductEntity item-->
-                        <div class="productEntity-item col-md-4 col-sm-6">
+                        <!--product item-->
+                        <div class="product-item col-md-4 col-sm-6">
                             <div class="item">
-                                <div class="productEntity-item-inner">
-                                    <div class="productEntity-thumb">
-                                        <img src="<c:url value="/templates/images/productEntity/shop12.jpg" />" alt="Gloss">
+                                <div class="product-item-inner">
+                                    <div class="product-thumb">
+                                        <img src="<c:url value="/templates/images/product/shop12.jpg" />" alt="Gloss">
                                     </div>
-                                    <div class="productEntity-info">
-                                        <h4><a href="/productEntity">Gloss</a></h4>
+                                    <div class="product-info">
+                                        <h4><a href="/product">Gloss</a></h4>
                                         <span class="p-meta">
                                                 <span class="p-price">$325.00</span>
                                                 <span class="p-vote">
@@ -767,7 +767,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!--End productEntity item-->
+                        <!--End product item-->
 
                     </div>
 

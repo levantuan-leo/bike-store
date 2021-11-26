@@ -5,9 +5,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
-import org.project.entity.Brand;
-import org.project.entity.Category;
-import org.project.entity.Product;
+import org.project.entity.*;
 
 public class HibernateUtil {
     private static final SessionFactory FACTORY;
@@ -19,6 +17,8 @@ public class HibernateUtil {
         configuration.addAnnotatedClass(Category.class);
         configuration.addAnnotatedClass(Brand.class);
         configuration.addAnnotatedClass(Product.class);
+        configuration.addAnnotatedClass(Store.class);
+        configuration.addAnnotatedClass(Stock.class);
 
         ServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .applySettings(configuration.getProperties()).build();

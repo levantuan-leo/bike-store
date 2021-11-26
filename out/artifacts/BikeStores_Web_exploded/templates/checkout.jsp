@@ -108,35 +108,35 @@
                     <table class="shop_table">
                         <thead>
                         <tr>
-                            <th class="productEntity-name">Product</th>
-                            <th class="productEntity-total">Total</th>
+                            <th class="product-name">Product</th>
+                            <th class="product-total">Total</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr class="cart_item">
-                            <td class="productEntity-name">
+                            <td class="product-name">
                                 Liv Race Day Short
-                                <strong class="productEntity-quantity">× 1</strong>
+                                <strong class="product-quantity">× 1</strong>
                             </td>
-                            <td class="productEntity-total">
+                            <td class="product-total">
                                 <span class="amount">$30.00</span>
                             </td>
                         </tr>
                         <tr class="cart_item">
-                            <td class="productEntity-name">
+                            <td class="product-name">
                                 City Pedals Sport
-                                <strong class="productEntity-quantity">× 1</strong>
+                                <strong class="product-quantity">× 1</strong>
                             </td>
-                            <td class="productEntity-total">
+                            <td class="product-total">
                                 <span class="amount">$18.00</span>
                             </td>
                         </tr>
                         <tr class="cart_item">
-                            <td class="productEntity-name">
+                            <td class="product-name">
                                 Gloss
-                                <strong class="productEntity-quantity">× 1</strong>
+                                <strong class="product-quantity">× 1</strong>
                             </td>
-                            <td class="productEntity-total">
+                            <td class="product-total">
                                 <span class="amount">$325.00</span>
                             </td>
                         </tr>

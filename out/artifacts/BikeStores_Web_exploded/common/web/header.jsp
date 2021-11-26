@@ -151,21 +151,11 @@
                 <li>
                     <a href="/shop">Category</a>
                     <ul class="sub-menu">
-                        <li>
-                            <a href="shop-rightsidebar.html">Shop Right</a>
-                        </li>
-                        <li>
-                            <a href="shop-cart.html">Shop Cart</a>
-                        </li>
-                        <li>
-                            <a href="shop-checkout.html">Shop Checkout</a>
-                        </li>
-                        <li>
-                            <a href="shop-register.html">Shop Register</a>
-                        </li>
-                        <li>
-                            <a href="single-product.html">Shop Single</a>
-                        </li>
+                        <c:forEach items="${listCategory}" var="category">
+                            <li>
+                                <a href="/shop?category=${category.id}">${category.name}</a>
+                            </li>
+                        </c:forEach>
                     </ul>
                 <li>
                     <a href="/shop">

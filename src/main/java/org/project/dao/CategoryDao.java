@@ -12,6 +12,7 @@ import java.util.List;
 public class CategoryDao {
     private static final SessionFactory factory = HibernateUtil.getSessionFactory();
 
+    //region [CRUD]
     // Method to CREATE a Category in the database
     public Integer addCategory(String name) {
         Session session = factory.openSession();
@@ -78,4 +79,5 @@ public class CategoryDao {
             session.close();
         }
     }
+    // endregion
 }

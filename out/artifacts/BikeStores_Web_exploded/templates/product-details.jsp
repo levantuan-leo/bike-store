@@ -21,16 +21,16 @@
                 <div class="shop-images">
                     <ul class="single-gallery">
                         <li>
-                            <img src="<c:url value="/templates/images/productEntity/single-p.jpg" />" alt="Propel Advanced Pro">
+                            <img src="<c:url value="/templates/images/product/single-p.jpg" />" alt="Propel Advanced Pro">
                         </li>
                         <li>
-                            <img src="<c:url value="/templates/images/productEntity/single-p.jpg" />" alt="Propel Advanced Pro">
+                            <img src="<c:url value="/templates/images/product/single-p.jpg" />" alt="Propel Advanced Pro">
                         </li>
                         <li>
-                            <img src="<c:url value="/templates/images/productEntity/single-p.jpg" />" alt="Propel Advanced Pro">
+                            <img src="<c:url value="/templates/images/product/single-p.jpg" />" alt="Propel Advanced Pro">
                         </li>
                     </ul>
-                    <div class="productEntity-social">
+                    <div class="product-social">
                         <a href="#" class="fa fa-facebook"></a>
                         <a href="#" class="fa fa-twitter"></a>
                         <a href="#" class="fa fa-google-plus"></a>
@@ -50,7 +50,7 @@
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star-half-o"></i>
                         </span>
-                    <p class="productEntity-price">
+                    <p class="product-price">
                         <span class="price">$2,290.00</span>
                         <span class="stockEntity">Availability:  <span>In stockEntity</span></span>
                     </p>
@@ -154,7 +154,7 @@
     </div>
     <!--End tab-->
 
-    <!--Tabs productEntity-->
+    <!--Tabs product-->
     <div class="container">
         <div class="box-shadow">
 
@@ -175,21 +175,21 @@
                     <div class="row row-item">
                         <div class="col-md-3 col-sm-6">
 
-                            <!--Start productEntity item-->
-                            <div class="productEntity-item">
-                                <div class="productEntity-thubnail">
-                                    <img src="<c:url value="/templates/images/productEntity/product4.png" />" alt="productEntity 4"/>
-                                    <div class="productEntity-meta">
+                            <!--Start product item-->
+                            <div class="product-item">
+                                <div class="product-thubnail">
+                                    <img src="<c:url value="/templates/images/product/product4.png" />" alt="product 4"/>
+                                    <div class="product-meta">
                                         <a class="add-to-cart" href="shop-cart.html">Add to cart</a>
                                         <span class="quick-view">
                                                 <a href="#">Quick view</a>
                                             </span>
                                     </div>
                                 </div>
-                                <div class="productEntity-infomation">
-                                    <h4><a href="single-productEntity.html">Propel Advanced SL 0</a></h4>
-                                    <span class="productEntity-price">$900.00</span>
-                                    <span class="productEntity-attr">
+                                <div class="product-infomation">
+                                    <h4><a href="single-product.html">Propel Advanced SL 0</a></h4>
+                                    <span class="product-price">$900.00</span>
+                                    <span class="product-attr">
                                             <i class="fa fa-circle light-blue"></i>
                                             <i class="fa fa-circle orange"></i>
                                             <i class="fa fa-circle blueviolet"></i>
@@ -198,25 +198,25 @@
                                         </span>
                                 </div>
                             </div>
-                            <!--End productEntity item-->
+                            <!--End product item-->
                         </div>
                         <div class="col-md-3 col-sm-6">
 
-                            <!--Start productEntity item-->
-                            <div class="productEntity-item">
-                                <div class="productEntity-thubnail">
-                                    <img src="<c:url value="/templates/images/productEntity/product5.jpg" />" alt="productEntity 2"/>
-                                    <div class="productEntity-meta">
+                            <!--Start product item-->
+                            <div class="product-item">
+                                <div class="product-thubnail">
+                                    <img src="<c:url value="/templates/images/product/product5.jpg" />" alt="product 2"/>
+                                    <div class="product-meta">
                                         <a class="add-to-cart" href="shop-cart.html">Add to cart</a>
                                         <span class="quick-view">
                                                 <a href="#">Quick view</a>
                                             </span>
                                     </div>
                                 </div>
-                                <div class="productEntity-infomation">
-                                    <h4><a href="single-productEntity.html">Defy Advanced SL</a></h4>
-                                    <span class="productEntity-price">$1,770.00</span>
-                                    <span class="productEntity-attr">
+                                <div class="product-infomation">
+                                    <h4><a href="single-product.html">Defy Advanced SL</a></h4>
+                                    <span class="product-price">$1,770.00</span>
+                                    <span class="product-attr">
                                             <i class="fa fa-circle light-blue"></i>
                                             <i class="fa fa-circle orange"></i>
                                             <i class="fa fa-circle blueviolet"></i>
@@ -225,54 +225,26 @@
                                         </span>
                                 </div>
                             </div>
-                            <!--End productEntity item-->
-
-                        </div>
-                        <div class="col-md-3 col-sm-6">
-
-                            <!--Start productEntity item-->
-                            <div class="productEntity-item">
-                                <div class="productEntity-thubnail">
-                                    <img src="<c:url value="/templates/images/productEntity/product6.jpg" />" alt="productEntity 3"/>
-                                    <div class="productEntity-meta">
-                                        <a class="add-to-cart" href="shop-cart.html">Add to cart</a>
-                                        <span class="quick-view">
-                                                <a href="#">Quick view</a>
-                                            </span>
-                                    </div>
-                                </div>
-                                <div class="productEntity-infomation">
-                                    <h4><a href="single-productEntity.html">FastRoad CoMax</a></h4>
-                                    <span class="productEntity-price">$900.00</span>
-                                    <span class="productEntity-attr">
-                                            <i class="fa fa-circle light-blue"></i>
-                                            <i class="fa fa-circle orange"></i>
-                                            <i class="fa fa-circle blueviolet"></i>
-                                            <i class="fa fa-circle orange-dark"></i>
-                                            <i class="fa fa-circle steelblue"></i>
-                                        </span>
-                                </div>
-                            </div>
-                            <!--End productEntity item-->
+                            <!--End product item-->
 
                         </div>
                         <div class="col-md-3 col-sm-6">
 
-                            <!--Start productEntity item-->
-                            <div class="productEntity-item">
-                                <div class="productEntity-thubnail">
-                                    <img src="<c:url value="/templates/images/productEntity/product7.jpg" />" alt="productEntity 4"/>
-                                    <div class="productEntity-meta">
+                            <!--Start product item-->
+                            <div class="product-item">
+                                <div class="product-thubnail">
+                                    <img src="<c:url value="/templates/images/product/product6.jpg" />" alt="product 3"/>
+                                    <div class="product-meta">
                                         <a class="add-to-cart" href="shop-cart.html">Add to cart</a>
                                         <span class="quick-view">
                                                 <a href="#">Quick view</a>
                                             </span>
                                     </div>
                                 </div>
-                                <div class="productEntity-infomation">
-                                    <h4><a href="single-productEntity.html">Propel Advanced SL 0</a></h4>
-                                    <span class="productEntity-price">$900.00</span>
-                                    <span class="productEntity-attr">
+                                <div class="product-infomation">
+                                    <h4><a href="single-product.html">FastRoad CoMax</a></h4>
+                                    <span class="product-price">$900.00</span>
+                                    <span class="product-attr">
                                             <i class="fa fa-circle light-blue"></i>
                                             <i class="fa fa-circle orange"></i>
                                             <i class="fa fa-circle blueviolet"></i>
@@ -281,7 +253,35 @@
                                         </span>
                                 </div>
                             </div>
-                            <!--End productEntity item-->
+                            <!--End product item-->
+
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+
+                            <!--Start product item-->
+                            <div class="product-item">
+                                <div class="product-thubnail">
+                                    <img src="<c:url value="/templates/images/product/product7.jpg" />" alt="product 4"/>
+                                    <div class="product-meta">
+                                        <a class="add-to-cart" href="shop-cart.html">Add to cart</a>
+                                        <span class="quick-view">
+                                                <a href="#">Quick view</a>
+                                            </span>
+                                    </div>
+                                </div>
+                                <div class="product-infomation">
+                                    <h4><a href="single-product.html">Propel Advanced SL 0</a></h4>
+                                    <span class="product-price">$900.00</span>
+                                    <span class="product-attr">
+                                            <i class="fa fa-circle light-blue"></i>
+                                            <i class="fa fa-circle orange"></i>
+                                            <i class="fa fa-circle blueviolet"></i>
+                                            <i class="fa fa-circle orange-dark"></i>
+                                            <i class="fa fa-circle steelblue"></i>
+                                        </span>
+                                </div>
+                            </div>
+                            <!--End product item-->
 
                         </div>
                     </div>
@@ -293,21 +293,21 @@
                     <div class="row row-item">
                         <div class="col-md-3 col-sm-6">
 
-                            <!--Start productEntity item-->
-                            <div class="productEntity-item">
-                                <div class="productEntity-thubnail">
-                                    <img src="<c:url value="/templates/images/productEntity/product5.jpg" />" alt="productEntity 2"/>
-                                    <div class="productEntity-meta">
+                            <!--Start product item-->
+                            <div class="product-item">
+                                <div class="product-thubnail">
+                                    <img src="<c:url value="/templates/images/product/product5.jpg" />" alt="product 2"/>
+                                    <div class="product-meta">
                                         <a class="add-to-cart" href="shop-cart.html">Add to cart</a>
                                         <span class="quick-view">
                                                 <a href="#">Quick view</a>
                                             </span>
                                     </div>
                                 </div>
-                                <div class="productEntity-infomation">
-                                    <h4><a href="single-productEntity.html">Defy Advanced SL</a></h4>
-                                    <span class="productEntity-price">$1,770.00</span>
-                                    <span class="productEntity-attr">
+                                <div class="product-infomation">
+                                    <h4><a href="single-product.html">Defy Advanced SL</a></h4>
+                                    <span class="product-price">$1,770.00</span>
+                                    <span class="product-attr">
                                             <i class="fa fa-circle light-blue"></i>
                                             <i class="fa fa-circle orange"></i>
                                             <i class="fa fa-circle blueviolet"></i>
@@ -316,26 +316,26 @@
                                         </span>
                                 </div>
                             </div>
-                            <!--End productEntity item-->
+                            <!--End product item-->
 
                         </div>
                         <div class="col-md-3 col-sm-6">
 
-                            <!--Start productEntity item-->
-                            <div class="productEntity-item">
-                                <div class="productEntity-thubnail">
-                                    <img src="<c:url value="/templates/images/productEntity/product4.png" />" alt="productEntity 4"/>
-                                    <div class="productEntity-meta">
+                            <!--Start product item-->
+                            <div class="product-item">
+                                <div class="product-thubnail">
+                                    <img src="<c:url value="/templates/images/product/product4.png" />" alt="product 4"/>
+                                    <div class="product-meta">
                                         <a class="add-to-cart" href="shop-cart.html">Add to cart</a>
                                         <span class="quick-view">
                                                 <a href="#">Quick view</a>
                                             </span>
                                     </div>
                                 </div>
-                                <div class="productEntity-infomation">
-                                    <h4><a href="single-productEntity.html">Propel Advanced SL 0</a></h4>
-                                    <span class="productEntity-price">$900.00</span>
-                                    <span class="productEntity-attr">
+                                <div class="product-infomation">
+                                    <h4><a href="single-product.html">Propel Advanced SL 0</a></h4>
+                                    <span class="product-price">$900.00</span>
+                                    <span class="product-attr">
                                             <i class="fa fa-circle light-blue"></i>
                                             <i class="fa fa-circle orange"></i>
                                             <i class="fa fa-circle blueviolet"></i>
@@ -344,26 +344,26 @@
                                         </span>
                                 </div>
                             </div>
-                            <!--End productEntity item-->
+                            <!--End product item-->
 
                         </div>
                         <div class="col-md-3 col-sm-6">
 
-                            <!--Start productEntity item-->
-                            <div class="productEntity-item">
-                                <div class="productEntity-thubnail">
-                                    <img src="<c:url value="/templates/images/productEntity/product6.jpg" />" alt="productEntity 3"/>
-                                    <div class="productEntity-meta">
+                            <!--Start product item-->
+                            <div class="product-item">
+                                <div class="product-thubnail">
+                                    <img src="<c:url value="/templates/images/product/product6.jpg" />" alt="product 3"/>
+                                    <div class="product-meta">
                                         <a class="add-to-cart" href="shop-cart.html">Add to cart</a>
                                         <span class="quick-view">
                                                 <a href="#">Quick view</a>
                                             </span>
                                     </div>
                                 </div>
-                                <div class="productEntity-infomation">
-                                    <h4><a href="single-productEntity.html">FastRoad CoMax</a></h4>
-                                    <span class="productEntity-price">$900.00</span>
-                                    <span class="productEntity-attr">
+                                <div class="product-infomation">
+                                    <h4><a href="single-product.html">FastRoad CoMax</a></h4>
+                                    <span class="product-price">$900.00</span>
+                                    <span class="product-attr">
                                             <i class="fa fa-circle light-blue"></i>
                                             <i class="fa fa-circle orange"></i>
                                             <i class="fa fa-circle blueviolet"></i>
@@ -372,26 +372,26 @@
                                         </span>
                                 </div>
                             </div>
-                            <!--End productEntity item-->
+                            <!--End product item-->
 
                         </div>
                         <div class="col-md-3 col-sm-6">
 
-                            <!--Start productEntity item-->
-                            <div class="productEntity-item">
-                                <div class="productEntity-thubnail">
-                                    <img src="<c:url value="/templates/images/productEntity/product7.jpg" />" alt="productEntity 4"/>
-                                    <div class="productEntity-meta">
+                            <!--Start product item-->
+                            <div class="product-item">
+                                <div class="product-thubnail">
+                                    <img src="<c:url value="/templates/images/product/product7.jpg" />" alt="product 4"/>
+                                    <div class="product-meta">
                                         <a class="add-to-cart" href="shop-cart.html">Add to cart</a>
                                         <span class="quick-view">
                                                 <a href="#">Quick view</a>
                                             </span>
                                     </div>
                                 </div>
-                                <div class="productEntity-infomation">
-                                    <h4><a href="single-productEntity.html">Propel Advanced SL 0</a></h4>
-                                    <span class="productEntity-price">$900.00</span>
-                                    <span class="productEntity-attr">
+                                <div class="product-infomation">
+                                    <h4><a href="single-product.html">Propel Advanced SL 0</a></h4>
+                                    <span class="product-price">$900.00</span>
+                                    <span class="product-attr">
                                             <i class="fa fa-circle light-blue"></i>
                                             <i class="fa fa-circle orange"></i>
                                             <i class="fa fa-circle blueviolet"></i>
@@ -400,7 +400,7 @@
                                         </span>
                                 </div>
                             </div>
-                            <!--End productEntity item-->
+                            <!--End product item-->
 
                         </div>
                     </div>
@@ -412,21 +412,21 @@
                     <div class="row row-item">
                         <div class="col-md-3 col-sm-6">
 
-                            <!--Start productEntity item-->
-                            <div class="productEntity-item">
-                                <div class="productEntity-thubnail">
-                                    <img src="<c:url value="/templates/images/productEntity/product7.jpg" />" alt="productEntity 4"/>
-                                    <div class="productEntity-meta">
+                            <!--Start product item-->
+                            <div class="product-item">
+                                <div class="product-thubnail">
+                                    <img src="<c:url value="/templates/images/product/product7.jpg" />" alt="product 4"/>
+                                    <div class="product-meta">
                                         <a class="add-to-cart" href="shop-cart.html">Add to cart</a>
                                         <span class="quick-view">
                                                 <a href="#">Quick view</a>
                                             </span>
                                     </div>
                                 </div>
-                                <div class="productEntity-infomation">
-                                    <h4><a href="single-productEntity.html">Propel Advanced SL 0</a></h4>
-                                    <span class="productEntity-price">$900.00</span>
-                                    <span class="productEntity-attr">
+                                <div class="product-infomation">
+                                    <h4><a href="single-product.html">Propel Advanced SL 0</a></h4>
+                                    <span class="product-price">$900.00</span>
+                                    <span class="product-attr">
                                             <i class="fa fa-circle light-blue"></i>
                                             <i class="fa fa-circle orange"></i>
                                             <i class="fa fa-circle blueviolet"></i>
@@ -435,26 +435,26 @@
                                         </span>
                                 </div>
                             </div>
-                            <!--End productEntity item-->
+                            <!--End product item-->
 
                         </div>
                         <div class="col-md-3 col-sm-6">
 
-                            <!--Start productEntity item-->
-                            <div class="productEntity-item">
-                                <div class="productEntity-thubnail">
-                                    <img src="<c:url value="/templates/images/productEntity/product4.png" />" alt="productEntity 4"/>
-                                    <div class="productEntity-meta">
+                            <!--Start product item-->
+                            <div class="product-item">
+                                <div class="product-thubnail">
+                                    <img src="<c:url value="/templates/images/product/product4.png" />" alt="product 4"/>
+                                    <div class="product-meta">
                                         <a class="add-to-cart" href="shop-cart.html">Add to cart</a>
                                         <span class="quick-view">
                                                 <a href="#">Quick view</a>
                                             </span>
                                     </div>
                                 </div>
-                                <div class="productEntity-infomation">
-                                    <h4><a href="single-productEntity.html">Propel Advanced SL 0</a></h4>
-                                    <span class="productEntity-price">$900.00</span>
-                                    <span class="productEntity-attr">
+                                <div class="product-infomation">
+                                    <h4><a href="single-product.html">Propel Advanced SL 0</a></h4>
+                                    <span class="product-price">$900.00</span>
+                                    <span class="product-attr">
                                             <i class="fa fa-circle light-blue"></i>
                                             <i class="fa fa-circle orange"></i>
                                             <i class="fa fa-circle blueviolet"></i>
@@ -463,26 +463,26 @@
                                         </span>
                                 </div>
                             </div>
-                            <!--End productEntity item-->
+                            <!--End product item-->
 
                         </div>
                         <div class="col-md-3 col-sm-6">
 
-                            <!--Start productEntity item-->
-                            <div class="productEntity-item">
-                                <div class="productEntity-thubnail">
-                                    <img src="<c:url value="/templates/images/productEntity/product5.jpg" />" alt="productEntity 2"/>
-                                    <div class="productEntity-meta">
+                            <!--Start product item-->
+                            <div class="product-item">
+                                <div class="product-thubnail">
+                                    <img src="<c:url value="/templates/images/product/product5.jpg" />" alt="product 2"/>
+                                    <div class="product-meta">
                                         <a class="add-to-cart" href="shop-cart.html">Add to cart</a>
                                         <span class="quick-view">
                                                 <a href="#">Quick view</a>
                                             </span>
                                     </div>
                                 </div>
-                                <div class="productEntity-infomation">
-                                    <h4><a href="single-productEntity.html">Defy Advanced SL</a></h4>
-                                    <span class="productEntity-price">$1,770.00</span>
-                                    <span class="productEntity-attr">
+                                <div class="product-infomation">
+                                    <h4><a href="single-product.html">Defy Advanced SL</a></h4>
+                                    <span class="product-price">$1,770.00</span>
+                                    <span class="product-attr">
                                             <i class="fa fa-circle light-blue"></i>
                                             <i class="fa fa-circle orange"></i>
                                             <i class="fa fa-circle blueviolet"></i>
@@ -491,26 +491,26 @@
                                         </span>
                                 </div>
                             </div>
-                            <!--End productEntity item-->
+                            <!--End product item-->
 
                         </div>
                         <div class="col-md-3 col-sm-6">
 
-                            <!--Start productEntity item-->
-                            <div class="productEntity-item">
-                                <div class="productEntity-thubnail">
-                                    <img src="<c:url value="/templates/images/productEntity/product6.jpg" />" alt="productEntity 3"/>
-                                    <div class="productEntity-meta">
+                            <!--Start product item-->
+                            <div class="product-item">
+                                <div class="product-thubnail">
+                                    <img src="<c:url value="/templates/images/product/product6.jpg" />" alt="product 3"/>
+                                    <div class="product-meta">
                                         <a class="add-to-cart" href="shop-cart.html">Add to cart</a>
                                         <span class="quick-view">
                                                 <a href="#">Quick view</a>
                                             </span>
                                     </div>
                                 </div>
-                                <div class="productEntity-infomation">
-                                    <h4><a href="single-productEntity.html">FastRoad CoMax</a></h4>
-                                    <span class="productEntity-price">$900.00</span>
-                                    <span class="productEntity-attr">
+                                <div class="product-infomation">
+                                    <h4><a href="single-product.html">FastRoad CoMax</a></h4>
+                                    <span class="product-price">$900.00</span>
+                                    <span class="product-attr">
                                             <i class="fa fa-circle light-blue"></i>
                                             <i class="fa fa-circle orange"></i>
                                             <i class="fa fa-circle blueviolet"></i>
@@ -519,7 +519,7 @@
                                         </span>
                                 </div>
                             </div>
-                            <!--End productEntity item-->
+                            <!--End product item-->
 
                         </div>
                     </div>
@@ -531,21 +531,21 @@
                     <div class="row row-item">
                         <div class="col-md-3 col-sm-6">
 
-                            <!--Start productEntity item-->
-                            <div class="productEntity-item">
-                                <div class="productEntity-thubnail">
-                                    <img src="<c:url value="/templates/images/productEntity/product6.jpg" />" alt="productEntity 3"/>
-                                    <div class="productEntity-meta">
+                            <!--Start product item-->
+                            <div class="product-item">
+                                <div class="product-thubnail">
+                                    <img src="<c:url value="/templates/images/product/product6.jpg" />" alt="product 3"/>
+                                    <div class="product-meta">
                                         <a class="add-to-cart" href="shop-cart.html">Add to cart</a>
                                         <span class="quick-view">
                                                 <a href="#">Quick view</a>
                                             </span>
                                     </div>
                                 </div>
-                                <div class="productEntity-infomation">
-                                    <h4><a href="single-productEntity.html">FastRoad CoMax</a></h4>
-                                    <span class="productEntity-price">$900.00</span>
-                                    <span class="productEntity-attr">
+                                <div class="product-infomation">
+                                    <h4><a href="single-product.html">FastRoad CoMax</a></h4>
+                                    <span class="product-price">$900.00</span>
+                                    <span class="product-attr">
                                             <i class="fa fa-circle light-blue"></i>
                                             <i class="fa fa-circle orange"></i>
                                             <i class="fa fa-circle blueviolet"></i>
@@ -554,26 +554,26 @@
                                         </span>
                                 </div>
                             </div>
-                            <!--End productEntity item-->
+                            <!--End product item-->
 
                         </div>
                         <div class="col-md-3 col-sm-6">
 
-                            <!--Start productEntity item-->
-                            <div class="productEntity-item">
-                                <div class="productEntity-thubnail">
-                                    <img src="<c:url value="/templates/images/productEntity/product4.png" />" alt="productEntity 4"/>
-                                    <div class="productEntity-meta">
+                            <!--Start product item-->
+                            <div class="product-item">
+                                <div class="product-thubnail">
+                                    <img src="<c:url value="/templates/images/product/product4.png" />" alt="product 4"/>
+                                    <div class="product-meta">
                                         <a class="add-to-cart" href="shop-cart.html">Add to cart</a>
                                         <span class="quick-view">
                                                 <a href="#">Quick view</a>
                                             </span>
                                     </div>
                                 </div>
-                                <div class="productEntity-infomation">
-                                    <h4><a href="single-productEntity.html">Propel Advanced SL 0</a></h4>
-                                    <span class="productEntity-price">$900.00</span>
-                                    <span class="productEntity-attr">
+                                <div class="product-infomation">
+                                    <h4><a href="single-product.html">Propel Advanced SL 0</a></h4>
+                                    <span class="product-price">$900.00</span>
+                                    <span class="product-attr">
                                             <i class="fa fa-circle light-blue"></i>
                                             <i class="fa fa-circle orange"></i>
                                             <i class="fa fa-circle blueviolet"></i>
@@ -582,26 +582,26 @@
                                         </span>
                                 </div>
                             </div>
-                            <!--End productEntity item-->
+                            <!--End product item-->
 
                         </div>
                         <div class="col-md-3 col-sm-6">
 
-                            <!--Start productEntity item-->
-                            <div class="productEntity-item">
-                                <div class="productEntity-thubnail">
-                                    <img src="<c:url value="/templates/images/productEntity/product5.jpg" />" alt="productEntity 2"/>
-                                    <div class="productEntity-meta">
+                            <!--Start product item-->
+                            <div class="product-item">
+                                <div class="product-thubnail">
+                                    <img src="<c:url value="/templates/images/product/product5.jpg" />" alt="product 2"/>
+                                    <div class="product-meta">
                                         <a class="add-to-cart" href="shop-cart.html">Add to cart</a>
                                         <span class="quick-view">
                                                 <a href="#">Quick view</a>
                                             </span>
                                     </div>
                                 </div>
-                                <div class="productEntity-infomation">
-                                    <h4><a href="single-productEntity.html">Defy Advanced SL</a></h4>
-                                    <span class="productEntity-price">$1,770.00</span>
-                                    <span class="productEntity-attr">
+                                <div class="product-infomation">
+                                    <h4><a href="single-product.html">Defy Advanced SL</a></h4>
+                                    <span class="product-price">$1,770.00</span>
+                                    <span class="product-attr">
                                             <i class="fa fa-circle light-blue"></i>
                                             <i class="fa fa-circle orange"></i>
                                             <i class="fa fa-circle blueviolet"></i>
@@ -610,26 +610,26 @@
                                         </span>
                                 </div>
                             </div>
-                            <!--End productEntity item-->
+                            <!--End product item-->
 
                         </div>
                         <div class="col-md-3 col-sm-6">
 
-                            <!--Start productEntity item-->
-                            <div class="productEntity-item">
-                                <div class="productEntity-thubnail">
-                                    <img src="<c:url value="/templates/images/productEntity/product7.jpg" />" alt="productEntity 4"/>
-                                    <div class="productEntity-meta">
+                            <!--Start product item-->
+                            <div class="product-item">
+                                <div class="product-thubnail">
+                                    <img src="<c:url value="/templates/images/product/product7.jpg" />" alt="product 4"/>
+                                    <div class="product-meta">
                                         <a class="add-to-cart" href="shop-cart.html">Add to cart</a>
                                         <span class="quick-view">
                                                 <a href="#">Quick view</a>
                                             </span>
                                     </div>
                                 </div>
-                                <div class="productEntity-infomation">
-                                    <h4><a href="single-productEntity.html">Propel Advanced SL 0</a></h4>
-                                    <span class="productEntity-price">$900.00</span>
-                                    <span class="productEntity-attr">
+                                <div class="product-infomation">
+                                    <h4><a href="single-product.html">Propel Advanced SL 0</a></h4>
+                                    <span class="product-price">$900.00</span>
+                                    <span class="product-attr">
                                             <i class="fa fa-circle light-blue"></i>
                                             <i class="fa fa-circle orange"></i>
                                             <i class="fa fa-circle blueviolet"></i>
@@ -638,7 +638,7 @@
                                         </span>
                                 </div>
                             </div>
-                            <!--End productEntity item-->
+                            <!--End product item-->
 
                         </div>
                     </div>

@@ -15,7 +15,7 @@ public class Category implements Serializable {
     @Column(name = "category_name")
     private String name;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "category")
+    @OneToMany(mappedBy = "category")
     private List<Product> products;
 
     public Category(){

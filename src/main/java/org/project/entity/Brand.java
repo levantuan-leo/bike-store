@@ -15,7 +15,7 @@ public class Brand implements Serializable {
     @Column(name = "brand_name")
     private String name;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "brand")
+    @OneToMany(mappedBy = "brand")
     private List<Product> products;
 
     public Brand(){

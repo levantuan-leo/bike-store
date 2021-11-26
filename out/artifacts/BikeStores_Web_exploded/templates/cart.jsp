@@ -20,12 +20,12 @@
                 <!--Table header-->
                 <thead>
                 <tr>
-                    <th class="productEntity-remove">&nbsp;</th>
-                    <th class="productEntity-thumbnail">Product</th>
-                    <th class="productEntity-name">&nbsp;</th>
-                    <th class="productEntity-price">Price</th>
-                    <th class="productEntity-quantity">Quantity</th>
-                    <th class="productEntity-subtotal">Total</th>
+                    <th class="product-remove">&nbsp;</th>
+                    <th class="product-thumbnail">Product</th>
+                    <th class="product-name">&nbsp;</th>
+                    <th class="product-price">Price</th>
+                    <th class="product-quantity">Quantity</th>
+                    <th class="product-subtotal">Total</th>
                 </tr>
                 </thead>
                 <!--End table header-->
@@ -34,80 +34,80 @@
                 <tbody>
 
                 <tr class="cart_item">
-                    <td class="productEntity-remove">
+                    <td class="product-remove">
                         <a href="#" class="remove" title="Remove this item"></a>
                     </td>
-                    <td class="productEntity-thumbnail">
-                        <a href="/productEntity-single"><img src="<c:url value="/templates/images/productEntity/widget1.jpg" />" alt="cart" /></a>
+                    <td class="product-thumbnail">
+                        <a href="/product-single"><img src="<c:url value="/templates/images/product/widget1.jpg" />" alt="cart" /></a>
                     </td>
 
-                    <td class="productEntity-name">
-                        <a href="/productEntity-single">Liv Race Day Short </a>
+                    <td class="product-name">
+                        <a href="/product-single">Liv Race Day Short </a>
                         <span class="color">
                                     Color: <i class="orange"></i>
                                 </span>
                     </td>
-                    <td class="productEntity-price">
+                    <td class="product-price">
                         <span class="amount">$20.00</span>
                     </td>
 
-                    <td class="productEntity-quantity">
+                    <td class="product-quantity">
                         <div class="quantity"><input type="number" step="1" min="0" name="cart" value="1" title="Qty" class="input-text qty text" size="4"></div>
                     </td>
 
-                    <td class="productEntity-subtotal">
+                    <td class="product-subtotal">
                         <span class="amount">$229.00</span>
                     </td>
                 </tr>
                 <tr class="cart_item">
-                    <td class="productEntity-remove">
+                    <td class="product-remove">
                         <a href="#" class="remove fa-" title="Remove this item"></a>
                     </td>
-                    <td class="productEntity-thumbnail">
-                        <a href="/productEntity-single"><img src="<c:url value="/templates/images/productEntity/widget2.jpg" />" alt="cart" /></a>
+                    <td class="product-thumbnail">
+                        <a href="/product-single"><img src="<c:url value="/templates/images/product/widget2.jpg" />" alt="cart" /></a>
                     </td>
 
-                    <td class="productEntity-name">
-                        <a href="/productEntity-single">City Pedals Sport </a>
+                    <td class="product-name">
+                        <a href="/product-single">City Pedals Sport </a>
                         <span class="color">
                                     Color: <i class="light-blue"></i>
                                 </span>
                     </td>
-                    <td class="productEntity-price">
+                    <td class="product-price">
                         <span class="amount">$20.00</span>
                     </td>
 
-                    <td class="productEntity-quantity">
+                    <td class="product-quantity">
                         <div class="quantity"><input type="number" step="1" min="0" name="cart" value="1" title="Qty" class="input-text qty text" size="4"></div>
                     </td>
 
-                    <td class="productEntity-subtotal">
+                    <td class="product-subtotal">
                         <span class="amount">$229.00</span>
                     </td>
                 </tr>
                 <tr class="cart_item">
-                    <td class="productEntity-remove">
+                    <td class="product-remove">
                         <a href="#" class="remove fa-" title="Remove this item"></a>
                     </td>
-                    <td class="productEntity-thumbnail">
-                        <a href="/productEntity-single"><img src="<c:url value="/templates/images/productEntity/widget3.jpg" />" alt="cart" /></a>
+                    <td class="product-thumbnail">
+                        <a href="/product-single"><img src="<c:url value="/templates/images/product/widget3.jpg" />" alt="cart" /></a>
                     </td>
 
-                    <td class="productEntity-name">
-                        <a href="/productEntity-single">Gloss </a>
+                    <td class="product-name">
+                        <a href="/product-single">Gloss </a>
                         <span class="color">
                                     Color: <i class="red-light"></i>
                                 </span>
                     </td>
-                    <td class="productEntity-price">
+                    <td class="product-price">
                         <span class="amount">$20.00</span>
                     </td>
 
-                    <td class="productEntity-quantity">
+                    <td class="product-quantity">
                         <div class="quantity"><input type="number" step="1" min="0" name="cart" value="1" title="Qty" class="input-text qty text" size="4"></div>
                     </td>
 
-                    <td class="productEntity-subtotal">
+                    <td class="product-subtotal">
                         <span class="amount">$229.00</span>
                     </td>
                 </tr>

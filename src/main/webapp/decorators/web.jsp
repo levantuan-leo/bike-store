@@ -24,7 +24,7 @@
     <!--[if lt IE 9]>
         <script src="<c:url value="/static/js/html5shiv.min.js" />"></script>
         <script src="<c:url value="/static/js/respond.min.js" />"></script>
-        <![endif]-->
+    <![endif]-->
 </head>
 <body>
 <!--Start class site-->
@@ -74,5 +74,6 @@
         jQuery('.to').text('$' + jQuery( "#slider-range" ).slider( "values", 1 ));
     });
 </script>
+<script src="<c:url value="/static/js/app.js" />"></script>
 </body>
 </html>

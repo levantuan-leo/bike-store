@@ -20,7 +20,7 @@
             $($btn.data('target')).clone().appendTo($nav);
 
             $btn.click (function(e){
-                if ($(this).data('off-canvas') == 'show') {
+                if ($(this).data('off-canvas') === 'show') {
 
                     hideNav();
                 } else {
@@ -85,7 +85,7 @@
 
                 wpfix = function (step) {
                     // check if need fixed
-                    if ($fixeditems == -1){
+                    if ($fixeditems === -1){
                         return;// no need to fix
                     }
 
@@ -97,7 +97,7 @@
                         }
                     }
 
-                    if (step==1) {
+                    if (step===1) {
                         $fixeditems.css({'position': 'absolute', 'top': $(window).scrollTop() + 'px'});
                     } else {
                         $fixeditems.css({'position': '', 'top': ''});

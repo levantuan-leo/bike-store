@@ -2,6 +2,7 @@ package org.project.entity;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Table(name = "production.product")
@@ -26,6 +27,21 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
+
+    @OneToMany(mappedBy = "product")
+    private List<Stock> stocks;
+
+    public Product(){
+    }
+
+    public Product(String name, Brand brand, Category category, BigDecimal price, String picture) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.picture = picture;
+        this.brand = brand;
+        this.category = category;
+    }
 
     public int getId() {
         return id;
@@ -73,5 +89,13 @@ public class Product {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public List<Stock> getStocks() {
+        return stocks;
+    }
+
+    public void setStocks(List<Stock> stocks) {
+        this.stocks = stocks;
     }
 }

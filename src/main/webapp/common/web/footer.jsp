@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!--Start Footer-->
@@ -30,7 +30,9 @@
                 </div>
                 <div class="widget">
                     <form class="tz-subcribe">
-                        <input type="text" name="sub" value="" placeholder="Enter your email...">
+                        <label>
+                            <input type="text" name="sub" value="" placeholder="Enter your email...">
+                        </label>
                         <input type="submit" name="subscribe" value="Subscribe">
                     </form>
                 </div>
@@ -66,7 +68,8 @@
                     <div class="tz-widget-say">
                         <img src="<c:url value="/static/images/say.jpg" />" alt="Rosie">
                         <div class="entry-say">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor     incididunt ut labore et dolore magna aliqua.</p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                ut labore et dolore magna aliqua.</p>
                             <span>- Rosie -</span>
                         </div>
                     </div>
@@ -118,7 +121,7 @@
                     </div>
                     <div class="col-md-4 col-sm-6">
                         <div class="widget widget_nav_menu">
-                            <h3 class="widget-title">Infomation</h3>
+                            <h3 class="widget-title">Information</h3>
                             <ul>
                                 <li>
                                     <a href="#">About Us</a>
@@ -148,7 +151,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6 col-sm-6">
-                    <p>Copyright &copy; 2015 <a href="http://templaza.com/" target="_blank">BikeSport</a>. All rights reserved.</p>
+                    <p>Copyright &copy; 2015 <a href="https://google.com/" target="_blank">BikeSport</a>. All rights
+                        reserved.</p>
                 </div>
                 <div class="col-md-6 col-sm-6">
                     <div class="pull-right">

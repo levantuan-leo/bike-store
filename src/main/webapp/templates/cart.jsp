@@ -1,8 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <section class="shop-checkout">
     <div class="container">
-        <!--Start Breadcrumbs-->
+        <!-- Start Breadcrumbs -->
         <ul class="tz-breadcrumbs">
             <li>
                 <a href="#">Home</a>
@@ -11,10 +12,10 @@
                 Shop Cart
             </li>
         </ul>
-        <!--End Breadcrumbs-->
+        <!-- End Breadcrumbs -->
         <h1 class="page-title">Shop Cart</h1>
 
-        <!--Start form table-->
+        <!-- Start form table -->
         <form>
             <table class="shop_table cart">
                 <!--Table header-->
@@ -33,122 +34,102 @@
                 <!--Table body-->
                 <tbody>
 
-                <tr class="cart_item">
-                    <td class="product-remove">
-                        <a href="#" class="remove" title="Remove this item"></a>
-                    </td>
-                    <td class="product-thumbnail">
-                        <a href="/product-single"><img src="<c:url value="/templates/images/product/widget1.jpg" />" alt="cart" /></a>
-                    </td>
+                <c:set var="cart" value="${sessionScope.cart}"/>
+                <c:set var="totalAmount" value="${0}"/>
+                <c:choose>
+                    <c:when test="${cart == null}">
+                        <tr>
+                            <td colspan="4">- Cart is currently empty -</td>
+                        </tr>
+                    </c:when>
+                    <c:otherwise>
+                        <c:forEach items="${cart}" var="item">
+                            <tr class="cart_item" id="cart-item${item.key}">
+                                <td class="product-remove">
+                                    <a href="javascript:void(0);"
+                                       class="remove"
+                                       title="Remove this item"
+                                       onclick="deleteCartItem(${item.key})"
+                                    ></a>
+                                </td>
+                                <td class="product-thumbnail">
+                                    <a href="<c:url value="/product-single?id=${item.key}"/>"><img
+                                            src="${item.value.product.picture}" alt="cart"/></a>
+                                </td>
 
-                    <td class="product-name">
-                        <a href="/product-single">Liv Race Day Short </a>
-                        <span class="color">
-                                    Color: <i class="orange"></i>
+                                <td class="product-name">
+                                    <a href="<c:url value="/product-single?id=${item.key}"/>">${item.value.product.name}</a>
+                                    <span class="color">
+                                    Color: <i class="orange-dark"></i>
                                 </span>
-                    </td>
-                    <td class="product-price">
-                        <span class="amount">$20.00</span>
-                    </td>
+                                </td>
+                                <td class="product-price">
+                                    <span class="amount">$${item.value.product.price}</span>
+                                </td>
 
-                    <td class="product-quantity">
-                        <div class="quantity"><input type="number" step="1" min="0" name="cart" value="1" title="Qty" class="input-text qty text" size="4"></div>
-                    </td>
+                                <td class="product-quantity">
+                                    <div class="quantity">
+                                        <input type="number"
+                                               step="1"
+                                               min="0"
+                                               name="cart"
+                                               value="${item.value.quantity}"
+                                               title="Qty"
+                                               class="input-text qty text"
+                                               size="4"
+                                               onblur="updateCartItem(this, ${item.key})"
+                                        >
+                                    </div>
+                                </td>
 
-                    <td class="product-subtotal">
-                        <span class="amount">$229.00</span>
-                    </td>
-                </tr>
-                <tr class="cart_item">
-                    <td class="product-remove">
-                        <a href="#" class="remove fa-" title="Remove this item"></a>
-                    </td>
-                    <td class="product-thumbnail">
-                        <a href="/product-single"><img src="<c:url value="/templates/images/product/widget2.jpg" />" alt="cart" /></a>
-                    </td>
-
-                    <td class="product-name">
-                        <a href="/product-single">City Pedals Sport </a>
-                        <span class="color">
-                                    Color: <i class="light-blue"></i>
-                                </span>
-                    </td>
-                    <td class="product-price">
-                        <span class="amount">$20.00</span>
-                    </td>
-
-                    <td class="product-quantity">
-                        <div class="quantity"><input type="number" step="1" min="0" name="cart" value="1" title="Qty" class="input-text qty text" size="4"></div>
-                    </td>
-
-                    <td class="product-subtotal">
-                        <span class="amount">$229.00</span>
-                    </td>
-                </tr>
-                <tr class="cart_item">
-                    <td class="product-remove">
-                        <a href="#" class="remove fa-" title="Remove this item"></a>
-                    </td>
-                    <td class="product-thumbnail">
-                        <a href="/product-single"><img src="<c:url value="/templates/images/product/widget3.jpg" />" alt="cart" /></a>
-                    </td>
-
-                    <td class="product-name">
-                        <a href="/product-single">Gloss </a>
-                        <span class="color">
-                                    Color: <i class="red-light"></i>
-                                </span>
-                    </td>
-                    <td class="product-price">
-                        <span class="amount">$20.00</span>
-                    </td>
-
-                    <td class="product-quantity">
-                        <div class="quantity"><input type="number" step="1" min="0" name="cart" value="1" title="Qty" class="input-text qty text" size="4"></div>
-                    </td>
-
-                    <td class="product-subtotal">
-                        <span class="amount">$229.00</span>
-                    </td>
-                </tr>
-
+                                <td class="product-subtotal">
+                                    <span class="amount">$${item.value.product.price * item.value.quantity}</span>
+                                    <c:set var="totalAmount" value="${totalAmount + item.value.product.price * item.value.quantity}" />
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </c:otherwise>
+                </c:choose>
                 </tbody>
-                <!--End table body-->
+                <!-- End table body -->
             </table>
         </form>
-        <!--End form table-->
+        <!-- End form table -->
 
-        <!--Cart attr-->
+        <!-- Cart attr -->
         <div class="row">
             <div class="col-md-6 col-sm-6">
-                <!--Coupon-->
+                <!-- Coupon -->
                 <div class="coupon">
                     <h3>Coupon</h3>
                     <form>
                         <p>Enter your coupon code if you have one.</p>
-                        <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="Coupon code">
+                        <input type="text" name="coupon_code" class="input-text"
+                               id="coupon_code" value="" placeholder="Coupon code">
                         <input type="submit" class="button" name="apply_coupon" value="Apply Coupon">
                     </form>
                 </div>
-                <!--End coupon-->
+                <!-- End coupon -->
             </div>
             <div class="col-md-6 col-sm-6">
 
-                <!--Cart totals-->
+                <!-- Cart totals -->
                 <div class="cart_totals">
                     <div class="cart_totals_inner">
                         <table>
                             <tbody>
                             <tr class="cart-subtotal">
                                 <th>Subtotal</th>
-                                <td><span class="amount">$293.00</span></td>
+                                <td><span class="amount">$${totalAmount}</span></td>
                             </tr>
                             <tr class="shipping">
                                 <th>Shipping and handling</th>
                                 <td>
-                                    <form class="shop-shipping-calculator"  method="post">
+                                    <form class="shop-shipping-calculator" method="post">
                                         <p class="form-r">
-                                            <input type="checkbox" name="rate" value="1" />
+                                            <label>
+                                                <input type="checkbox" name="rate" value="1"/>
+                                            </label>
                                             <span>
                                                        Flat Rate:
                                                        <span class="price">
@@ -157,7 +138,9 @@
                                                    </span>
                                         </p>
                                         <p class="form-r">
-                                            <input type="checkbox" name="international" value="1" />
+                                            <label>
+                                                <input type="checkbox" name="international" value="1"/>
+                                            </label>
                                             <span>
                                                        International Delivery:
                                                        <span class="price">
@@ -166,7 +149,9 @@
                                                    </span>
                                         </p>
                                         <p class="form-r">
-                                            <input type="checkbox" name="rate" value="1" />
+                                            <label>
+                                                <input type="checkbox" name="rate" value="1"/>
+                                            </label>
                                             <span>
                                                        Local Delivery:
                                                        <span class="price">
@@ -175,8 +160,10 @@
                                                    </span>
                                         </p>
                                         <p class="form-r">
-                                            <input type="checkbox" name="pickup" value="1" />
-                                            <span>Local Pickup (Free)</span>
+                                            <label>
+                                                <input type="checkbox" name="pickup" value="1"/>
+                                            </label>
+                                            <span> Local Pickup (Free) </span>
                                         </p>
                                     </form>
                                 </td>
@@ -191,12 +178,52 @@
                             Buy Now
                         </div>
                     </div>
-
                 </div>
-                <!--End cart totals-->
+                <!-- End cart totals -->
 
             </div>
         </div>
-        <!--End cart attr-->
+        <!-- End cart attr -->
     </div>
 </section>
+
+<!--Start Footer-->
+<%@ include file="/common/web/footer.jsp" %>
+<!--End Footer-->
+</div>
+<!--End class site-->
+
+<script type='text/javascript' src="<c:url value="/static/js/jquery.min.js" />"></script>
+<script type='text/javascript' src="<c:url value="/static/js/jquery-ui.js" />"></script>
+<script type='text/javascript' src="<c:url value="/static/js/bootstrap.min.js" />"></script>
+<script type='text/javascript' src="<c:url value="/static/js/off-canvas.js" />"></script>
+<!--jQuery Countdow-->
+<script type='text/javascript' src="<c:url value="/static/js/jquery.plugin.min.js" />"></script>
+<script type='text/javascript' src="<c:url value="/static/js/jquery.countdown.min.js" />"></script>
+<!--End Countdow-->
+<script type='text/javascript' src="<c:url value="/static/js/jquery.parallax-1.1.3.js" />"></script>
+<script type='text/javascript' src="<c:url value="/static/js/owl.carousel.js" />"></script>
+<script type='text/javascript' src="<c:url value="/static/js/custom.js" />"></script>
+<script type='text/javascript' src='<c:url value="/static/rs-plugin/js/jquery.themepunch.tools.min.js" />'></script>
+<script type='text/javascript'
+        src='<c:url value="/static/rs-plugin/js/jquery.themepunch.revolution.min.js" />'></script>
+<script type='text/javascript' src='<c:url value="/static/rs-plugin/js/custom-rs.js" />'></script>
+<script>
+    jQuery(function() {
+        jQuery( "#slider-range" ).slider({
+            range: true,
+            min: 0,
+            max: 500,
+            values: [ 75, 300 ],
+            slide: function( event, ui ) {
+                jQuery('.from').text('$' + ui.values[ 0 ]);
+                jQuery('.to').text('$' + ui.values[ 1 ]);
+            }
+        });
+        jQuery('.from').text('$' + jQuery( "#slider-range" ).slider( "values", 0 ));
+        jQuery('.to').text('$' + jQuery( "#slider-range" ).slider( "values", 1 ));
+    });
+</script>
+<script src="<c:url value="/static/js/app.js" />"></script>
+</body>
+</html>

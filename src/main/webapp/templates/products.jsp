@@ -138,7 +138,7 @@
                         <ul>
                             <li>
                                 <a href="shop.html">
-                                    <img src="<c:url value="/templates/images/product/widget1.jpg" />" alt="Defy Advanced">
+                                    <img src="<c:url value="/static/images/product/widget1.jpg" />" alt="Defy Advanced">
                                     <div class="item-info">
                                         <h5>Defy Advanced</h5>
                                         <span class="p-vote">
@@ -154,7 +154,7 @@
                             </li>
                             <li>
                                 <a href="shop.html">
-                                    <img src="<c:url value="/templates/images/product/widget2.jpg" />" alt="Defy Advanced">
+                                    <img src="<c:url value="/static/images/product/widget2.jpg" />" alt="Defy Advanced">
                                     <div class="item-info">
                                         <h5>Liv Race Day Short</h5>
                                         <span class="p-vote">
@@ -170,7 +170,7 @@
                             </li>
                             <li>
                                 <a href="shop.html">
-                                    <img src="<c:url value="/templates/images/product/widget3.jpg" />" alt="Defy Advanced">
+                                    <img src="<c:url value="/static/images/product/widget3.jpg" />" alt="Defy Advanced">
                                     <div class="item-info">
                                         <h5>City Pedals Sport</h5>
                                         <span class="p-vote">
@@ -186,7 +186,7 @@
                             </li>
                             <li>
                                 <a href="shop.html">
-                                    <img src="<c:url value="/templates/images/product/widget4.jpg" />" alt="Defy Advanced">
+                                    <img src="<c:url value="/static/images/product/widget4.jpg" />" alt="Defy Advanced">
                                     <div class="item-info">
                                         <h5>Gloss</h5>
                                         <span class="p-vote">
@@ -202,7 +202,7 @@
                             </li>
                             <li>
                                 <a href="shop.html">
-                                    <img src="<c:url value="/templates/images/product/widget5.jpg" />" alt="Defy Advanced">
+                                    <img src="<c:url value="/static/images/product/widget5.jpg" />" alt="Defy Advanced">
                                     <div class="item-info">
                                         <h5>Cruiser Bells</h5>
                                         <span class="p-vote">
@@ -236,7 +236,7 @@
                         </li>
                     </ul>
                     <div class="shop-banner">
-                        <img src="<c:url value="/templates/images/product/banner.jpg" />" alt="banner">
+                        <img src="<c:url value="/static/images/product/banner.jpg" />" alt="banner">
                     </div>
                     <div class="catalog-meta">
                         <div class="catalog_top">
@@ -270,7 +270,7 @@
                             <div class="item">
                                 <div class="product-item-inner">
                                     <div class="product-thumb">
-                                        <img src="<c:url value="/templates/images/product/shop1.jpg" />" alt="Liv Race Day Short Finger..">
+                                        <img src="<c:url value="/static/images/product/shop1.jpg" />" alt="Liv Race Day Short Finger..">
                                     </div>
                                     <div class="product-info">
                                         <h4><a href="/product">Liv Race Day Short Finger..</a></h4>
@@ -312,7 +312,7 @@
                             <div class="item">
                                 <div class="product-item-inner">
                                     <div class="product-thumb">
-                                        <img src="<c:url value="/templates/images/product/shop2.jpg" />" alt="Team Hoody">
+                                        <img src="<c:url value="/static/images/product/shop2.jpg" />" alt="Team Hoody">
                                     </div>
                                     <div class="product-info">
                                         <h4><a href="/product">Team Hoody</a></h4>
@@ -354,7 +354,7 @@
                             <div class="item">
                                 <div class="product-item-inner">
                                     <div class="product-thumb">
-                                        <img src="<c:url value="/templates/images/product/shop3.jpg" />" alt="Team Hoody">
+                                        <img src="<c:url value="/static/images/product/shop3.jpg" />" alt="Team Hoody">
                                     </div>
                                     <div class="product-info">
                                         <h4><a href="/product">Defy Advanced</a></h4>
@@ -396,7 +396,7 @@
                             <div class="item">
                                 <div class="product-item-inner">
                                     <div class="product-thumb">
-                                        <img src="<c:url value="/templates/images/product/shop4.jpg" />" alt="Team Hoody">
+                                        <img src="<c:url value="/static/images/product/shop4.jpg" />" alt="Team Hoody">
                                     </div>
                                     <div class="product-info">
                                         <h4><a href="/product">Defy Advanced 2</a></h4>
@@ -438,7 +438,7 @@
                             <div class="item">
                                 <div class="product-item-inner">
                                     <div class="product-thumb">
-                                        <img src="<c:url value="/templates/images/product/shop5.jpg" />" alt="Team Hoody">
+                                        <img src="<c:url value="/static/images/product/shop5.jpg" />" alt="Team Hoody">
                                     </div>
                                     <div class="product-info">
                                         <h4><a href="/product">City Pedals Sport</a></h4>
@@ -480,7 +480,7 @@
                             <div class="item">
                                 <div class="product-item-inner">
                                     <div class="product-thumb">
-                                        <img src="<c:url value="/templates/images/product/shop6.jpg" />" alt="Neos Ant+ Wireless">
+                                        <img src="<c:url value="/static/images/product/shop6.jpg" />" alt="Neos Ant+ Wireless">
                                     </div>
                                     <div class="product-info">
                                         <h4><a href="/product">Neos Ant+ Wireless</a></h4>
@@ -522,7 +522,7 @@
                             <div class="item">
                                 <div class="product-item-inner">
                                     <div class="product-thumb">
-                                        <img src="<c:url value="/templates/images/product/shop7.jpg" />" alt="Neos Ant+ Wireless">
+                                        <img src="<c:url value="/static/images/product/shop7.jpg" />" alt="Neos Ant+ Wireless">
                                     </div>
                                     <div class="product-info">
                                         <h4><a href="/product">Rack-It Tour Rack</a></h4>
@@ -564,7 +564,7 @@
                             <div class="item">
                                 <div class="product-item-inner">
                                     <div class="product-thumb">
-                                        <img src="<c:url value="/templates/images/product/shop8.jpg" />" alt="Lust Advanced">
+                                        <img src="<c:url value="/static/images/product/shop8.jpg" />" alt="Lust Advanced">
                                     </div>
                                     <div class="product-info">
                                         <h4><a href="/product">Lust Advanced</a></h4>
@@ -606,7 +606,7 @@
                             <div class="item">
                                 <div class="product-item-inner">
                                     <div class="product-thumb">
-                                        <img src="<c:url value="/templates/images/product/shop9.jpg" />" alt="Cruiser Bells">
+                                        <img src="<c:url value="/static/images/product/shop9.jpg" />" alt="Cruiser Bells">
                                     </div>
                                     <div class="product-info">
                                         <h4><a href="/product">Cruiser Bells</a></h4>
@@ -648,7 +648,7 @@
                             <div class="item">
                                 <div class="product-item-inner">
                                     <div class="product-thumb">
-                                        <img src="<c:url value="/templates/images/product/shop10.jpg" />" alt="GFR">
+                                        <img src="<c:url value="/static/images/product/shop10.jpg" />" alt="GFR">
                                     </div>
                                     <div class="product-info">
                                         <h4><a href="/product">GFR F/W</a></h4>
@@ -690,7 +690,7 @@
                             <div class="item">
                                 <div class="product-item-inner">
                                     <div class="product-thumb">
-                                        <img src="<c:url value="/templates/images/product/shop11.jpg" />" alt="Race Day Tri Suit">
+                                        <img src="<c:url value="/static/images/product/shop11.jpg" />" alt="Race Day Tri Suit">
                                     </div>
                                     <div class="product-info">
                                         <h4><a href="/product">Race Day Tri Suit</a></h4>
@@ -732,7 +732,7 @@
                             <div class="item">
                                 <div class="product-item-inner">
                                     <div class="product-thumb">
-                                        <img src="<c:url value="/templates/images/product/shop12.jpg" />" alt="Gloss">
+                                        <img src="<c:url value="/static/images/product/shop12.jpg" />" alt="Gloss">
                                     </div>
                                     <div class="product-info">
                                         <h4><a href="/product">Gloss</a></h4>

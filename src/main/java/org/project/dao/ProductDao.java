@@ -5,7 +5,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
-import org.project.entity.Brand;
 import org.project.entity.Category;
 import org.project.entity.Product;
 import org.project.utils.HibernateUtil;
@@ -18,13 +17,13 @@ public class ProductDao {
 
     //region [CRUD]
     // Method to CREATE a product in the database
-    public Integer addProduct(String name, Brand brand, Category category, BigDecimal price, String picture) {
+    public Integer addProduct(String name, Category category, BigDecimal price, String picture) {
         Session session = factory.openSession();
         Transaction tx = null;
         Integer productID = null;
         try {
             tx = session.beginTransaction();
-            Product product = new Product(name, brand, category, price, picture);
+            Product product = new Product(name, category, price, picture);
             productID = (Integer) session.save(product);
             tx.commit();
         } catch (HibernateException e) {
@@ -48,14 +47,13 @@ public class ProductDao {
     }
 
     // Method to UPDATE name for a product
-    public void updateProduct(Integer ProductID, String name, Brand brand, Category category, BigDecimal price, String picture) {
+    public void updateProduct(Integer ProductID, String name, Category category, BigDecimal price, String picture) {
         Session session = factory.openSession();
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
             Product product = session.get(Product.class, ProductID);
             product.setName(name);
-            product.setBrand(brand);
             product.setCategory(category);
             product.setPrice(price);
             product.setPicture(picture);
@@ -101,10 +99,37 @@ public class ProductDao {
         }
     }
 
+    public List<?> getProducts(){
+        try (Session session = factory.openSession()) {
+            return session.createQuery("FROM Product").list();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public Product getProductById(int id){
+        try (Session session = factory.openSession()) {
+            return session.get(Product.class, id);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public Product getBestProductSale(){
+        try (Session session = factory.openSession()) {
+            return (Product) session.createQuery("FROM Product WHERE id = 1").uniqueResult();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public int count() {
         try (Session session = factory.openSession()) {
-            Query<?> query = session.createSQLQuery("SELECT COUNT(*) FROM Product");
-            return ((BigDecimal) query.uniqueResult()).intValue();
+            Query<?> query = session.createQuery("SELECT COUNT(*) FROM Product");
+            return ((Long) query.uniqueResult()).intValue();
         }
         catch (HibernateException e) {
             e.printStackTrace();

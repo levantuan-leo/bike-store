@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!--Start id tz header-->
@@ -26,13 +26,13 @@
             </ul>
             <ul class="pull-right">
                 <li>
-                    <a href="shop-register.html">
+                    <a href="#">
                         Notification
                         <span class="fa fa-bell-o tz-down"></span>
                     </a>
                 </li>
                 <li>
-                    <a href="shop-checkout.html">
+                    <a href="#">
                         Contact
                         <span class="fa fa-question-circle tz-down"></span>
                     </a>
@@ -40,7 +40,7 @@
                 <li class="tz-header-login">
                     <a href="#">Login</a>
                     <div class="tz-login-form">
-                        <form>
+                        <form id="login-form">
                             <p class="form-content">
                                 <label for="username">Username / Email</label>
                                 <input type="text" name="username" id="username" value="">
@@ -54,7 +54,7 @@
                                 <button type="submit" class="pull-right button_class">LOGIN</button>
                             </p>
                             <p class="form-text">
-                                Don't have an accountEntity? <a href="/register">Register Here</a>
+                                Don't have an accountEntity? <a href="<c:url value = "/register"/>">Register Here</a>
                             </p>
                         </form>
                     </div>
@@ -65,12 +65,13 @@
 
         <!--Start header content-->
         <div class="header-content">
-            <h3 class="tz-logo pull-left"><a href="/home"><img src="<c:url value="/static/images/logo.png" />"
+            <h3 class="tz-logo pull-left"><a href="<c:url value = "/home"/>"><img src="<c:url value="/static/images/logo.png" />"
                                                                alt="home"/></a></h3>
             <div class="tz-search pull-right">
 
                 <!--Start form search-->
                 <form>
+                    <label for="tz-query"></label>
                     <input type="text" class="tz-query" id="tz-query" value="" placeholder="Search for product">
                     <button type="submit"></button>
                 </form>
@@ -84,9 +85,9 @@
                                     src="<c:url value="/static/images/product/product-search1.jpg" />"
                                     alt="product search one"></div>
                             <div class="live-search-content">
-                                <h6><a href="/product">Defy Advanced</a></h6>
+                                <h6><a href="<c:url value = "/product-single"/>">Defy Advanced</a></h6>
                                 <span class="live-meta">
-                                            <a href="/product">$2650.00</a>
+                                            <a href="<c:url value = "/product-single"/>">$2650.00</a>
                                             <span class="product-color">
                                                 <i class="light-blue"></i>
                                                 <i class="orange"></i>
@@ -100,9 +101,9 @@
                                     src="<c:url value="/static/images/product/product-search2.jpg" />"
                                     alt="product search two"></div>
                             <div class="live-search-content">
-                                <h6><a href="/product">Defy Advanced</a></h6>
+                                <h6><a href="<c:url value = "/product-single"/>">Defy Advanced</a></h6>
                                 <span class="live-meta">
-                                            <a href="/product">$2650.00</a>
+                                            <a href="<c:url value = "/product-single"/>">$2650.00</a>
                                             <span class="product-color">
                                                 <i class="light-blue"></i>
                                                 <i class="orange"></i>
@@ -117,9 +118,9 @@
                                     src="<c:url value="/static/images/product/product-search3.jpg"/>"
                                     alt="product search one"></div>
                             <div class="live-search-content">
-                                <h6><a href="/product">Defy Advanced</a></h6>
+                                <h6><a href="<c:url value = "/product-single"/>">Defy Advanced</a></h6>
                                 <span class="live-meta">
-                                            <a href="/product">$2650.00</a>
+                                            <a href="<c:url value = "/product-single"/>">$2650.00</a>
                                             <span class="product-color">
                                                 <i class="blueviolet"></i>
                                                 <i class="light-blue"></i>
@@ -144,37 +145,44 @@
             <!--Main Menu-->
             <ul class="tz-main-menu pull-left nav-collapse">
                 <li>
-                    <a href="/home">
+                    <a href="<c:url value = "/home"/>">
                         Home
                     </a>
                 </li>
                 <li>
-                    <a href="/shop">Category</a>
+                    <a href="<c:url value = "/product"/>" >Category</a>
                     <ul class="sub-menu">
-                        <c:forEach items="${listCategory}" var="category">
+                        <c:forEach items="${listCategories}" var="category">
                             <li>
-                                <a href="/shop?category=${category.id}">${category.name}</a>
+                                <a href="<c:url value = "/product?category=${category.id}"/>">${category.name}</a>
                             </li>
                         </c:forEach>
                     </ul>
                 <li>
-                    <a href="/shop">
+                    <a href="<c:url value = "/product"/>">
                         Bikes
                         <span class="red-light">On sale!</span>
                     </a>
                 </li>
                 <li>
-                    <a href="/shop">
+                    <a href="<c:url value = "/product"/>">
                         Gear
                     </a>
                 </li>
             </ul>
             <!--End Main menu-->
 
+            <c:set var="quantity" value="${0}" />
+            <c:set var="amount" value="${0}" />
+            <c:forEach items="${sessionScope.cart}" var="item">
+                <c:set var="quantity" value="${quantity + item.value.quantity}" />
+                <c:set var="amount" value="${amount + item.value.product.price}" />
+            </c:forEach>
+
             <!--Shop meta-->
             <ul class="tz-ecommerce-meta pull-right">
                 <li class="tz-mini-cart">
-                    <a href="/cart"><strong>2</strong>Cart : $199.00</a>
+                    <a href="<c:url value = "/cart"/>"><strong>${quantity}</strong>Cart</a>
 
                     <!--Mini cart-->
                     <ul class="cart-inner">
@@ -183,9 +191,9 @@
                                     src="<c:url value="/static/images/product/product-cart1.png" />"
                                     alt="product search one"></div>
                             <div class="mini-cart-ds">
-                                <h6><a href="/product-single">Liv Race Day Short</a></h6>
+                                <h6><a href="<c:url value = "/product-single"/>">Liv Race Day Short</a></h6>
                                 <span class="mini-cart-meta">
-                                            <a href="/product-single">$2650.00</a>
+                                            <a href="<c:url value = "/product-single"/>">$2650.00</a>
                                             <span class="mini-meta">
                                                <span class="mini-color">Color: <i class="orange"></i></span>
                                                <span class="mini-qty">Qty: 5</span>
@@ -200,9 +208,9 @@
                                     src="<c:url value="/static/images/product/product-cart2.png" />"
                                     alt="product search one"></div>
                             <div class="mini-cart-ds">
-                                <h6><a href="/product-single">City Pedals Sport</a></h6>
+                                <h6><a href="<c:url value = "/product-single"/>">City Pedals Sport</a></h6>
                                 <span class="mini-cart-meta">
-                                            <a href="/product-single">$2650.00</a>
+                                            <a href="<c:url value = "/product-single"/>">$2650.00</a>
                                             <span class="mini-meta">
                                                <span class="mini-color">Color: <i class="orange"></i></span>
                                                <span class="mini-qty">Qty: 5</span>
@@ -217,9 +225,9 @@
                                     src="<c:url value="/static/images/product/product-cart3.png" />"
                                     alt="product search one"></div>
                             <div class="mini-cart-ds">
-                                <h6><a href="/product-single">Gloss</a></h6>
+                                <h6><a href="<c:url value = "/product-single"/>">Gloss</a></h6>
                                 <span class="mini-cart-meta">
-                                            <a href="/product-single">$2650.00</a>
+                                            <a href="<c:url value = "/product-single"/>">$2650.00</a>
                                             <span class="mini-meta">
                                                <span class="mini-color">Color: <i class="orange"></i></span>
                                                <span class="mini-qty">Qty: 5</span>
@@ -232,12 +240,12 @@
                         <li class="mini-subtotal">
                                     <span class="subtotal-content">
                                         Subtotal:
-                                        <strong class="pull-right">$1,100.00</strong>
+                                        <strong class="pull-right">$${amount == 0?0.00:amount}</strong>
                                     </span>
                         </li>
                         <li class="mini-footer">
-                            <a href="/cart" class="view-cart">View Cart</a>
-                            <a href="/checkout" class="check-out">Checkout</a>
+                            <a href="<c:url value = "/cart"/>" class="view-cart">View Cart</a>
+                            <a href="<c:url value = "/checkout"/>" class="check-out">Checkout</a>
                         </li>
                     </ul>
                     <!--End mini cart-->

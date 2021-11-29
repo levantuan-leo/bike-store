@@ -1,15 +1,11 @@
 package org.project.utils;
 
-import org.project.dao.CategoryDao;
-import org.project.entity.Category;
-
-import java.util.List;
+import org.project.dao.AccountDao;
 
 public class HibernateTester {
     public static void main(String[] args) {
-        CategoryDao categoryDao = new CategoryDao();
+        AccountDao accountDao = new AccountDao();
 
-        List<?> categories = categoryDao.listCategories();
-        categories.forEach(c -> System.out.printf("%s", ((Category) c).getId()));
+        System.out.println(accountDao.login("abc", "123", 0));
     }
 }

@@ -186,7 +186,7 @@
                                             </span>
                                     </div>
                                 </div>
-                                <div class="product-infomation">
+                                <div class="product-information">
                                     <h4><a href="single-product.html">Propel Advanced SL 0</a></h4>
                                     <span class="product-price">$900.00</span>
                                     <span class="product-attr">
@@ -213,7 +213,7 @@
                                             </span>
                                     </div>
                                 </div>
-                                <div class="product-infomation">
+                                <div class="product-information">
                                     <h4><a href="single-product.html">Defy Advanced SL</a></h4>
                                     <span class="product-price">$1,770.00</span>
                                     <span class="product-attr">
@@ -241,7 +241,7 @@
                                             </span>
                                     </div>
                                 </div>
-                                <div class="product-infomation">
+                                <div class="product-information">
                                     <h4><a href="single-product.html">FastRoad CoMax</a></h4>
                                     <span class="product-price">$900.00</span>
                                     <span class="product-attr">
@@ -269,7 +269,7 @@
                                             </span>
                                     </div>
                                 </div>
-                                <div class="product-infomation">
+                                <div class="product-information">
                                     <h4><a href="single-product.html">Propel Advanced SL 0</a></h4>
                                     <span class="product-price">$900.00</span>
                                     <span class="product-attr">
@@ -304,7 +304,7 @@
                                             </span>
                                     </div>
                                 </div>
-                                <div class="product-infomation">
+                                <div class="product-information">
                                     <h4><a href="single-product.html">Defy Advanced SL</a></h4>
                                     <span class="product-price">$1,770.00</span>
                                     <span class="product-attr">
@@ -332,7 +332,7 @@
                                             </span>
                                     </div>
                                 </div>
-                                <div class="product-infomation">
+                                <div class="product-information">
                                     <h4><a href="single-product.html">Propel Advanced SL 0</a></h4>
                                     <span class="product-price">$900.00</span>
                                     <span class="product-attr">
@@ -360,7 +360,7 @@
                                             </span>
                                     </div>
                                 </div>
-                                <div class="product-infomation">
+                                <div class="product-information">
                                     <h4><a href="single-product.html">FastRoad CoMax</a></h4>
                                     <span class="product-price">$900.00</span>
                                     <span class="product-attr">
@@ -388,7 +388,7 @@
                                             </span>
                                     </div>
                                 </div>
-                                <div class="product-infomation">
+                                <div class="product-information">
                                     <h4><a href="single-product.html">Propel Advanced SL 0</a></h4>
                                     <span class="product-price">$900.00</span>
                                     <span class="product-attr">
@@ -423,7 +423,7 @@
                                             </span>
                                     </div>
                                 </div>
-                                <div class="product-infomation">
+                                <div class="product-information">
                                     <h4><a href="single-product.html">Propel Advanced SL 0</a></h4>
                                     <span class="product-price">$900.00</span>
                                     <span class="product-attr">
@@ -451,7 +451,7 @@
                                             </span>
                                     </div>
                                 </div>
-                                <div class="product-infomation">
+                                <div class="product-information">
                                     <h4><a href="single-product.html">Propel Advanced SL 0</a></h4>
                                     <span class="product-price">$900.00</span>
                                     <span class="product-attr">
@@ -479,7 +479,7 @@
                                             </span>
                                     </div>
                                 </div>
-                                <div class="product-infomation">
+                                <div class="product-information">
                                     <h4><a href="single-product.html">Defy Advanced SL</a></h4>
                                     <span class="product-price">$1,770.00</span>
                                     <span class="product-attr">
@@ -507,7 +507,7 @@
                                             </span>
                                     </div>
                                 </div>
-                                <div class="product-infomation">
+                                <div class="product-information">
                                     <h4><a href="single-product.html">FastRoad CoMax</a></h4>
                                     <span class="product-price">$900.00</span>
                                     <span class="product-attr">
@@ -542,7 +542,7 @@
                                             </span>
                                     </div>
                                 </div>
-                                <div class="product-infomation">
+                                <div class="product-information">
                                     <h4><a href="single-product.html">FastRoad CoMax</a></h4>
                                     <span class="product-price">$900.00</span>
                                     <span class="product-attr">
@@ -570,7 +570,7 @@
                                             </span>
                                     </div>
                                 </div>
-                                <div class="product-infomation">
+                                <div class="product-information">
                                     <h4><a href="single-product.html">Propel Advanced SL 0</a></h4>
                                     <span class="product-price">$900.00</span>
                                     <span class="product-attr">
@@ -598,7 +598,7 @@
                                             </span>
                                     </div>
                                 </div>
-                                <div class="product-infomation">
+                                <div class="product-information">
                                     <h4><a href="single-product.html">Defy Advanced SL</a></h4>
                                     <span class="product-price">$1,770.00</span>
                                     <span class="product-attr">
@@ -626,7 +626,7 @@
                                             </span>
                                     </div>
                                 </div>
-                                <div class="product-infomation">
+                                <div class="product-information">
                                     <h4><a href="single-product.html">Propel Advanced SL 0</a></h4>
                                     <span class="product-price">$900.00</span>
                                     <span class="product-attr">

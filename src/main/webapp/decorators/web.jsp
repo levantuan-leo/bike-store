@@ -34,7 +34,7 @@
     <!--End id tz header-->
 
     <!-- content -->
-    <dec:body/>
+    <dec:body />
     <!-- end content -->
 
     <!--Start Footer-->

@@ -20,10 +20,6 @@ public class Product {
 
     private String picture;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "brand_id")
-    private Brand brand;
-
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
@@ -34,12 +30,10 @@ public class Product {
     public Product(){
     }
 
-    public Product(String name, Brand brand, Category category, BigDecimal price, String picture) {
-        this.id = id;
+    public Product(String name, Category category, BigDecimal price, String picture) {
         this.name = name;
         this.price = price;
         this.picture = picture;
-        this.brand = brand;
         this.category = category;
     }
 
@@ -73,14 +67,6 @@ public class Product {
 
     public void setPicture(String picture) {
         this.picture = picture;
-    }
-
-    public Brand getBrand() {
-        return brand;
-    }
-
-    public void setBrand(Brand brand) {
-        this.brand = brand;
     }
 
     public Category getCategory() {

@@ -18,6 +18,9 @@ public class Customer {
     @OneToOne(mappedBy = "customer")
     private Store store;
 
+    @OneToOne(mappedBy = "customer")
+    private Account account;
+
     public int getId() {
         return id;
     }
@@ -64,5 +67,13 @@ public class Customer {
 
     public void setStore(Store store) {
         this.store = store;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 }

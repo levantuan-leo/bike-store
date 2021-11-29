@@ -15,10 +15,11 @@ public class HibernateUtil {
         configuration.configure("hibernate.cfg.xml");
 
         configuration.addAnnotatedClass(Category.class);
-        configuration.addAnnotatedClass(Brand.class);
         configuration.addAnnotatedClass(Product.class);
         configuration.addAnnotatedClass(Store.class);
         configuration.addAnnotatedClass(Stock.class);
+        configuration.addAnnotatedClass(Customer.class);
+        configuration.addAnnotatedClass(Account.class);
 
         ServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .applySettings(configuration.getProperties()).build();

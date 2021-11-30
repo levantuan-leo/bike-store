@@ -186,44 +186,6 @@
         <!-- End cart attr -->
     </div>
 </section>
-
-<!--Start Footer-->
-<%@ include file="/common/web/footer.jsp" %>
-<!--End Footer-->
-</div>
-<!--End class site-->
-
-<script type='text/javascript' src="<c:url value="/static/js/jquery.min.js" />"></script>
-<script type='text/javascript' src="<c:url value="/static/js/jquery-ui.js" />"></script>
-<script type='text/javascript' src="<c:url value="/static/js/bootstrap.min.js" />"></script>
-<script type='text/javascript' src="<c:url value="/static/js/off-canvas.js" />"></script>
-<!--jQuery Countdow-->
-<script type='text/javascript' src="<c:url value="/static/js/jquery.plugin.min.js" />"></script>
-<script type='text/javascript' src="<c:url value="/static/js/jquery.countdown.min.js" />"></script>
-<!--End Countdow-->
-<script type='text/javascript' src="<c:url value="/static/js/jquery.parallax-1.1.3.js" />"></script>
-<script type='text/javascript' src="<c:url value="/static/js/owl.carousel.js" />"></script>
-<script type='text/javascript' src="<c:url value="/static/js/custom.js" />"></script>
-<script type='text/javascript' src='<c:url value="/static/rs-plugin/js/jquery.themepunch.tools.min.js" />'></script>
-<script type='text/javascript'
-        src='<c:url value="/static/rs-plugin/js/jquery.themepunch.revolution.min.js" />'></script>
-<script type='text/javascript' src='<c:url value="/static/rs-plugin/js/custom-rs.js" />'></script>
 <script>
-    jQuery(function() {
-        jQuery( "#slider-range" ).slider({
-            range: true,
-            min: 0,
-            max: 500,
-            values: [ 75, 300 ],
-            slide: function( event, ui ) {
-                jQuery('.from').text('$' + ui.values[ 0 ]);
-                jQuery('.to').text('$' + ui.values[ 1 ]);
-            }
-        });
-        jQuery('.from').text('$' + jQuery( "#slider-range" ).slider( "values", 0 ));
-        jQuery('.to').text('$' + jQuery( "#slider-range" ).slider( "values", 1 ));
-    });
+    document.querySelector('.tz-menu-primary').style.display = "none";
 </script>
-<script src="<c:url value="/static/js/app.js" />"></script>
-</body>
-</html>

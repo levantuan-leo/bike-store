@@ -4,26 +4,25 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.query.Query;
-import org.project.entity.Account;
 import org.project.entity.Customer;
+import org.project.entity.Product;
 import org.project.utils.HibernateUtil;
 
 import java.util.List;
 
-public class AccountDao {
+public class CustomerDao {
     private static final SessionFactory factory = HibernateUtil.getSessionFactory();
 
     //region [CRUD]
-    // Method to CREATE an account in the database
-    public Integer addAccount(String email, String password, int role, Customer customer) {
+    // Method to CREATE a customer in the database
+    public Integer addCustomer(String name, String email) {
         Session session = factory.openSession();
         Transaction tx = null;
-        Integer productID = null;
+        Integer customerID = null;
         try {
             tx = session.beginTransaction();
-            Account account = new Account(email, password, role, customer);
-            productID = (Integer) session.save(account);
+            Customer customer = new Customer(name, email);
+            customerID = (Integer) session.save(customer);
             tx.commit();
         } catch (HibernateException e) {
             if (tx != null)
@@ -32,30 +31,31 @@ public class AccountDao {
         } finally {
             session.close();
         }
-        return productID;
+        return customerID;
     }
 
-    // Method to READ all the accounts
-    public List<?> listAccounts() {
+    // Method to READ all the customers
+    public List<?> listCustomers() {
         try (Session session = factory.openSession()) {
-            return session.createQuery("FROM Account ").list();
+            return session.createQuery("FROM Customer ").list();
         } catch (HibernateException e) {
             e.printStackTrace();
             return null;
         }
     }
 
-    // Method to UPDATE name for an account
-    public void updateAccount(Integer AccountID, String email, String password, int role) {
+    // Method to UPDATE * for a customer
+    public void updateCustomer(Integer CustomerID, String name, String phone, String email, String address) {
         Session session = factory.openSession();
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            Account account = session.get(Account.class, AccountID);
-            account.setEmail(email);
-            account.setPassword(password);
-            account.setRole(role);
-            session.update(account);
+            Customer customer = session.get(Customer.class, CustomerID);
+            customer.setName(name);
+            customer.setPhone(phone);
+            customer.setEmail(email);
+            customer.setAddress(address);
+            session.update(customer);
             tx.commit();
         } catch (HibernateException e) {
             if (tx != null)
@@ -66,14 +66,14 @@ public class AccountDao {
         }
     }
 
-    // Method to DELETE an account from the records
-    public void deleteAccount(Integer AccountID) {
+    // Method to DELETE a customer from the records
+    public void deleteCustomer(Integer CustomerID) {
         Session session = factory.openSession();
         Transaction tx = null;
         try {
             tx = session.beginTransaction();
-            Account account = session.get(Account.class, AccountID);
-            session.delete(account);
+            Customer customer = session.get(Customer.class, CustomerID);
+            session.delete(customer);
             tx.commit();
         } catch (HibernateException e) {
             if (tx != null)
@@ -85,13 +85,9 @@ public class AccountDao {
     }
     // endregion
 
-    public Account login(String email, String password, int role){
+    public Customer getCustomerById(int id){
         try (Session session = factory.openSession()) {
-            Query<?> query = session.createQuery("FROM Account WHERE email=? AND password=? AND role=?");
-            query.setParameter(0, email);
-            query.setParameter(1, password);
-            query.setParameter(2, role);
-            return (Account) query.uniqueResult();
+            return session.get(Customer.class, id);
         } catch (HibernateException e) {
             e.printStackTrace();
             return null;

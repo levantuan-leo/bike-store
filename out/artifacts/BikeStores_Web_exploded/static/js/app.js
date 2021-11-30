@@ -40,7 +40,7 @@ function addToCart(id, quantity = 1) {
             jQuery('.subtotal-content strong.pull-right').html(`$${data["total_amount"]}`)
         },
         error: function (e) {
-            alert('Error:' + e);
+            alert("ADD\nError:" + e);
         }
     })
 }
@@ -57,13 +57,13 @@ function updateCartItem(obj, product_id) {
             var price = parseFloat(jQuery(`#cart-item${product_id} .product-price .amount`).text().substring(1));
             var quantity = parseInt(obj.value);
             var product_subtotal = document.querySelector(`#cart-item${product_id} .product-subtotal .amount`);
-            var order_total = document.querySelector('.order-total .amount');
+            var cart_subtotal = document.querySelector('.cart-subtotal .amount');
 
-            product_subtotal.innerText = String(price * quantity);
-            order_total.innerText = data["total_amount"];
+            product_subtotal.innerText = String(`$${price * quantity}`);
+            cart_subtotal.innerText = String(`$${parseFloat(data["total_amount"]).toFixed(2)}`);
         },
         error: function (e) {
-            alert('Error:' + e);
+            alert("UPDATE\nError:" + e );
         }
     })
 }
@@ -74,8 +74,8 @@ function deleteCartItem(product_id) {
             type: "DELETE",
             url: "api/cart?product_id=" + product_id,
             success: function (data) {
-                var order_total = document.querySelector('.order-total .amount');
-                order_total.innerText = data["total_amount"];
+                var cart_subtotal = document.querySelector('.cart-subtotal .amount');
+                cart_subtotal.innerText = `$${data["total_amount"]}`;
 
                 // reload page
                 // location.reload()
@@ -85,7 +85,7 @@ function deleteCartItem(product_id) {
                 row.style.display = "none"
             },
             error: function (e) {
-                alert("can't delete!\n" + e);
+                alert("DELETE\nError:" + e);
             }
         })
     }
@@ -93,12 +93,36 @@ function deleteCartItem(product_id) {
 
 function login() {
     jQuery.ajax({
-        type: "DELETE",
+        type: "POST",
         url: "api/login",
-        success: function (data) {
+        success: function (data, textStatus, jqXHR) {
+
         },
-        error: function () {
+        error: function (jqXHR, textStatus, errorThrown) {
 
         }
     })
+}
+
+function register() {
+    var register_form = jQuery('#register-form');
+    jQuery.ajax({
+        type: "POST",
+        url: "api/register",
+        data: register_form.serialize(),
+        success: function (data) {
+            alert(data.message);
+            register_form.get(0).reset();
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("Something really bad happened " + textStatus);
+            if(jqXHR.status&&jqXHR.status===400){
+                alert(jqXHR.responseText);
+            }else{
+                alert("Something went wrong");
+            }
+        }
+    })
+
+    return false;
 }

@@ -1339,7 +1339,8 @@ input {
   transition-delay: 1.7s;
 }
 .product-item .product-thubnail {
-  height: auto;
+  border-bottom: 1px solid #f44336;
+  height: 190px;
   overflow: hidden;
   position: relative;
   width: 100%;

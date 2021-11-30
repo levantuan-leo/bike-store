@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!--Start id tz header-->
-<header id="tz-header" class="bk-white">
+<header id="tz-header" class="bk-white" style="border-bottom: 1px solid #f4433b;">
     <div class="container">
 
         <!--Start class header top-->
@@ -21,7 +21,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">Call us: (012) 3456 7890</a>
+                    <a href="tel:01234567890">Call us: (012) 3456 7890</a>
                 </li>
             </ul>
             <ul class="pull-right">

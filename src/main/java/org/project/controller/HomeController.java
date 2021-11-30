@@ -20,6 +20,7 @@ import java.util.Map;
 public class HomeController extends HttpServlet {
     private static final CategoryDao categoryDao = new CategoryDao();
     private static final ProductDao productDao = new ProductDao();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");

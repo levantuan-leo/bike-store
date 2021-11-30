@@ -18,19 +18,21 @@ public class LoginApi extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setContentType("text/plain");  // Set content type of the response.
+        resp.setCharacterEncoding("UTF-8");
+
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         String role = req.getParameter("role");
 
         Account account = accountDao.login(username, password, Integer.parseInt(role));
 
-        PrintWriter printWriter = resp.getWriter();
         if (account == null){
+            PrintWriter printWriter = resp.getWriter();
             printWriter.write("Incorrect username or password!");
             printWriter.close();
         } else {
-            HttpSession session = req.getSession();
-            session.setAttribute("account", account);
+            req.getSession().setAttribute("account", account);
             resp.sendRedirect("home");
         }
 

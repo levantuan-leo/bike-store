@@ -41,7 +41,7 @@ public class LoadMoreApi extends HttpServlet {
             products.append("<div class=\"row row-item\">");
             int m = Math.min(limit, 4);
             for (int j = 1; j <= m; ++j) {
-                int index = i * j - 1;
+                int index = (j - 1) + 4 * (i - 1);
                 int id = ((Product) listProducts.get(index)).getId();
                 String name = ((Product) listProducts.get(index)).getName();
                 BigDecimal price = ((Product) listProducts.get(index)).getPrice();
@@ -62,12 +62,12 @@ public class LoadMoreApi extends HttpServlet {
                         "               <div class=\"product-information\">\n" +
                         "                        <h4><a href=\"product-single?id=%d\">%s</a></h4>\n" +
                         "                        <span class=\"product-price\">$%.2f</span>\n" +
-                        "                         <span class=\"product-attr\">\n" +
-                        "                              <i class=\"fa fa-circle light-blue\"></i>\n" +
-                        "                              <i class=\"fa fa-circle orange\"></i>\n" +
-                        "                              <i class=\"fa fa-circle blueviolet\"></i>\n" +
-                        "                              <i class=\"fa fa-circle orange-dark\"></i>\n" +
-                        "                              <i class=\"fa fa-circle steelblue\"></i>\n" +
+                        "                        <span class=\"product-attr\">\n" +
+                        "                             <i class=\"fa fa-circle light-blue\"></i>\n" +
+                        "                             <i class=\"fa fa-circle orange\"></i>\n" +
+                        "                             <i class=\"fa fa-circle blueviolet\"></i>\n" +
+                        "                             <i class=\"fa fa-circle orange-dark\"></i>\n" +
+                        "                             <i class=\"fa fa-circle steelblue\"></i>\n" +
                         "                         </span>\n" +
                         "               </div>\n" +
                         "        </div>\n" +

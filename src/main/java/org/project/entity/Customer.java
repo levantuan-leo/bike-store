@@ -10,10 +10,18 @@ public class Customer {
     @Column(name = "customer_id")
     private int id;
 
-    private int name;
+    private String name;
     private String phone;
     private String email;
     private String address;
+
+    public Customer() {
+    }
+
+    public Customer(String name, String email) {
+        this.name = name;
+        this.email = email;
+    }
 
     @OneToOne(mappedBy = "customer")
     private Store store;
@@ -29,11 +37,11 @@ public class Customer {
         this.id = id;
     }
 
-    public int getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(int name) {
+    public void setName(String name) {
         this.name = name;
     }
 

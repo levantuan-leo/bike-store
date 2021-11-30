@@ -14,15 +14,16 @@ public class Account {
     @Column(name = "joined_date", columnDefinition = "date default cast(getDate() as date)")
     private Date joinedDate;
 
-    @Column(columnDefinition = "int default 1")
+    @Column(columnDefinition = "int default 0")
     private boolean active;
 
-    private String username;
+    private String email;
     private String password;
+    @Column(columnDefinition = "int default 0")
     private int role;
 
-    public Account(String username, String password, int role, Customer customer) {
-        this.username = username;
+    public Account(String email, String password, int role, Customer customer) {
+        this.email = email;
         this.password = password;
         this.role = role;
         this.customer = customer;
@@ -59,12 +60,12 @@ public class Account {
         this.active = active;
     }
 
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {

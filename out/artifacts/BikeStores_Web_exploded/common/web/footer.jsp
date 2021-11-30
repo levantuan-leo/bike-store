@@ -30,9 +30,7 @@
                 </div>
                 <div class="widget">
                     <form class="tz-subcribe">
-                        <label>
-                            <input type="text" name="sub" value="" placeholder="Enter your email...">
-                        </label>
+                        <input type="text" name="sub" value="" placeholder="Enter your email...">
                         <input type="submit" name="subscribe" value="Subscribe">
                     </form>
                 </div>

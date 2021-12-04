@@ -8,34 +8,42 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.PrintWriter;
 
-@WebServlet(urlPatterns = {"/api/login"})
-public class LoginApi extends HttpServlet {
+@WebServlet(urlPatterns = {"/api/login-logout"})
+public class LoginLogoutApi extends HttpServlet {
     private static final AccountDao accountDao = new AccountDao();
 
+    // Log out
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setCharacterEncoding("UTF-8");
+        req.setCharacterEncoding("UTF-8");
+
+        req.getSession().removeAttribute("account");
+
+        resp.sendRedirect("home");
+    }
+
+    // Log In
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/plain");  // Set content type of the response.
         resp.setCharacterEncoding("UTF-8");
 
-        String username = req.getParameter("username");
+        String email = req.getParameter("email");
         String password = req.getParameter("password");
-        String role = req.getParameter("role");
+        String role = "0";
 
-        Account account = accountDao.login(username, password, Integer.parseInt(role));
+        Account account = accountDao.login(email, password, Integer.parseInt(role));
 
         if (account == null){
-            PrintWriter printWriter = resp.getWriter();
-            printWriter.write("Incorrect username or password!");
-            printWriter.close();
+            resp.setStatus(400);
+            resp.getWriter().write("Incorrect username or password!");
+            resp.getWriter().close();
         } else {
             req.getSession().setAttribute("account", account);
-            resp.sendRedirect("home");
+            resp.setStatus(200);
         }
-
-
     }
 }

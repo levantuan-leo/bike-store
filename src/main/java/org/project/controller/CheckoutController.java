@@ -11,6 +11,10 @@ import java.io.IOException;
 public class CheckoutController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
+        resp.setContentType("text/html");
+        resp.setCharacterEncoding("UTF-8");
+        req.setCharacterEncoding("UTF-8");
+
+        req.getRequestDispatcher("/templates/checkout.jsp").forward(req, resp);
     }
 }

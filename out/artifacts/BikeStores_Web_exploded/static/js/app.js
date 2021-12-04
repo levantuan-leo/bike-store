@@ -3,10 +3,10 @@ var limit = 8
 
 function loadMore() {
     jQuery.ajax({
-        type: "GET",
-        url: "api/load-more",
+        type: "POST",
+        url: "home",
         data: {start: start, limit: limit},
-        success: function (data) {
+        success: function (data, textStatus, jqXHR) {
             jQuery('#load_more').css('opacity', '0.3')
 
             if (data === '') {
@@ -25,14 +25,75 @@ function loadMore() {
     });
 }
 
-loadMore();
+if (window.location.pathname === "/BikeStores_Web_exploded/home") {
+    loadMore();
+}
+
+function loadProducts(category_id = null, keyword = null) {
+    var limit = jQuery('select[name="number_item"]').val()
+
+    jQuery.ajax({
+        type: "POST",
+        url: "product",
+        data: {
+            limit: limit,
+            categoryId: category_id,
+            keyword: keyword
+        },
+        success: function (data, textStatus, jqXHR) {
+            jQuery('.tz-product.row.grid-eff').html(data)
+
+            if ($CATEGORY_ID !== "") {
+                if (category_id !== $CATEGORY_ID) {
+                    jQuery(`#category-${category_id}`).addClass("active")
+                    jQuery(`#category-${$CATEGORY_ID}`).removeClass("active")
+                } else {
+                    jQuery(`#category-${category_id}`).addClass("active")
+                }
+            }
+
+            $CATEGORY_ID = category_id
+        },
+        error: function (e) {
+            alert('Error: ' + e);
+        }
+    });
+}
+
+function pagination(obj, category_id = null, keyword = null) {
+    var current = jQuery(obj).text()
+    var limit = jQuery('select[name="number_item"]').val()
+
+    jQuery.ajax({
+        type: "POST",
+        url: "product",
+        data: {
+            index: current,
+            limit: limit,
+            categoryId: category_id,
+            keyword: keyword
+        },
+        success: function (data, textStatus, jqXHR) {
+            if (data !== '') {
+                jQuery('.tz-product.row.grid-eff').html(data)
+            }
+        },
+        error: function (e) {
+            alert('Error: ' + e);
+        }
+    });
+}
+
+if (window.location.pathname === "/BikeStores_Web_exploded/product") {
+    loadProducts(category_id = $CATEGORY_ID)
+}
 
 function addToCart(id, quantity = 1) {
     jQuery.ajax({
         type: "GET",
         url: "api/cart",
         data: {
-            product_id: id,
+            productId: id,
             quantity: quantity
         },
         success: function (data) {
@@ -50,20 +111,20 @@ function updateCartItem(obj, product_id) {
         type: "POST",
         url: "api/cart",
         data: {
-            product_id: product_id,
+            productId: product_id,
             quantity: parseInt(obj.value)
         },
         success: function (data) {
             var price = parseFloat(jQuery(`#cart-item${product_id} .product-price .amount`).text().substring(1));
             var quantity = parseInt(obj.value);
             var product_subtotal = document.querySelector(`#cart-item${product_id} .product-subtotal .amount`);
-            var cart_subtotal = document.querySelector('.cart-subtotal .amount');
+            var order_total = document.querySelector('.order-total span.amount');
 
             product_subtotal.innerText = String(`$${price * quantity}`);
-            cart_subtotal.innerText = String(`$${parseFloat(data["total_amount"]).toFixed(2)}`);
+            order_total.innerText = String(`$${parseFloat(data["total_amount"]).toFixed(2)}`);
         },
         error: function (e) {
-            alert("UPDATE\nError:" + e );
+            alert("UPDATE\nError:" + e);
         }
     })
 }
@@ -72,10 +133,10 @@ function deleteCartItem(product_id) {
     if (confirm("Are you sure?") === true) {
         jQuery.ajax({
             type: "DELETE",
-            url: "api/cart?product_id=" + product_id,
+            url: "api/cart?productId=" + product_id,
             success: function (data) {
-                var cart_subtotal = document.querySelector('.cart-subtotal .amount');
-                cart_subtotal.innerText = `$${data["total_amount"]}`;
+                var order_total = document.querySelector('.order-total span.amount');
+                order_total.innerText = `$${data["total_amount"]}`;
 
                 // reload page
                 // location.reload()
@@ -91,38 +152,63 @@ function deleteCartItem(product_id) {
     }
 }
 
-function login() {
+var $loginForm = jQuery('#login-form')
+$loginForm.submit(function () {
     jQuery.ajax({
         type: "POST",
-        url: "api/login",
+        url: "api/login-logout",
+        data: $loginForm.serialize(),
         success: function (data, textStatus, jqXHR) {
-
+            location.reload();
         },
         error: function (jqXHR, textStatus, errorThrown) {
-
+            alert(jqXHR.responseText);
         }
     })
-}
 
-function register() {
-    var register_form = jQuery('#register-form');
+    return false;
+})
+
+var $registerForm = jQuery('#register-form');
+$registerForm.submit(function () {
     jQuery.ajax({
         type: "POST",
-        url: "api/register",
-        data: register_form.serialize(),
+        url: "register",
+        data: $registerForm.serialize(),
         success: function (data) {
-            alert(data.message);
-            register_form.get(0).reset();
+            alert(data);
+            $registerForm.get(0).reset();
         },
         error: function (jqXHR, textStatus, errorThrown) {
             console.log("Something really bad happened " + textStatus);
-            if(jqXHR.status&&jqXHR.status===400){
+            if (jqXHR.status && jqXHR.status === 400) {
                 alert(jqXHR.responseText);
-            }else{
+            } else {
                 alert("Something went wrong");
             }
         }
     })
 
     return false;
+})
+
+var $addToCartForm = jQuery('.tz_variations_form')
+$addToCartForm.submit(function (e) {
+    addToCart($PRODUCT_ID, parseInt(jQuery('input[name="quantity"]', $addToCartForm).val()));
+    e.preventDefault();
+})
+
+function payment() {
+    if (confirm("Are you sure?")) {
+        jQuery.ajax({
+            type: "POST",
+            url: "api/payment",
+            success: function (data) {
+                alert(data)
+            },
+            error: function (){
+                alert("Something went wrong!.\n PLease, try again!")
+            }
+        })
+    }
 }

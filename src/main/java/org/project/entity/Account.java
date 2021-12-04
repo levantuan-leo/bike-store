@@ -1,17 +1,21 @@
 package org.project.entity;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name = "sales.account")
-public class Account {
+public class Account implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "account_id")
     private int id;
 
-    @Column(name = "joined_date", columnDefinition = "date default cast(getDate() as date)")
+    @CreationTimestamp
+    @Column(name = "joined_date")
     private Date joinedDate;
 
     @Column(columnDefinition = "int default 0")
@@ -22,10 +26,9 @@ public class Account {
     @Column(columnDefinition = "int default 0")
     private int role;
 
-    public Account(String email, String password, int role, Customer customer) {
+    public Account(String email, String password, Customer customer) {
         this.email = email;
         this.password = password;
-        this.role = role;
         this.customer = customer;
     }
 

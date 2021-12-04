@@ -27,7 +27,7 @@ public class CartApi extends HttpServlet {
         resp.setCharacterEncoding("UTF-8");
         req.setCharacterEncoding("UTF-8");
 
-        String productId = req.getParameter("product_id");
+        String productId = req.getParameter("productId");
         String quantity = req.getParameter("quantity");
 
         Product product = productDao.getProductById(Integer.parseInt(productId));
@@ -72,7 +72,7 @@ public class CartApi extends HttpServlet {
         resp.setCharacterEncoding("UTF-8");
         req.setCharacterEncoding("UTF-8");
 
-        String productId = req.getParameter("product_id");
+        String productId = req.getParameter("productId");
         String quantity = req.getParameter("quantity");
 
         HttpSession session = req.getSession();
@@ -102,7 +102,7 @@ public class CartApi extends HttpServlet {
         resp.setCharacterEncoding("UTF-8");
         req.setCharacterEncoding("UTF-8");
 
-        String productId = req.getParameter("product_id");
+        String productId = req.getParameter("productId");
 
         HttpSession session = req.getSession();
         Map<Integer, CartItem> cart = cast(session.getAttribute("cart"));

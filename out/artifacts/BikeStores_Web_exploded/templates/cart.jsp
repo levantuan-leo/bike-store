@@ -53,12 +53,12 @@
                                     ></a>
                                 </td>
                                 <td class="product-thumbnail">
-                                    <a href="<c:url value="/product-single?id=${item.key}"/>"><img
+                                    <a href="<c:url value="/product-single?productId=${item.key}"/>"><img
                                             src="${item.value.product.picture}" alt="cart"/></a>
                                 </td>
 
                                 <td class="product-name">
-                                    <a href="<c:url value="/product-single?id=${item.key}"/>">${item.value.product.name}</a>
+                                    <a href="<c:url value="/product-single?productId=${item.key}"/>">${item.value.product.name}</a>
                                     <span class="color">
                                     Color: <i class="orange-dark"></i>
                                 </span>
@@ -118,64 +118,14 @@
                     <div class="cart_totals_inner">
                         <table>
                             <tbody>
-                            <tr class="cart-subtotal">
-                                <th>Subtotal</th>
-                                <td><span class="amount">$${totalAmount}</span></td>
-                            </tr>
-                            <tr class="shipping">
-                                <th>Shipping and handling</th>
-                                <td>
-                                    <form class="shop-shipping-calculator" method="post">
-                                        <p class="form-r">
-                                            <label>
-                                                <input type="checkbox" name="rate" value="1"/>
-                                            </label>
-                                            <span>
-                                                       Flat Rate:
-                                                       <span class="price">
-                                                           $30.00
-                                                       </span>
-                                                   </span>
-                                        </p>
-                                        <p class="form-r">
-                                            <label>
-                                                <input type="checkbox" name="international" value="1"/>
-                                            </label>
-                                            <span>
-                                                       International Delivery:
-                                                       <span class="price">
-                                                           $150.00
-                                                       </span>
-                                                   </span>
-                                        </p>
-                                        <p class="form-r">
-                                            <label>
-                                                <input type="checkbox" name="rate" value="1"/>
-                                            </label>
-                                            <span>
-                                                       Local Delivery:
-                                                       <span class="price">
-                                                           $90.00
-                                                       </span>
-                                                   </span>
-                                        </p>
-                                        <p class="form-r">
-                                            <label>
-                                                <input type="checkbox" name="pickup" value="1"/>
-                                            </label>
-                                            <span> Local Pickup (Free) </span>
-                                        </p>
-                                    </form>
-                                </td>
-                            </tr>
                             <tr class="order-total">
                                 <th>Order total</th>
-                                <td><span class="amount">$293.00</span></td>
+                                <td><span class="amount">$${totalAmount}</span></td>
                             </tr>
                             </tbody>
                         </table>
-                        <div style="background: #f44336;color: #fff;font-weight: 500;text-align: center;padding: 10px 0;cursor: pointer">
-                            Buy Now
+                        <div style="background: #f4433b;;text-align: center;padding: 10px 0;">
+                            <a href="<c:url value="/checkout"/>" style="color:#fff;font-weight: 500">Buy Now</a>
                         </div>
                     </div>
                 </div>

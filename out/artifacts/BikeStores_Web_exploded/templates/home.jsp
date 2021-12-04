@@ -172,7 +172,8 @@
                      data-elementdelay="0.1"
                      data-endelementdelay="0.1"
                      data-endspeed="1000"
-                     data-endeasing="Power4.easeOut"><a href='<c:url value="/product"/>' class='buttom_bike'>Shop Now</a>
+                     data-endeasing="Power4.easeOut"><a href='<c:url value="/product"/>' class='buttom_bike'>Shop
+                    Now</a>
                 </div>
             </li>
             <li data-transition="fade" data-slotamount="7" data-masterspeed="700" data-saveperformance="off">
@@ -395,7 +396,8 @@
                 <ul class="nav nav-tabs pull-right tz-nav-tabs">
                     <li role="presentation" class="active"><a href="#one_read" data-toggle="tab">On-Road <i
                             class="fa fa-circle"></i></a></li>
-                    <li role="presentation"><a href="#one_read" data-toggle="tab">X-Road <i class="fa fa-circle"></i></a>
+                    <li role="presentation"><a href="#one_read" data-toggle="tab">X-Road <i
+                            class="fa fa-circle"></i></a>
                     </li>
                     <li role="presentation"><a href="#one_read" data-toggle="tab">Off-Road <i class="fa fa-circle"></i></a>
                     </li>
@@ -410,90 +412,39 @@
                 <!--Tab item-->
                 <div class="tab-pane active" id="one_read">
                     <div class="row">
-                        <div class="col-md-4 col-sm-6">
+                        <c:forEach items="${listFeaturedProducts}" var="product">
+                            <div class="col-md-4 col-sm-6">
 
-                            <!--Start product item-->
-                            <div class="product-item">
-                                <div class="product-thubnail">
-                                    <img src="<c:url value="/static/images/product/product1.jpg" />" alt="product 1"/>
-                                    <div class="product-meta">
-                                        <a class="add-to-cart" href="javascript:void(0)" onclick="">Add to cart</a>
-                                        <span class="quick-view">
+                                <!--Start product item-->
+                                <div class="product-item">
+                                    <div class="product-thubnail">
+                                        <img src="${product.picture}"
+                                             alt="product 1"/>
+                                        <div class="product-meta">
+                                            <a class="add-to-cart" href="javascript:void(0)"
+                                               onclick="addToCart(${product.id})">Add to cart</a>
+                                            <span class="quick-view">
                                                     <a href="#">Quick view</a>
                                                 </span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="product-information">
-                                    <h4><a href="${pageContext.request.contextPath}/product-single">Propel Advanced SL 0</a></h4>
-                                    <span class="product-price">$900.00</span>
-                                    <span class="product-attr">
+                                    <div class="product-information">
+                                        <h4><a href="${pageContext.request.contextPath}/product-single?productId=${product.id}"
+                                        >${product.name}</a></h4>
+                                        <span class="product-price">$${product.price}</span>
+                                        <span class="product-attr">
                                                 <i class="fa fa-circle light-blue"></i>
                                                 <i class="fa fa-circle orange"></i>
                                                 <i class="fa fa-circle blueviolet"></i>
                                                 <i class="fa fa-circle orange-dark"></i>
                                                 <i class="fa fa-circle steelblue"></i>
                                             </span>
-                                </div>
-                            </div>
-                            <!--End product item-->
-
-                        </div>
-                        <div class="col-md-4 col-sm-6">
-
-                            <!--Start product item-->
-                            <div class="product-item">
-                                <div class="product-thubnail">
-                                    <img src="<c:url value="/static/images/product/product2.jpg" />" alt="product 2"/>
-                                    <div class="product-meta">
-                                        <a class="add-to-cart" href="${pageContext.request.contextPath}/cart">Add to cart</a>
-                                        <span class="quick-view">
-                                                    <a href="#">Quick view</a>
-                                                </span>
                                     </div>
                                 </div>
-                                <div class="product-information">
-                                    <h4><a href="${pageContext.request.contextPath}/product-single">Defy Advanced SL</a></h4>
-                                    <span class="product-price">$1,770.00</span>
-                                    <span class="product-attr">
-                                                <i class="fa fa-circle light-blue"></i>
-                                                <i class="fa fa-circle orange"></i>
-                                                <i class="fa fa-circle blueviolet"></i>
-                                                <i class="fa fa-circle orange-dark"></i>
-                                                <i class="fa fa-circle steelblue"></i>
-                                            </span>
-                                </div>
+                                <!--End product item-->
+
                             </div>
-                            <!--End product item-->
-
-                        </div>
-                        <div class="col-md-4 col-sm-6">
-
-                            <!--Start product item-->
-                            <div class="product-item">
-                                <div class="product-thubnail">
-                                    <img src="<c:url value="/static/images/product/product3.jpg" />" alt="product 3"/>
-                                    <div class="product-meta">
-                                        <a class="add-to-cart" href="${pageContext.request.contextPath}/cart">Add to cart</a>
-                                        <span class="quick-view">
-                                                    <a href="#">Quick view</a>
-                                                </span>
-                                    </div>
-                                </div>
-                                <div class="product-information">
-                                    <h4><a href="${pageContext.request.contextPath}/product-single">FastRoad CoMax</a></h4>
-                                    <span class="product-price">$900.00</span>
-                                    <span class="product-attr">
-                                                <i class="fa fa-circle light-blue"></i>
-                                                <i class="fa fa-circle orange"></i>
-                                                <i class="fa fa-circle blueviolet"></i>
-                                                <i class="fa fa-circle orange-dark"></i>
-                                                <i class="fa fa-circle steelblue"></i>
-                                            </span>
-                                </div>
-                            </div>
-                            <!--End product item-->
-
-                        </div>
+                        </c:forEach>
                     </div>
                 </div>
                 <!--End tab item-->
@@ -530,7 +481,7 @@
                         </li>
                         <li>
                             <h3><a
-                                    href="${pageContext.request.contextPath}/product-single?id=${bestProductSale.id}"
+                                    href="${pageContext.request.contextPath}/product-single?productId=${bestProductSale.id}"
                             >${bestProductSale.name}</a></h3>
                             <span class="product-rating">
                                         <i class="fa fa-star"></i>
@@ -550,9 +501,9 @@
                                         <i class="fa fa-circle orange-dark"></i>
                                         <i class="fa fa-circle steelblue"></i>
                                     </span>
-                            <br />
-                            <span class="tz-stockEntity">
-                                        In stockEntity : 10
+                            <br/>
+                            <span class="tz-stock">
+                                        In stock : 10
                                     </span>
                         </li>
                         <li class="event-footer">

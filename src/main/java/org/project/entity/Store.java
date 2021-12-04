@@ -1,11 +1,12 @@
 package org.project.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name = "sales.store")
-public class Store {
+public class Store implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "store_id")
@@ -25,6 +26,9 @@ public class Store {
 
     @OneToMany(mappedBy = "store")
     private List<Stock> stocks;
+
+    @OneToMany(mappedBy = "store")
+    private List<Order> orders;
 
     public int getId() {
         return id;
@@ -88,5 +92,13 @@ public class Store {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 }

@@ -99,9 +99,12 @@ public class ProductDao {
         }
     }
 
-    public List<?> getProducts(){
+    public List<?> getProductsByCategory(Integer start, Integer limit, int category_id) {
         try (Session session = factory.openSession()) {
-            return session.createQuery("FROM Product").list();
+            Query<?> query = session.createQuery("FROM Product WHERE category.id = "+ category_id +"");
+            query.setFirstResult(start);
+            query.setMaxResults(limit);
+            return query.list();
         } catch (HibernateException e) {
             e.printStackTrace();
             return null;
@@ -117,6 +120,16 @@ public class ProductDao {
         }
     }
 
+    public List<?> getProductsByCategory(int category_id){
+        try (Session session = factory.openSession()) {
+            Query<?> query = session.createQuery("FROM Product WHERE category.id = "+ category_id +"");
+            return query.list();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public Product getBestProductSale(){
         try (Session session = factory.openSession()) {
             return (Product) session.createQuery("FROM Product WHERE id = 1").uniqueResult();
@@ -126,9 +139,64 @@ public class ProductDao {
         }
     }
 
+    public List<?> getFeaturedProducts(int number){
+        try (Session session = factory.openSession()) {
+            Query<?> query = session.createQuery("FROM Product ORDER BY price DESC");
+            query.setMaxResults(number);
+            return query.list();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public List<?> searchProductsByKeyword(String kw){
+        try (Session session = factory.openSession()) {
+            Query<?> query = session.createQuery("FROM Product WHERE name LIKE '%"+ kw +"%' ORDER BY name ASC");
+            return query.list();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public List<?> searchProductsByKeyword(Integer start, Integer limit, String kw){
+        try (Session session = factory.openSession()) {
+            Query<?> query = session.createQuery("FROM Product WHERE name LIKE '%"+ kw +"%' ORDER BY name ASC");
+            query.setFirstResult(start);
+            query.setMaxResults(limit);
+            return query.list();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public int count() {
         try (Session session = factory.openSession()) {
             Query<?> query = session.createQuery("SELECT COUNT(*) FROM Product");
+            return ((Long) query.uniqueResult()).intValue();
+        }
+        catch (HibernateException e) {
+            e.printStackTrace();
+            return -1;
+        }
+    }
+
+    public int countByCategory(int category_id) {
+        try (Session session = factory.openSession()) {
+            Query<?> query = session.createQuery("SELECT COUNT(*) FROM Product WHERE category.id = "+ category_id +"");
+            return ((Long) query.uniqueResult()).intValue();
+        }
+        catch (HibernateException e) {
+            e.printStackTrace();
+            return -1;
+        }
+    }
+
+    public int countBySearch(String kw) {
+        try (Session session = factory.openSession()) {
+            Query<?> query = session.createQuery("SELECT COUNT(*) FROM Product WHERE name LIKE '%"+ kw +"%'");
             return ((Long) query.uniqueResult()).intValue();
         }
         catch (HibernateException e) {

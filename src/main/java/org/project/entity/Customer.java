@@ -1,10 +1,12 @@
 package org.project.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "sales.customer")
-public class Customer {
+public class Customer implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customer_id")
@@ -28,6 +30,9 @@ public class Customer {
 
     @OneToOne(mappedBy = "customer")
     private Account account;
+
+    @OneToMany(mappedBy = "customer")
+    private List<Order> orders;
 
     public int getId() {
         return id;
@@ -83,5 +88,13 @@ public class Customer {
 
     public void setAccount(Account account) {
         this.account = account;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 }

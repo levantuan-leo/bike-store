@@ -5,7 +5,7 @@
 * 3.0 - Content
 *   3.1 - Custom content
 *   3.2 - Shortcode tabs
-*   3.3 - ProductEntity event
+*   3.3 - Product event
 *   3.4 - Get In Touch
 *   3.5 - News Blog
 *   3.6 - Partners
@@ -1433,7 +1433,7 @@ input {
   filter: alpha(opacity=0);
 }
 /**
- * 3.3 - ProductEntity event
+ * 3.3 - Product event
  * -----------------------------------------------------------------------------
  */
 .product-event-content {
@@ -1819,6 +1819,10 @@ input {
   -webkit-transition: all 0.4s ease 0s;
   -o-transition: all 0.4s ease 0s;
   transition: all 0.4s ease 0s;
+  width: 100%;
+  height: 240px;
+  object-fit: contain;
+  border: 1px solid rgba(244, 67, 54, 0.3);
 }
 .tz-product .product-item .item .product-item-inner .p-vote {
   display: none;
@@ -1832,7 +1836,7 @@ input {
 }
 .tz-product .product-item .item .product-item-inner .product-info h4 {
   margin: 8px 0 0 0;
-  padding: 0;
+  padding: 0 15px;
 }
 .tz-product .product-item .item .product-item-inner .product-info .p-meta {
   display: block;
@@ -2068,9 +2072,11 @@ input {
   width: 67%;
   position: relative;
   float: left;
+  padding-left: 15px;
 }
 .list-view .product-item .item .product-item-inner .product-info h4 {
   margin: 25px 0 0 0;
+  padding: unset;
 }
 .list-view .product-item .item .product-item-inner .product-info .p-meta {
   margin: 10px 0;
@@ -2258,6 +2264,12 @@ input {
   text-transform: none;
   line-height: 32px;
 }
+.product-categories li.active {
+  border: 1px solid #7c1212;
+  background: #fafafa;
+  padding-left: 15px;
+  transition: 0.5s;
+}
 .product-catlog .widget_price_filter,
 .product-catlog .widget_color_filter,
 .product-catlog .widget-size-filter {
@@ -2430,7 +2442,9 @@ input {
 }
 .widget_product ul li img {
   float: left;
+  height: 80px;
   max-width: 80px;
+  object-fit: contain;
   border: 1px solid #eeeeee;
 }
 .widget_product ul li .item-info {
@@ -3068,6 +3082,7 @@ input {
 }
 #order_review table tbody tr td {
   padding: 8px 0;
+  width: 70%;
 }
 #order_review table tbody tr td strong {
   font-weight: 300;

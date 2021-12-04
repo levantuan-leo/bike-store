@@ -74,6 +74,29 @@
         jQuery('.to').text('$' + jQuery( "#slider-range" ).slider( "values", 1 ));
     });
 </script>
+<script type="text/javascript">
+    var liveSearch = jQuery('.live-search')
+    function inSearch(){
+        liveSearch.css("display","block")
+    }
+    function outSearch(){
+        liveSearch.css("display","none")
+    }
+    function search(obj){
+        var text = jQuery(obj).val()
+        jQuery.ajax({
+            type: "POST",
+            url: "api/search",
+            data: {keyword: text},
+            success: function (data, textStatus, jqXHR) {
+                liveSearch.children("ul").html(data)
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert(jqXHR.responseText);
+            }
+        })
+    }
+</script>
 <script src="<c:url value="/static/js/app.js" />"></script>
 </body>
 </html>

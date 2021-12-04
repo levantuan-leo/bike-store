@@ -16,13 +16,13 @@ public class AccountDao {
 
     //region [CRUD]
     // Method to CREATE an account in the database
-    public Integer addAccount(String email, String password, int role, Customer customer) {
+    public Integer addAccount(String email, String password, Customer customer) {
         Session session = factory.openSession();
         Transaction tx = null;
         Integer productID = null;
         try {
             tx = session.beginTransaction();
-            Account account = new Account(email, password, role, customer);
+            Account account = new Account(email, password, customer);
             productID = (Integer) session.save(account);
             tx.commit();
         } catch (HibernateException e) {
@@ -87,10 +87,8 @@ public class AccountDao {
 
     public Account login(String email, String password, int role){
         try (Session session = factory.openSession()) {
-            Query<?> query = session.createQuery("FROM Account WHERE email=? AND password=? AND role=?");
-            query.setParameter(0, email);
-            query.setParameter(1, password);
-            query.setParameter(2, role);
+            Query<?> query =
+                    session.createQuery("FROM Account WHERE email='"+ email +"' AND password='"+ password +"' AND role='"+ role +"'");
             return (Account) query.uniqueResult();
         } catch (HibernateException e) {
             e.printStackTrace();

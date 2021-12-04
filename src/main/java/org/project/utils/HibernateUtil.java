@@ -20,6 +20,8 @@ public class HibernateUtil {
         configuration.addAnnotatedClass(Stock.class);
         configuration.addAnnotatedClass(Customer.class);
         configuration.addAnnotatedClass(Account.class);
+        configuration.addAnnotatedClass(Order.class);
+        configuration.addAnnotatedClass(OrderItem.class);
 
         ServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .applySettings(configuration.getProperties()).build();

@@ -1,9 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<!--Start create an accountEntity-->
+<!--Start create an account-->
 <section class="default-page" style="
-    background-image: linear-gradient(rgba(244, 67, 54, 0.5), rgba(255, 255, 200, 0.5)), url(https://images6.alphacoders.com/549/549198.jpg);
+    background-image: linear-gradient(rgba(244, 67, 54, 0.5), rgba(255, 255, 200, 0.5)), url(<c:url value="/static/images/bg_register.png"/> );
     background-size: cover;
     background-position: inherit;
 ">
@@ -40,6 +40,5 @@
 </section>
 <script>
     document.querySelector('#login-form .form-text:last-child').style.display = "none";
-    document.getElementById('register-form').addEventListener('submit', register);
 </script>
-<!--End create an accountEntity-->
+<!--End create an account-->

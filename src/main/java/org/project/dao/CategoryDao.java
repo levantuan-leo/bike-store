@@ -80,4 +80,13 @@ public class CategoryDao {
         }
     }
     // endregion
-}
+
+    public Category getCategoryById(int id){
+        try (Session session = factory.openSession()) {
+            return session.get(Category.class, id);
+        } catch (HibernateException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }}
+

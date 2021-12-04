@@ -37,100 +37,74 @@
                         <span class="fa fa-question-circle tz-down"></span>
                     </a>
                 </li>
-                <li class="tz-header-login">
-                    <a href="#">Login</a>
-                    <div class="tz-login-form">
-                        <form id="login-form">
-                            <p class="form-content">
-                                <label for="username">Username / Email</label>
-                                <input type="text" name="username" id="username" value="">
-                            </p>
-                            <p class="form-content">
-                                <label for="password">Password</label>
-                                <input type="password" name="username" id="password" value="">
-                            </p>
-                            <p class="form-footer">
-                                <a href="#">Lost Password?</a>
-                                <button type="submit" class="pull-right button_class">LOGIN</button>
-                            </p>
-                            <p class="form-text">
-                                Don't have an accountEntity? <a href="<c:url value = "/register"/>">Register Here</a>
-                            </p>
-                        </form>
-                    </div>
-                </li>
+                <c:choose>
+                    <c:when test="${sessionScope.account == null}">
+                        <li class="tz-header-login">
+                            <a href="#">Login</a>
+                            <div class="tz-login-form">
+                                <form id="login-form">
+                                    <p class="form-content">
+                                        <label for="email">Username / Email</label>
+                                        <input type="text" name="email" id="email" value="" required>
+                                    </p>
+                                    <p class="form-content">
+                                        <label for="password">Password</label>
+                                        <input type="password" name="password" id="password" value="" required>
+                                    </p>
+                                    <p class="form-footer">
+                                        <a href="#">Lost Password?</a>
+                                        <button type="submit" class="pull-right button_class">LOGIN</button>
+                                    </p>
+                                    <p class="form-text">
+                                        Don't have an account? <a href="<c:url value = "/register"/>">Register
+                                        Here</a>
+                                    </p>
+                                </form>
+                            </div>
+                        </li>
+                    </c:when>
+                    <c:otherwise>
+                        <li>
+                            <a href="#">${sessionScope.account.customer.name}
+                                <span class="fa fa-user tz-down"></span>
+                                <ul class="sub-menu" style="width: 140px;">
+                                    <li><a href="#" style="border: none">My profile</a></li>
+                                    <li><a href="#" style="border: none">Purchase order</a></li>
+                                    <li><a href="<c:url value="/api/login-logout"/>" style="border: none">Logout →</a></li>
+                                </ul>
+                            </a>
+                        </li>
+                    </c:otherwise>
+                </c:choose>
             </ul>
         </div>
         <!--End class header top-->
 
         <!--Start header content-->
         <div class="header-content">
-            <h3 class="tz-logo pull-left"><a href="<c:url value = "/home"/>"><img src="<c:url value="/static/images/logo.png" />"
-                                                               alt="home"/></a></h3>
+            <h3 class="tz-logo pull-left"><a href="<c:url value = "/home"/>"><img
+                    src="<c:url value="/static/images/logo.png" />"
+                    alt="home"/></a></h3>
             <div class="tz-search pull-right">
 
                 <!--Start form search-->
                 <form>
                     <label for="tz-query"></label>
-                    <input type="text" class="tz-query" id="tz-query" value="" placeholder="Search for product">
+                    <input type="text"
+                           class="tz-query"
+                           id="tz-query" value=""
+                           placeholder="Search for product"
+                           onblur="outSearch()"
+                           onfocus="inSearch()"
+                           onkeyup="search(this)"
+                    >
                     <button type="submit"></button>
                 </form>
                 <!--End Form search-->
 
                 <!--live search-->
                 <div class="live-search">
-                    <ul>
-                        <li>
-                            <div class="live-img"><img
-                                    src="<c:url value="/static/images/product/product-search1.jpg" />"
-                                    alt="product search one"></div>
-                            <div class="live-search-content">
-                                <h6><a href="<c:url value = "/product-single"/>">Defy Advanced</a></h6>
-                                <span class="live-meta">
-                                            <a href="<c:url value = "/product-single"/>">$2650.00</a>
-                                            <span class="product-color">
-                                                <i class="light-blue"></i>
-                                                <i class="orange"></i>
-                                                <i class="orange-dark"></i>
-                                            </span>
-                                </span>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="live-img"><img
-                                    src="<c:url value="/static/images/product/product-search2.jpg" />"
-                                    alt="product search two"></div>
-                            <div class="live-search-content">
-                                <h6><a href="<c:url value = "/product-single"/>">Defy Advanced</a></h6>
-                                <span class="live-meta">
-                                            <a href="<c:url value = "/product-single"/>">$2650.00</a>
-                                            <span class="product-color">
-                                                <i class="light-blue"></i>
-                                                <i class="orange"></i>
-                                                <i class="blueviolet"></i>
-                                                <i class="orange-dark"></i>
-                                            </span>
-                                        </span>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="live-img"><img
-                                    src="<c:url value="/static/images/product/product-search3.jpg"/>"
-                                    alt="product search one"></div>
-                            <div class="live-search-content">
-                                <h6><a href="<c:url value = "/product-single"/>">Defy Advanced</a></h6>
-                                <span class="live-meta">
-                                            <a href="<c:url value = "/product-single"/>">$2650.00</a>
-                                            <span class="product-color">
-                                                <i class="blueviolet"></i>
-                                                <i class="light-blue"></i>
-                                                <i class="orange-dark"></i>
-                                                <i class="orange"></i>
-                                            </span>
-                                        </span>
-                            </div>
-                        </li>
-                    </ul>
+                    <ul></ul>
                 </div>
                 <!--End live search-->
             </div>
@@ -150,11 +124,11 @@
                     </a>
                 </li>
                 <li>
-                    <a href="<c:url value = "/product"/>" >Category</a>
+                    <a href="<c:url value = "/product"/>">Category</a>
                     <ul class="sub-menu">
                         <c:forEach items="${listCategories}" var="category">
                             <li>
-                                <a href="<c:url value = "/product?category=${category.id}"/>">${category.name}</a>
+                                <a href="<c:url value = "/product?categoryId=${category.id}"/>">${category.name}</a>
                             </li>
                         </c:forEach>
                     </ul>
@@ -172,11 +146,11 @@
             </ul>
             <!--End Main menu-->
 
-            <c:set var="quantity" value="${0}" />
-            <c:set var="amount" value="${0}" />
+            <c:set var="quantity" value="${0}"/>
+            <c:set var="amount" value="${0}"/>
             <c:forEach items="${sessionScope.cart}" var="item">
-                <c:set var="quantity" value="${quantity + item.value.quantity}" />
-                <c:set var="amount" value="${amount + item.value.product.price}" />
+                <c:set var="quantity" value="${quantity + item.value.quantity}"/>
+                <c:set var="amount" value="${amount + item.value.product.price}"/>
             </c:forEach>
 
             <!--Shop meta-->

@@ -20,6 +20,8 @@ import java.util.Objects;
 public class ProductController extends HttpServlet {
     private static final ProductDao productDao = new ProductDao();
     private static final CategoryDao categoryDao = new CategoryDao();
+    private static String CATEGORY_ID = "";
+    private static String KEYWORD = "";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -33,7 +35,7 @@ public class ProductController extends HttpServlet {
 
         List<?> listCategories = categoryDao.listCategories();
         List<Integer> listCategoriesSize = new ArrayList<>();
-        for(Object o: listCategories){
+        for (Object o : listCategories) {
             listCategoriesSize.add(productDao.countByCategory(((Category) o).getId()));
         }
 
@@ -53,21 +55,53 @@ public class ProductController extends HttpServlet {
 
         String categoryId = req.getParameter("categoryId");
         String keyword = req.getParameter("keyword");
-
         String index = req.getParameter("index");
+
         int limit = Integer.parseInt(req.getParameter("limit"));
-        int start = index == null ? 0 : limit * (Integer.parseInt(index) - 1);
+        int start = 0;
+        if (!Objects.equals(index, "")) {
+            start = limit * (Integer.parseInt(index) - 1);
+        }
 
         int count = productDao.count();
-        if(!Objects.equals(categoryId, "")) count = productDao.countByCategory(Integer.parseInt(categoryId));
-        if(!Objects.equals(keyword, "")) count = productDao.countBySearch(keyword);
+        if (!Objects.equals(categoryId, "")) {
+            CATEGORY_ID = categoryId;
+            count = productDao.countByCategory(Integer.parseInt(categoryId));
+            KEYWORD = "";
+        }
+        else if (!Objects.equals(keyword, "")) {
+            KEYWORD = keyword;
+            count = productDao.countBySearch(keyword);
+            CATEGORY_ID = "";
+        }
+        else{
+            if(!Objects.equals(CATEGORY_ID, "")){
+                count = productDao.countByCategory(Integer.parseInt(CATEGORY_ID));
+            }
+            else if(!Objects.equals(KEYWORD, "")){
+                count = productDao.countByCategory(Integer.parseInt(KEYWORD));
+            }
+        }
+
         if (start + limit > count) {
             limit = count - start;
         }
 
         List<?> listProducts = productDao.getProducts(start, limit);
-        if(!Objects.equals(categoryId, "")) listProducts = productDao.getProductsByCategory(start, limit, Integer.parseInt(categoryId));
-        if(!Objects.equals(keyword, "")) listProducts = productDao.searchProductsByKeyword(keyword);
+        if (!Objects.equals(categoryId, "")) {
+            listProducts = productDao.getProductsByCategory(start, limit, Integer.parseInt(categoryId));
+        }
+        else if (!Objects.equals(keyword, "")) {
+            listProducts = productDao.searchProductsByKeyword(keyword);
+        }
+        else{
+            if(!Objects.equals(CATEGORY_ID, "")){
+                listProducts = productDao.getProductsByCategory(start, limit, Integer.parseInt(CATEGORY_ID));
+            }
+            else if(!Objects.equals(KEYWORD, "")){
+                listProducts = productDao.searchProductsByKeyword(KEYWORD);
+            }
+        }
 
         StringBuilder products = new StringBuilder();
         for (int i = 0; i < limit; ++i) {
@@ -80,7 +114,7 @@ public class ProductController extends HttpServlet {
                     "   <div class=\"item\">\n" +
                     "       <div class=\"product-item-inner\">\n" +
                     "           <div class=\"product-thumb\">\n" +
-                    "               <img src='%s' alt=\"product\"/>\n"+
+                    "               <img src='%s' alt=\"product\"/>\n" +
                     "           </div>\n" +
                     "           <div class=\"product-info\">\n" +
                     "               <h4><a href=\"product-single?productId=%d\">%s</a></h4>\n" +
@@ -123,5 +157,18 @@ public class ProductController extends HttpServlet {
 
         resp.getWriter().write(String.valueOf(products));
         resp.getWriter().close();
+    }
+
+    protected Integer count(String CategoryId, String Keyword){
+        int count = productDao.count();
+        if (!Objects.equals(CategoryId, "")) {
+            count = productDao.countByCategory(Integer.parseInt(CategoryId));
+            KEYWORD = "";
+        }
+        else if (!Objects.equals(Keyword, "")) {
+            count = productDao.countBySearch(Keyword);
+            CATEGORY_ID = "";
+        }
+        return count;
     }
 }

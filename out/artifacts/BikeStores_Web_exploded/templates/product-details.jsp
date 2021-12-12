@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<script>document.title = "BikeStores - Details"</script>
+
 <!--Start shop single-->
 <section class="tz-shop-single">
     <div class="container">
@@ -239,5 +241,9 @@
 </section>
 <!--End Shop single-->
 <script>
-    $PRODUCT_ID = ${product.id}
+    var $addToCartForm = jQuery('.tz_variations_form')
+    $addToCartForm.submit(function (e) {
+        addToCart(${product.id}, parseInt(jQuery('input[name="quantity"]', $addToCartForm).val()));
+        e.preventDefault();
+    })
 </script>

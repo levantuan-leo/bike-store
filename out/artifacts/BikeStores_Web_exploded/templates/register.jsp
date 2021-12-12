@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<script>document.title = "BikeStores - Register"</script>
 
 <!--Start create an account-->
 <section class="default-page" style="
@@ -40,5 +41,28 @@
 </section>
 <script>
     document.querySelector('#login-form .form-text:last-child').style.display = "none";
+
+    var $registerForm = jQuery('#register-form');
+    $registerForm.submit(function () {
+        jQuery.ajax({
+            type: "POST",
+            url: "register",
+            data: $registerForm.serialize(),
+            success: function (data) {
+                alert(data);
+                $registerForm.get(0).reset();
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log("Something really bad happened " + textStatus);
+                if (jqXHR.status && jqXHR.status === 400) {
+                    alert(jqXHR.responseText);
+                } else {
+                    alert("Something went wrong");
+                }
+            }
+        })
+
+        return false;
+    })
 </script>
 <!--End create an account-->

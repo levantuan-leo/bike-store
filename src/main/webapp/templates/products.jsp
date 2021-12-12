@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<script>document.title = "BikeStores - Products"</script>
 
 <!--Start shop-->
 <div class="tz-shop">
@@ -17,7 +18,7 @@
                                     <c:forEach items="${listCategories}" var="category" varStatus="loop">
                                         <li id="category-${category.id}">
                                             <a href="javascript:void(0);"
-                                               onclick="loadProducts(category_id=${category.id})">${category.name}
+                                               onclick="loadProducts(null, ${category.id})">${category.name}
                                                 <span>(${listCategoriesSize[loop.index]})</span>
                                             </a>
                                         </li>
@@ -227,7 +228,24 @@
     </div>
 </div>
 <script>
+    jQuery(function() {
+        jQuery( "#slider-range" ).slider({
+            range: true,
+            min: 0,
+            max: 500,
+            values: [ 75, 300 ],
+            slide: function( event, ui ) {
+                jQuery('.from').text('$' + ui.values[ 0 ]);
+                jQuery('.to').text('$' + ui.values[ 1 ]);
+            }
+        });
+        jQuery('.from').text('$' + jQuery( "#slider-range" ).slider( "values", 0 ));
+        jQuery('.to').text('$' + jQuery( "#slider-range" ).slider( "values", 1 ));
+    });
+</script>
+<script>
     document.querySelector('.tz-main-menu li:nth-child(2)').style.display = "none";
     $CATEGORY_ID = '${categoryId != null ? categoryId : ""}'
+    loadProducts(null, $CATEGORY_ID, null)
 </script>
 <!--End Shop-->

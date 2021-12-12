@@ -600,3 +600,6 @@
 </div>
 <!--End partners-->
 
+<script>
+    loadMore();
+</script>

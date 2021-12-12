@@ -2265,10 +2265,13 @@ input {
   line-height: 32px;
 }
 .product-categories li.active {
-  border: 1px solid #7c1212;
-  background: #fafafa;
+  background: #dbdbdb;
   padding-left: 15px;
   transition: 0.5s;
+  clip-path: polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%);
+}
+.product-categories li.active a{
+  color: #f44336;
 }
 .product-catlog .widget_price_filter,
 .product-catlog .widget_color_filter,

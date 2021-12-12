@@ -22,7 +22,7 @@ public class LoginLogoutApi extends HttpServlet {
 
         req.getSession().removeAttribute("account");
 
-        resp.sendRedirect("home");
+        resp.sendRedirect(req.getContextPath()+ "/home");
     }
 
     // Log In

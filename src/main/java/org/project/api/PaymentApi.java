@@ -43,6 +43,8 @@ public class PaymentApi extends HttpServlet {
             stockDao.updateStock(stock.getId(), stock.getQuantity() - entry.getValue().getQuantity());
         }
 
+        session.removeAttribute("cart");
+
         resp.setStatus(200);
         resp.getWriter().write("Your Order has been recorded!");
         resp.getWriter().close();

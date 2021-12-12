@@ -25,17 +25,14 @@ function loadMore() {
     });
 }
 
-if (window.location.pathname === "/BikeStores_Web_exploded/home") {
-    loadMore();
-}
-
-function loadProducts(category_id = null, keyword = null) {
+function loadProducts(index=null, category_id = null, keyword = null) {
     var limit = jQuery('select[name="number_item"]').val()
 
     jQuery.ajax({
         type: "POST",
         url: "product",
         data: {
+            index: index,
             limit: limit,
             categoryId: category_id,
             keyword: keyword
@@ -51,8 +48,13 @@ function loadProducts(category_id = null, keyword = null) {
                     jQuery(`#category-${category_id}`).addClass("active")
                 }
             }
+            else if(category_id !== ""){
+                jQuery(`#category-${category_id}`).addClass("active")
+            }
 
             $CATEGORY_ID = category_id
+            window.history.pushState(null, null,
+                window.location.protocol + '//' + window.location.host + window.location.pathname + )
         },
         error: function (e) {
             alert('Error: ' + e);
@@ -82,10 +84,6 @@ function pagination(obj, category_id = null, keyword = null) {
             alert('Error: ' + e);
         }
     });
-}
-
-if (window.location.pathname === "/BikeStores_Web_exploded/product") {
-    loadProducts(category_id = $CATEGORY_ID)
 }
 
 function addToCart(id, quantity = 1) {
@@ -152,58 +150,13 @@ function deleteCartItem(product_id) {
     }
 }
 
-var $loginForm = jQuery('#login-form')
-$loginForm.submit(function () {
-    jQuery.ajax({
-        type: "POST",
-        url: "api/login-logout",
-        data: $loginForm.serialize(),
-        success: function (data, textStatus, jqXHR) {
-            location.reload();
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            alert(jqXHR.responseText);
-        }
-    })
-
-    return false;
-})
-
-var $registerForm = jQuery('#register-form');
-$registerForm.submit(function () {
-    jQuery.ajax({
-        type: "POST",
-        url: "register",
-        data: $registerForm.serialize(),
-        success: function (data) {
-            alert(data);
-            $registerForm.get(0).reset();
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            console.log("Something really bad happened " + textStatus);
-            if (jqXHR.status && jqXHR.status === 400) {
-                alert(jqXHR.responseText);
-            } else {
-                alert("Something went wrong");
-            }
-        }
-    })
-
-    return false;
-})
-
-var $addToCartForm = jQuery('.tz_variations_form')
-$addToCartForm.submit(function (e) {
-    addToCart($PRODUCT_ID, parseInt(jQuery('input[name="quantity"]', $addToCartForm).val()));
-    e.preventDefault();
-})
-
 function payment() {
     if (confirm("Are you sure?")) {
         jQuery.ajax({
             type: "POST",
             url: "api/payment",
             success: function (data) {
+                location.reload()
                 alert(data)
             },
             error: function (){

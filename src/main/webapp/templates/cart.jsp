@@ -125,8 +125,8 @@
                             </tr>
                             </tbody>
                         </table>
-                        <div style="background: #f4433b;;text-align: center;padding: 10px 0;">
-                            <a href="<c:url value="/checkout"/>" style="color:#fff;font-weight: 500">Buy Now</a>
+                        <div style="background: #f4433b;;text-align: center;">
+                            <a href="<c:url value="/checkout"/>" style="display: block;color:#fff;font-weight: 500; padding: 10px 0;">Buy Now</a>
                         </div>
                     </div>
                 </div>

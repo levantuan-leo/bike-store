@@ -88,11 +88,11 @@
             <div class="tz-search pull-right">
 
                 <!--Start form search-->
-                <form>
+                <form id="search-form">
                     <label for="tz-query"></label>
                     <input type="text"
                            class="tz-query"
-                           id="tz-query" value=""
+                           id="tz-query" value="${keyword}"
                            placeholder="Search for product"
                            onblur="outSearch()"
                            onfocus="inSearch()"
@@ -239,3 +239,14 @@
 
 </header>
 <!--End id tz header-->
+<script>
+    var $searchForm = jQuery('#search-form')
+    $searchForm.submit(function () {
+        var kw = jQuery('#search-form input').val()
+        if(kw !== "") {
+            window.location.href = window.location.protocol + '//' + window.location.host + '/product?keyword=' + kw
+        }
+
+        return false
+    })
+</script>

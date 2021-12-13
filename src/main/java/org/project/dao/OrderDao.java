@@ -17,13 +17,13 @@ public class OrderDao {
 
     //region [CRUD]
     // Method to CREATE an order in the database
-    public Integer addOrder(Customer customer, Store store) {
+    public Integer addOrder(Customer customer) {
         Session session = factory.openSession();
         Transaction tx = null;
         Integer orderID = null;
         try {
             tx = session.beginTransaction();
-            Order order = new Order(customer, store);
+            Order order = new Order(customer);
             orderID = (Integer) session.save(order);
             tx.commit();
         } catch (HibernateException e) {

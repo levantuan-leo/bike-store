@@ -26,7 +26,8 @@
                 <div class="shop-images">
                     <ul class="single-gallery">
                         <li>
-                            <img src="${product.picture}" alt="${product.name}" style="height: 373px; width: 100%; object-fit: contain;">
+                            <img src="${product.picture}" alt="${product.name}"
+                                 style="height: 373px; width: 100%; object-fit: contain;">
                         </li>
                         <li>
                             <img src="<c:url value="/static/images/product/single-p.jpg" />" alt="Propel Advanced Pro">
@@ -44,9 +45,17 @@
                 </div>
                 <!--End shop image-->
             </div>
+
             <div class="col-md-6 col-sm-6">
                 <!--Shop content-->
                 <div class="entry-summary">
+                    <h1 style="
+                            margin: unset;
+                            padding: 5px 0;
+                            background: #f44336;
+                            text-align: center;
+                            color: #fff;
+                        "><span style="font-weight: 300;font-size: 13px;">STORE: </span>${product.getStock().getStore().getName()}</h1>
                     <h1>${product.name}</h1>
                     <span class="p-vote">
                             <i class="fa fa-star"></i>
@@ -57,7 +66,7 @@
                         </span>
                     <p class="product-price">
                         <span class="price">$${product.price}</span>
-                        <span class="stock">Availability:  <span>In stock</span></span>
+                        <span class="stock">Availability:  <span> ${product.getStock().getQuantity()}</span></span>
                     </p>
                     <div class="description">
                         <p>
@@ -80,7 +89,7 @@
                             <span class="tzqty">
                                 <label>Qty:</label>
                                 <input type="number" step="1" min="1" name="quantity" value="1" title="Qty"
-                                           class="input-text qty text" size="4">
+                                       class="input-text qty text" size="4">
                             </span>
                         </p>
                         <p>
@@ -173,7 +182,8 @@
             <div class="tz-tabs-header">
                 <h2 class="tz-tabs-title pull-left"><span style="color: #f44336;">Related</span> Products</h2>
                 <ul class="nav nav-tabs pull-right tz-nav-tabs">
-                    <li role="presentation"><a href="<c:url value="/product?categoryId=${product.category.id}"/> " data-toggle="tab">View all >></a></li>
+                    <li role="presentation"><a href="<c:url value="/product?categoryId=${product.category.id}"/> "
+                                               data-toggle="tab">View all >></a></li>
                 </ul>
             </div>
             <!--End tab header-->

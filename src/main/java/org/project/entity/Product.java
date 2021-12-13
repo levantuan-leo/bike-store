@@ -25,8 +25,8 @@ public class Product implements Serializable {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @OneToMany(mappedBy = "product")
-    private List<Stock> stocks;
+    @OneToOne(mappedBy = "product")
+    private Stock stock;
 
     public Product(){
     }
@@ -78,11 +78,11 @@ public class Product implements Serializable {
         this.category = category;
     }
 
-    public List<Stock> getStocks() {
-        return stocks;
+    public Stock getStock() {
+        return stock;
     }
 
-    public void setStocks(List<Stock> stocks) {
-        this.stocks = stocks;
+    public void setStock(Stock stock) {
+        this.stock = stock;
     }
 }

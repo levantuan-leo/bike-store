@@ -29,19 +29,14 @@ public class Order implements Serializable {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
-    @ManyToOne
-    @JoinColumn(name = "store_id")
-    private Store store;
-
     @OneToMany(mappedBy = "order")
     private List<OrderItem> orderItems;
 
     public Order() {
     }
 
-    public Order(Customer customer, Store store) {
+    public Order(Customer customer) {
         this.customer = customer;
-        this.store = store;
     }
 
     public int getId() {
@@ -82,14 +77,6 @@ public class Order implements Serializable {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
-    }
-
-    public Store getStore() {
-        return store;
-    }
-
-    public void setStore(Store store) {
-        this.store = store;
     }
 
     public List<OrderItem> getOrderItems() {

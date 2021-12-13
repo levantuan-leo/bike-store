@@ -2205,6 +2205,9 @@ input {
 .pagination ul li span:hover {
   color: #f44336;
 }
+.pagination ul li span.current{
+  background: #dbdbdb;
+}
 /**
  * 3.7.1 - Shop sidebar
  * -----------------------------------------------------------------------------
@@ -2268,7 +2271,7 @@ input {
   background: #dbdbdb;
   padding-left: 15px;
   transition: 0.5s;
-  clip-path: polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%);
+  clip-path: polygon(0% 0%, 96% 0%, 100% 50%, 96% 100%, 0% 100%);
 }
 .product-categories li.active a{
   color: #f44336;

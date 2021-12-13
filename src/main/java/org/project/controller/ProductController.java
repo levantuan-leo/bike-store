@@ -20,8 +20,6 @@ import java.util.Objects;
 public class ProductController extends HttpServlet {
     private static final ProductDao productDao = new ProductDao();
     private static final CategoryDao categoryDao = new CategoryDao();
-    private static String CATEGORY_ID = "";
-    private static String KEYWORD = "";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -30,6 +28,7 @@ public class ProductController extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
 
         String categoryId = req.getParameter("categoryId");
+        String keyword = req.getParameter("keyword");
 
         List<?> listFeaturedProducts = productDao.getFeaturedProducts(5);
 
@@ -39,10 +38,20 @@ public class ProductController extends HttpServlet {
             listCategoriesSize.add(productDao.countByCategory(((Category) o).getId()));
         }
 
+        int count = productDao.count();
+        if (!Objects.equals(categoryId, null)) {
+            count = productDao.countByCategory(Integer.parseInt(categoryId));
+        }
+        else if (!Objects.equals(keyword, null)) {
+            count = productDao.countBySearch(keyword);
+        }
+
         req.setAttribute("listFeaturedProducts", listFeaturedProducts);
         req.setAttribute("listCategories", listCategories);
         req.setAttribute("listCategoriesSize", listCategoriesSize);
         req.setAttribute("categoryId", categoryId);
+        req.setAttribute("keyword", keyword);
+        req.setAttribute("count", count);
 
         req.getRequestDispatcher("/templates/products.jsp").forward(req, resp);
     }
@@ -65,22 +74,10 @@ public class ProductController extends HttpServlet {
 
         int count = productDao.count();
         if (!Objects.equals(categoryId, "")) {
-            CATEGORY_ID = categoryId;
             count = productDao.countByCategory(Integer.parseInt(categoryId));
-            KEYWORD = "";
         }
         else if (!Objects.equals(keyword, "")) {
-            KEYWORD = keyword;
             count = productDao.countBySearch(keyword);
-            CATEGORY_ID = "";
-        }
-        else{
-            if(!Objects.equals(CATEGORY_ID, "")){
-                count = productDao.countByCategory(Integer.parseInt(CATEGORY_ID));
-            }
-            else if(!Objects.equals(KEYWORD, "")){
-                count = productDao.countByCategory(Integer.parseInt(KEYWORD));
-            }
         }
 
         if (start + limit > count) {
@@ -93,14 +90,6 @@ public class ProductController extends HttpServlet {
         }
         else if (!Objects.equals(keyword, "")) {
             listProducts = productDao.searchProductsByKeyword(keyword);
-        }
-        else{
-            if(!Objects.equals(CATEGORY_ID, "")){
-                listProducts = productDao.getProductsByCategory(start, limit, Integer.parseInt(CATEGORY_ID));
-            }
-            else if(!Objects.equals(KEYWORD, "")){
-                listProducts = productDao.searchProductsByKeyword(KEYWORD);
-            }
         }
 
         StringBuilder products = new StringBuilder();
@@ -157,18 +146,5 @@ public class ProductController extends HttpServlet {
 
         resp.getWriter().write(String.valueOf(products));
         resp.getWriter().close();
-    }
-
-    protected Integer count(String CategoryId, String Keyword){
-        int count = productDao.count();
-        if (!Objects.equals(CategoryId, "")) {
-            count = productDao.countByCategory(Integer.parseInt(CategoryId));
-            KEYWORD = "";
-        }
-        else if (!Objects.equals(Keyword, "")) {
-            count = productDao.countBySearch(Keyword);
-            CATEGORY_ID = "";
-        }
-        return count;
     }
 }

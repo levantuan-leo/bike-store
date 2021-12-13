@@ -34,12 +34,12 @@ public class PaymentApi extends HttpServlet {
 
         Customer customer = account.getCustomer();
         Store store = storeDao.getStoreById(1);
-        Order order = orderDao.getOrderById(orderDao.addOrder(customer, store));
+        Order order = orderDao.getOrderById(orderDao.addOrder(customer));
 
         for (Map.Entry<Integer, CartItem> entry : cart.entrySet()) {
             orderItemDao.addOrderItem(order, entry.getValue().getProduct(), entry.getValue().getQuantity());
 
-            Stock stock = stockDao.getStockByStoreAndProduct(store.getId(), entry.getValue().getProduct().getId());
+            Stock stock = stockDao.getStockByProduct(entry.getValue().getProduct().getId());
             stockDao.updateStock(stock.getId(), stock.getQuantity() - entry.getValue().getQuantity());
         }
 

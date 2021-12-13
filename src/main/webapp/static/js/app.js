@@ -25,7 +25,7 @@ function loadMore() {
     });
 }
 
-function loadProducts(index=null, category_id = null, keyword = null) {
+function loadProducts(index = null) {
     var limit = jQuery('select[name="number_item"]').val()
 
     jQuery.ajax({
@@ -34,27 +34,22 @@ function loadProducts(index=null, category_id = null, keyword = null) {
         data: {
             index: index,
             limit: limit,
-            categoryId: category_id,
-            keyword: keyword
+            categoryId: $CATEGORY_ID,
+            keyword: $KEYWORD
         },
         success: function (data, textStatus, jqXHR) {
             jQuery('.tz-product.row.grid-eff').html(data)
 
             if ($CATEGORY_ID !== "") {
-                if (category_id !== $CATEGORY_ID) {
-                    jQuery(`#category-${category_id}`).addClass("active")
-                    jQuery(`#category-${$CATEGORY_ID}`).removeClass("active")
-                } else {
-                    jQuery(`#category-${category_id}`).addClass("active")
-                }
-            }
-            else if(category_id !== ""){
-                jQuery(`#category-${category_id}`).addClass("active")
+                var c = jQuery(`#category-${$CATEGORY_ID}`)
+                if (!c.hasClass("active")) c.addClass("active")
             }
 
-            $CATEGORY_ID = category_id
-            window.history.pushState(null, null,
-                window.location.protocol + '//' + window.location.host + window.location.pathname + )
+            if (index !== null) {
+                var current = jQuery('span.current').text()
+                jQuery(`nav.pagination ul li:nth-child(${current})`).html(`<a href=\"javascript:void(0);\" onclick=\"loadProducts(${current})\">${current}</a>`);
+                jQuery(`nav.pagination ul li:nth-child(${index})`).html(`<span class="current">${index}</span>`)
+            }
         },
         error: function (e) {
             alert('Error: ' + e);
@@ -62,28 +57,16 @@ function loadProducts(index=null, category_id = null, keyword = null) {
     });
 }
 
-function pagination(obj, category_id = null, keyword = null) {
-    var current = jQuery(obj).text()
-    var limit = jQuery('select[name="number_item"]').val()
-
-    jQuery.ajax({
-        type: "POST",
-        url: "product",
-        data: {
-            index: current,
-            limit: limit,
-            categoryId: category_id,
-            keyword: keyword
-        },
-        success: function (data, textStatus, jqXHR) {
-            if (data !== '') {
-                jQuery('.tz-product.row.grid-eff').html(data)
-            }
-        },
-        error: function (e) {
-            alert('Error: ' + e);
-        }
-    });
+function backLoadProducts(){
+    var current = jQuery('span.current').text()
+    if (jQuery(`nav.pagination ul li:nth-child(${current - 1})`).length > 0) {
+        loadProducts(parseInt(current) - 1)
+    }}
+function nextLoadProducts() {
+    var current = jQuery('span.current').text()
+    if (jQuery(`nav.pagination ul li:nth-child(${parseInt(current) + 2})`).length > 0) {
+        loadProducts(parseInt(current) + 1)
+    }
 }
 
 function addToCart(id, quantity = 1) {
@@ -159,7 +142,7 @@ function payment() {
                 location.reload()
                 alert(data)
             },
-            error: function (){
+            error: function () {
                 alert("Something went wrong!.\n PLease, try again!")
             }
         })

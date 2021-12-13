@@ -44,15 +44,4 @@ public class StockDao {
             return null;
         }
     }
-
-    public Stock getStockByStoreAndProduct(Integer storeId, Integer productId) {
-        try (Session session = factory.openSession()) {
-            Query<?> query =
-                    session.createQuery("FROM Stock WHERE product.id = " + productId + " AND store.id = "+ storeId +"");
-            return (Stock) query.uniqueResult();
-        } catch (HibernateException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
 }

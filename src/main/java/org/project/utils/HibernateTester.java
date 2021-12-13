@@ -27,6 +27,6 @@ public class HibernateTester {
         Product product = session.get(Product.class, 10);
 
         session.close();
-        System.out.println(orderItemDaoDao.addOrderItem(order, product, 1));
+        System.out.println(product.getStock().getQuantity());
     }
 }

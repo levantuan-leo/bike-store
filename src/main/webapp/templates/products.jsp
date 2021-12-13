@@ -13,12 +13,11 @@
                         <h3 class="widget-title">Bikes product</h3>
                         <ul class="product-categories">
                             <li class="cat-parent">
-                                <a href="<c:url value="/product"/>" >Bikes</a>
+                                <a href="<c:url value="/product"/>">Bikes</a>
                                 <ul class="children">
                                     <c:forEach items="${listCategories}" var="category" varStatus="loop">
                                         <li id="category-${category.id}">
-                                            <a href="javascript:void(0);"
-                                               onclick="loadProducts(null, ${category.id})">${category.name}
+                                            <a href="<c:url value="/product?categoryId=${category.id}"/>">${category.name}
                                                 <span>(${listCategoriesSize[loop.index]})</span>
                                             </a>
                                         </li>
@@ -100,24 +99,13 @@
                         </div>
                         <div class="widget-size-filter">
                             <h4 class="widget-title-children">
-                                Brand Filter
+                                Order By
                             </h4>
                             <ul>
-                                <li>
-                                    <a href="shop.html">S - Small <span>(24)</span></a>
-                                </li>
-                                <li>
-                                    <a href="shop.html">M - Medium <span>(18)</span></a>
-                                </li>
-                                <li>
-                                    <a href="shop.html">L - Large <span>(9)</span></a>
-                                </li>
-                                <li>
-                                    <a href="shop.html"> XL - Extra Large <span>(39)</span></a>
-                                </li>
-                                <li>
-                                    <a href="shop.html">xtra Extra Large <span>(24)</span></a>
-                                </li>
+                                <input type="radio" id="desc" name="age" value="DESC">
+                                <label for="desc">DESC - Descending</label><br>
+                                <input type="radio" id="asc" name="age" value="ASC">
+                                <label for="asc">ASC - Ascending</label><br>
                             </ul>
                         </div>
                     </aside>
@@ -195,29 +183,22 @@
 
                     <nav class="pagination">
                         <ul class="pagination_list pull-right">
+                            <c:forEach begin="1" end="${(count - 1)/12 + 1}" var="i">
+                                <c:choose>
+                                    <c:when test="${i==1}">
+                                        <li>
+                                            <span class="current">${i}</span>
+                                        </li>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <li>
+                                            <a href="javascript:void(0);" onclick="loadProducts(${i})">${i}</a>
+                                        </li>
+                                    </c:otherwise>
+                                </c:choose>
+                            </c:forEach>
                             <li>
-                                <a href="shop.html">Next</a>
-                            </li>
-                            <li>
-                                <a href="shop.html">1</a>
-                            </li>
-                            <li>
-                                <span class="current">2</span>
-                            </li>x
-                            <li>
-                                <a href="shop.html">3</a>
-                            </li>
-                            <li>
-                                <a href="shop.html">4</a>
-                            </li>
-                            <li>
-                                <a href="shop.html">5</a>
-                            </li>
-                            <li>
-                                <span>...</span>
-                            </li>
-                            <li>
-                                <a href="shop.html">Next</a>
+                                <a href="javascript:void(0);" onclick="nextLoadProducts()">Next</a>
                             </li>
                         </ul>
                     </nav>
@@ -228,24 +209,25 @@
     </div>
 </div>
 <script>
-    jQuery(function() {
-        jQuery( "#slider-range" ).slider({
+    jQuery(function () {
+        jQuery("#slider-range").slider({
             range: true,
             min: 0,
             max: 500,
-            values: [ 75, 300 ],
-            slide: function( event, ui ) {
-                jQuery('.from').text('$' + ui.values[ 0 ]);
-                jQuery('.to').text('$' + ui.values[ 1 ]);
+            values: [75, 300],
+            slide: function (event, ui) {
+                jQuery('.from').text('$' + ui.values[0]);
+                jQuery('.to').text('$' + ui.values[1]);
             }
         });
-        jQuery('.from').text('$' + jQuery( "#slider-range" ).slider( "values", 0 ));
-        jQuery('.to').text('$' + jQuery( "#slider-range" ).slider( "values", 1 ));
+        jQuery('.from').text('$' + jQuery("#slider-range").slider("values", 0));
+        jQuery('.to').text('$' + jQuery("#slider-range").slider("values", 1));
     });
 </script>
 <script>
     document.querySelector('.tz-main-menu li:nth-child(2)').style.display = "none";
     $CATEGORY_ID = '${categoryId != null ? categoryId : ""}'
-    loadProducts(null, $CATEGORY_ID, null)
+    $KEYWORD = '${keyword != null ? keyword : ""}'
+    loadProducts()
 </script>
 <!--End Shop-->

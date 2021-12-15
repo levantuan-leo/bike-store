@@ -88,7 +88,7 @@ public class AccountDao {
     public Account login(String email, String password){
         try (Session session = factory.openSession()) {
             Query<?> query =
-                    session.createQuery("FROM Account WHERE email='"+ email +"' AND password='"+ password +"' AND role < 2 ");
+                    session.createQuery("FROM Account WHERE email='"+ email +"' AND password='"+ password +"'");
             return (Account) query.uniqueResult();
         } catch (HibernateException e) {
             e.printStackTrace();

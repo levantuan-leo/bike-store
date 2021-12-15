@@ -69,7 +69,7 @@
                                     <i class="fa fa-link"></i>
                                 </p>
                                 <p class="comment-for-content">
-                                    <textarea class="comment" name="comment">${sessionScope.account.customer.address}</textarea>
+                                    <textarea class="comment" name="comment" placeholder="Address">${sessionScope.account.customer.address}</textarea>
                                     <i class="fa fa-comment"></i>
                                 </p>
                                 <p class="comment-for-submit">
@@ -77,7 +77,6 @@
                                 </p>
                             </form>
                         </div>
-
                     </div>
                 </div>
             </div>

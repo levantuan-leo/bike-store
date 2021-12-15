@@ -4,6 +4,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import org.project.entity.Customer;
 import org.project.entity.Order;
 import org.project.entity.Store;
@@ -158,4 +159,38 @@ public class OrderDao {
         }
     }
     // endregion
+
+    public int countOrderByStore(Integer storeId){
+        try (Session session = factory.openSession()) {
+            Query<?> query =
+                    session.createQuery("select count(*) FROM Order WHERE  store.id = "+ storeId +" and status <3");
+            return  ((Long) query.uniqueResult()).intValue();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+            return -1;
+        }
+    }
+
+    public List<?> getOrderByStoreAndStatus(Integer storeId, Integer status){
+        try (Session session = factory.openSession()) {
+            Query<?> query =
+                    session.createQuery("FROM Order WHERE  store.id = "+ storeId +" AND status ="+ status +"");
+            return  query.list();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public int count() {
+        try (Session session = factory.openSession()) {
+            Query<?> query = session.createQuery("SELECT COUNT(*) FROM Order ");
+            return ((Long) query.uniqueResult()).intValue();
+        }
+        catch (HibernateException e) {
+            e.printStackTrace();
+            return -1;
+        }
+    }
+
 }

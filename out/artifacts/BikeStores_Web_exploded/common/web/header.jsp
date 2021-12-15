@@ -68,6 +68,9 @@
                             <a href="#">${sessionScope.account.customer.name}
                                 <span class="fa fa-user tz-down"></span>
                                 <ul class="sub-menu" style="width: 140px;">
+                                    <c:if test="${sessionScope.account.role == 2}">
+                                        <li><a href="<c:url value="/admin/home"/>" style="border: none">ADMIN</a></li>
+                                    </c:if>
                                     <li><a href="<c:url value="/account/profile"/>" style="border: none">My profile</a></li>
                                     <li><a href="<c:url value="/purchase"/>" style="border: none">Purchase order</a></li>
                                     <li><a href="<c:url value="/api/login-logout"/>" style="border: none">Logout →</a></li>

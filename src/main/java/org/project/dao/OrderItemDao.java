@@ -4,11 +4,11 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import org.project.entity.*;
 import org.project.utils.HibernateUtil;
 
 import java.math.BigDecimal;
-import java.util.Date;
 import java.util.List;
 
 public class OrderItemDao {
@@ -85,4 +85,27 @@ public class OrderItemDao {
         }
     }
     // endregion
+
+    public List<?> getOrderItemsByStore(Integer storeId){
+        try (Session session = factory.openSession()) {
+            Query<?> query =
+                    session.createQuery("select  o.product.name, sum(o.quantity)  as total FROM OrderItem as o WHERE  o.order.store.id = "+ storeId +" group by o.product.name order by total desc ");
+            return  query.list();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public List<?> getOrderItemByOrderId(Integer orderID){
+        try (Session session = factory.openSession()) {
+            Query<?> query =
+                    session.createQuery("FROM OrderItem where order.id = "+ orderID +"");
+            return  query.list();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 }

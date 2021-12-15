@@ -57,12 +57,15 @@ function loadProducts(index = null) {
     });
 }
 
-function backLoadProducts(){
+function backLoadProducts() {
     var current = jQuery('span.current').text()
     if (jQuery(`nav.pagination ul li:nth-child(${current - 1})`).length > 0) {
         loadProducts(parseInt(current) - 1)
-    }}
-function nextLoadProducts() {    var current = jQuery('span.current').text()
+    }
+}
+
+function nextLoadProducts() {
+    var current = jQuery('span.current').text()
     if (jQuery(`nav.pagination ul li:nth-child(${parseInt(current) + 2})`).length > 0) {
         loadProducts(parseInt(current) + 1)
     }
@@ -149,6 +152,48 @@ function payment() {
     }
 }
 
-function cancelOrder(order_id){
-    jQuery.ajax()
+function cancelOrder(order_id) {
+    if (confirm("Are you sure?") === true) {
+        jQuery.ajax({
+            type: "DELETE",
+            url: "purchase?orderId=" + order_id,
+            success: function (data) {
+                alert("Cancel Order Successful!")
+
+                jQuery(`tr.order-${order_id}`).each(function (){
+                    jQuery(this).css('display', 'none')
+                })
+
+                var status = jQuery(`#order-status-${order_id}`)
+                status.text("CANCELED")
+                status.css("color","#f44336");
+
+                var canceled = jQuery('#canceled tbody')
+                if(canceled.length > 0){
+                    canceled.prepend(data);
+                }
+                else{
+                    jQuery('#canceled').html(
+                        "<form>\n" +
+                        "   <table class=\"shop_table cart\">\n" +
+                        "       <thead>\n" +
+                        "           <tr>\n" +
+                        "               <th class=\"product-thumbnail\">&nbsp;</th>\n" +
+                        "               <th class=\"product-name\">&nbsp;</th>\n" +
+                        "               <th class=\"product-price\">&nbsp;</th>\n" +
+                        "           </tr>\n" +
+                        "       </thead>\n" +
+                        "       <tbody>\n" +
+                                    data +
+                        "       </tbody>\n" +
+                        "   </table>\n" +
+                        "</form>"
+                    )
+                }
+            },
+            error: function (e) {
+                alert("CANCEL ORDER\nError:" + e);
+            }
+        })
+    }
 }

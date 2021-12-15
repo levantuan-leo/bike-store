@@ -4,6 +4,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import org.project.entity.Customer;
 import org.project.entity.Product;
 import org.project.utils.HibernateUtil;
@@ -91,6 +92,28 @@ public class CustomerDao {
         } catch (HibernateException e) {
             e.printStackTrace();
             return null;
+        }
+    }
+
+    public int count() {
+        try (Session session = factory.openSession()) {
+            Query<?> query = session.createQuery("SELECT COUNT(*) FROM Customer ");
+            return ((Long) query.uniqueResult()).intValue();
+        }
+        catch (HibernateException e) {
+            e.printStackTrace();
+            return -1;
+        }
+    }
+
+    public int countCustomerByStore (Integer storeId){
+        try (Session session = factory.openSession()) {
+            Query<?> query =
+                    session.createQuery("select count(*) FROM Customer WHERE  store.id = "+ storeId +"");
+            return  ((Long) query.uniqueResult()).intValue();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+            return -1;
         }
     }
 }

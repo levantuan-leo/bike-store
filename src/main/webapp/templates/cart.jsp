@@ -35,15 +35,15 @@
                 <!--Table body-->
                 <tbody>
 
-                <c:set var="cart" value="${sessionScope.cart}"/>
-                <c:set var="totalAmount" value="${0}"/>
+               <c:set var="totalAmount" value="${0}"/>
                 <c:choose>
-                    <c:when test="${empty cart}">
+                    <c:when test="${empty sessionScope.cart}">
                         <tr>
                             <td colspan="4">- Cart is currently empty -</td>
                         </tr>
                     </c:when>
                     <c:otherwise>
+                        <c:set var="cart" value="${sessionScope.cart}"/>
                         <c:forEach items="${stores}" var="store">
                         <tr class="cart_item"><td colspan="4"><span style="font-weight: 600;">STORE:</span> ${store.value.name}</td></tr>
                         <c:forEach items="${cart}" var="item">

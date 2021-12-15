@@ -1,5 +1,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
 <div class="content-wrapper">
     <div class="content">
         <!-- Top Statistics -->
@@ -7,8 +13,8 @@
             <div class="col-xl-3 col-sm-6">
                 <div class="card card-mini mb-4">
                     <div class="card-body">
-                        <h2 class="mb-1">71,503</h2>
-                        <p>Online Signups</p>
+                        <h2 class="mb-1">${count}</h2>
+                        <p>PRODUCT</p>
                         <div class="chartjs-wrapper">
                             <canvas id="barChart"></canvas>
                         </div>
@@ -18,8 +24,8 @@
             <div class="col-xl-3 col-sm-6">
                 <div class="card card-mini mb-4">
                     <div class="card-body">
-                        <h2 class="mb-1">9,503</h2>
-                        <p>New Visitors Today</p>
+                        <h2 class="mb-1">${countcus}</h2>
+                        <p>CUSTOMER</p>
                         <div class="chartjs-wrapper">
                             <canvas id="dual-line"></canvas>
                         </div>
@@ -29,8 +35,8 @@
             <div class="col-xl-3 col-sm-6">
                 <div class="card card-mini mb-4">
                     <div class="card-body">
-                        <h2 class="mb-1">71,503</h2>
-                        <p>Monthly Total Order</p>
+                        <h2 class="mb-1">${countorder}</h2>
+                        <p>ORDER</p>
                         <div class="chartjs-wrapper">
                             <canvas id="area-chart"></canvas>
                         </div>
@@ -40,8 +46,8 @@
             <div class="col-xl-3 col-sm-6">
                 <div class="card card-mini mb-4">
                     <div class="card-body">
-                        <h2 class="mb-1">9,503</h2>
-                        <p>Total Revenue This Year</p>
+                        <h2 class="mb-1">${countstore}</h2>
+                        <p>STORE</p>
                         <div class="chartjs-wrapper">
                             <canvas id="line"></canvas>
                         </div>

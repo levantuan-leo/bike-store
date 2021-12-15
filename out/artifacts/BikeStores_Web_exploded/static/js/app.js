@@ -62,8 +62,7 @@ function backLoadProducts(){
     if (jQuery(`nav.pagination ul li:nth-child(${current - 1})`).length > 0) {
         loadProducts(parseInt(current) - 1)
     }}
-function nextLoadProducts() {
-    var current = jQuery('span.current').text()
+function nextLoadProducts() {    var current = jQuery('span.current').text()
     if (jQuery(`nav.pagination ul li:nth-child(${parseInt(current) + 2})`).length > 0) {
         loadProducts(parseInt(current) + 1)
     }
@@ -80,6 +79,7 @@ function addToCart(id, quantity = 1) {
         success: function (data) {
             jQuery('.tz-mini-cart a strong').html(`${data["total_quantity"]}`)
             jQuery('.subtotal-content strong.pull-right').html(`$${data["total_amount"]}`)
+            jQuery('ul.cart-inner').prepend(data["product"])
         },
         error: function (e) {
             alert("ADD\nError:" + e);

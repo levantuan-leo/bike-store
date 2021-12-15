@@ -35,11 +35,13 @@ public class CartApi extends HttpServlet {
         HttpSession session = req.getSession();
         Object obj = session.getAttribute("cart");
 
+        boolean flag = false;
         Map<Integer, CartItem> cart;
         if (obj == null) {
             cart = new HashMap<>();
             cart.put(product.getId(), new CartItem(product, Integer.parseInt(quantity)));
             session.setAttribute("cart", cart);
+            flag = true;
         } else {
             cart = cast(obj);
 
@@ -49,6 +51,7 @@ public class CartApi extends HttpServlet {
                 cart.put(product.getId(), item);
             } else {
                 cart.put(product.getId(), new CartItem(product, Integer.parseInt(quantity)));
+                flag=true;
             }
         }
 
@@ -58,6 +61,21 @@ public class CartApi extends HttpServlet {
         Map<String, String> cs = new HashMap<>();
         cs.put("total_quantity", String.valueOf(cartStats.getTotalQuantity()));
         cs.put("total_amount", String.valueOf(cartStats.getTotalAmount()));
+
+        if(flag) {
+            String p = String.format("<li class=\"mini-cart-content\">\n" +
+                    "                            <div class=\"mini-cart-img\"><img\n" +
+                    "                                    src='%s'\n" +
+                    "                                    alt=\"product search one\"></div>\n" +
+                    "                            <div class=\"mini-cart-ds\">\n" +
+                    "                                <h6><a href='product-single?productId=%d'>%s</a></h6>\n" +
+                    "                                <span class=\"mini-cart-meta\">\n" +
+                    "                                    <a href=\"javascript:void(0);\">$%.2f</a>\n" +
+                    "                                </span>\n" +
+                    "                            </div>\n" +
+                    "                        </li>", product.getPicture(), product.getId(), product.getName(), product.getPrice());
+            cs.put("product", p);
+        }
 
         String json = new Gson().toJson(cs);
         resp.getWriter().write(json);

@@ -1079,7 +1079,8 @@ input {
   content: '';
 }
 .cart-inner .mini-footer .view-cart {
-  background: #bdbdbd;
+  background: #f44336;
+  float: right;
   color: #ffffff;
   text-transform: none;
   padding: 2px 36px;
@@ -4038,6 +4039,19 @@ blockquote {
   margin: 0;
   line-height: 27px;
   padding-left: 70px;
+}
+.contact-info ul li a {
+  float: left;
+  display: block;
+  min-width: 70px;
+  color: #212121;
+}
+.contact-info ul li a.active {
+  color: #f44336;
+  font-weight: 500;
+}
+.contact-info ul li a i {
+  margin: 0 10px 0 20px;
 }
 .tz-subcribe {
   position: relative;

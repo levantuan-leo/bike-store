@@ -32,7 +32,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="<c:url value="/contact"/> ">
                         Contact
                         <span class="fa fa-question-circle tz-down"></span>
                     </a>
@@ -68,8 +68,8 @@
                             <a href="#">${sessionScope.account.customer.name}
                                 <span class="fa fa-user tz-down"></span>
                                 <ul class="sub-menu" style="width: 140px;">
-                                    <li><a href="#" style="border: none">My profile</a></li>
-                                    <li><a href="#" style="border: none">Purchase order</a></li>
+                                    <li><a href="<c:url value="/account/profile"/>" style="border: none">My profile</a></li>
+                                    <li><a href="<c:url value="/purchase"/>" style="border: none">Purchase order</a></li>
                                     <li><a href="<c:url value="/api/login-logout"/>" style="border: none">Logout →</a></li>
                                 </ul>
                             </a>
@@ -156,61 +156,25 @@
             <!--Shop meta-->
             <ul class="tz-ecommerce-meta pull-right">
                 <li class="tz-mini-cart">
-                    <a href="<c:url value = "/cart"/>"><strong>${quantity}</strong>Cart</a>
+                    <a href="${sessionScope.account != null ? '/cart': 'javascript:alert(\'you need to login\');'}">
+                        <strong>${quantity}</strong>Cart
+                    </a>
 
                     <!--Mini cart-->
                     <ul class="cart-inner">
+                        <c:forEach items="${cart}" var="item">
                         <li class="mini-cart-content">
                             <div class="mini-cart-img"><img
-                                    src="<c:url value="/static/images/product/product-cart1.png" />"
+                                    src="${item.value.product.picture}"
                                     alt="product search one"></div>
                             <div class="mini-cart-ds">
-                                <h6><a href="<c:url value = "/product-single"/>">Liv Race Day Short</a></h6>
+                                <h6><a href="<c:url value = "/product-single?productId=${item.key}"/>">${item.value.product.name}</a></h6>
                                 <span class="mini-cart-meta">
-                                            <a href="<c:url value = "/product-single"/>">$2650.00</a>
-                                            <span class="mini-meta">
-                                               <span class="mini-color">Color: <i class="orange"></i></span>
-                                               <span class="mini-qty">Qty: 5</span>
-                                            </span>
-                                        </span>
+                                    <a href="javascript:void(0);">$${item.value.product.price}</a>
+                                </span>
                             </div>
-                            <span class="mini-cart-delete"><img src="<c:url value="/static/images/delete.png" />"
-                                                                alt="delete"></span>
                         </li>
-                        <li class="mini-cart-content">
-                            <div class="mini-cart-img"><img
-                                    src="<c:url value="/static/images/product/product-cart2.png" />"
-                                    alt="product search one"></div>
-                            <div class="mini-cart-ds">
-                                <h6><a href="<c:url value = "/product-single"/>">City Pedals Sport</a></h6>
-                                <span class="mini-cart-meta">
-                                            <a href="<c:url value = "/product-single"/>">$2650.00</a>
-                                            <span class="mini-meta">
-                                               <span class="mini-color">Color: <i class="orange"></i></span>
-                                               <span class="mini-qty">Qty: 5</span>
-                                            </span>
-                                        </span>
-                            </div>
-                            <span class="mini-cart-delete"><img src="<c:url value="/static/images/delete.png" />"
-                                                                alt="delete"></span>
-                        </li>
-                        <li class="mini-cart-content">
-                            <div class="mini-cart-img"><img
-                                    src="<c:url value="/static/images/product/product-cart3.png" />"
-                                    alt="product search one"></div>
-                            <div class="mini-cart-ds">
-                                <h6><a href="<c:url value = "/product-single"/>">Gloss</a></h6>
-                                <span class="mini-cart-meta">
-                                            <a href="<c:url value = "/product-single"/>">$2650.00</a>
-                                            <span class="mini-meta">
-                                               <span class="mini-color">Color: <i class="orange"></i></span>
-                                               <span class="mini-qty">Qty: 5</span>
-                                            </span>
-                                        </span>
-                            </div>
-                            <span class="mini-cart-delete"><img src="<c:url value="/static/images/delete.png" />"
-                                                                alt="delete"></span>
-                        </li>
+                        </c:forEach>
                         <li class="mini-subtotal">
                                     <span class="subtotal-content">
                                         Subtotal:
@@ -218,8 +182,7 @@
                                     </span>
                         </li>
                         <li class="mini-footer">
-                            <a href="<c:url value = "/cart"/>" class="view-cart">View Cart</a>
-                            <a href="<c:url value = "/checkout"/>" class="check-out">Checkout</a>
+                            <a href="${sessionScope.account != null ? '/cart': 'javascript:alert(\'you need to login\');'}" class="view-cart">View Cart</a>
                         </li>
                     </ul>
                     <!--End mini cart-->

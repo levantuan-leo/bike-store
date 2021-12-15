@@ -33,9 +33,8 @@ public class LoginLogoutApi extends HttpServlet {
 
         String email = req.getParameter("email");
         String password = req.getParameter("password");
-        String role = "0";
 
-        Account account = accountDao.login(email, password, Integer.parseInt(role));
+        Account account = accountDao.login(email, password);
 
         if (account == null){
             resp.setStatus(400);

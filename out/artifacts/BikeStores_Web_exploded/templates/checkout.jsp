@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script>document.title = "BikeStores - Checkout"</script>
 
+<!-- Order status: 0 = Pending; 1 = Processing; 2 = Completed; 3 = Rejected/Canceled -->
 <section class="shop-cart">
     <div class="container">
         <!--Start Breadcrumbs-->

@@ -33,7 +33,7 @@
                             <img src="<c:url value="/static/images/product/single-p.jpg" />" alt="Propel Advanced Pro">
                         </li>
                         <li>
-                            <img src="<c:url value="/static/images/product/single-p.jpg" />" alt="Propel Advanced Pro">
+                            <img src="<c:url value="/static/images/product/single-p1.jpg" />" alt="Propel Advanced Pro">
                         </li>
                     </ul>
                     <div class="product-social">

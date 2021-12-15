@@ -27,7 +27,8 @@
                                 align-items: center;
                                 padding-bottom: 15px;
                                 border-bottom: 1px solid #dbdbdb;">
-                                    <img style="max-width: 60px;border-radius: 50%;" src="<c:url value="/static/images/avatar.gif"/>" alt="">
+                                    <img style="max-width: 60px;border-radius: 50%;"
+                                         src="<c:url value="/static/images/avatar.gif"/>" alt="">
                                     <div style=" margin-left: 15px;">
                                         <p style="padding: unset;font-weight: 600;">${sessionScope.account.customer.name}</p>
                                         <span><span style="color: #f44336;"><i class="fa fa-eye"></i></span> Watch Orders</span>
@@ -73,59 +74,68 @@
                         </div>
                         <div class="tab-content" style="padding: 0 0 29px;height: 497px;overflow: auto;">
                             <div class="tab-pane active" id="all">
-                                <form>
-                                    <table class="shop_table cart">
-                                        <!--Table header-->
-                                        <thead>
-                                        <tr>
-                                            <th class="product-thumbnail">&nbsp;</th>
-                                            <th class="product-name">&nbsp;</th>
-                                            <th class="product-price">&nbsp;</th>
-                                            <th class="product-price">&nbsp;</th>
-                                        </tr>
-                                        </thead>
-                                        <!--End table header-->
+                                <c:choose>
+                                <c:when test="${orderItems != null}">
+                                    <form>
+                                        <table class="shop_table cart">
+                                            <!--Table header-->
+                                            <thead>
+                                            <tr>
+                                                <th class="product-thumbnail">&nbsp;</th>
+                                                <th class="product-name">&nbsp;</th>
+                                                <th class="product-price">&nbsp;</th>
+                                                <th class="product-price">&nbsp;</th>
+                                            </tr>
+                                            </thead>
+                                            <!--End table header-->
 
-                                        <!--Table body-->
-                                        <tbody>
-                                        <tr class="cart_item">
-
-                                            <td class="product-thumbnail">
-                                                <a href="single-product.html">
-                                                    <img src="images/product/widget1.jpg" alt="cart"/>
-                                                </a>
-                                            </td>
-
-                                            <td class="product-name">
-                                                <a href="single-product.html">Liv Race Day Short </a>
-                                                <span class="color">x1</span>
-                                            </td>
-                                            <td class="product-price">
-                                                <span class="amount">$20.00</span>
-                                            </td>
-
-                                            <td class="product-remove">pending</td>
-
-                                        </tr>
-                                        </tbody>
-                                        <!--End table body-->
-                                    </table>
-                                </form>
-                            </div>
-                            <div class="tab-pane" id="pending">
+                                            <!--Table body-->
+                                            <tbody>
+                                            <c:forEach var="item" items="${orderItems}">
+                                                <tr class="cart_item">
+                                                    <td class="product-thumbnail">
+                                                        <a href="single-product.html">
+                                                            <img src="${item.getProduct().getPicture()}" alt="cart"/>
+                                                        </a>
+                                                    </td>
+                                                    <td class="product-name">
+                                                        <a href="single-product.html">${item.getProduct().getName()}</a>
+                                                        <span class="color">x${item.getQuantity()}</span>
+                                                    </td>
+                                                    <td class="product-price">
+                                                        <span class="amount">$${item.getProduct().getPrice()}</span>
+                                                    </td>
+                                                    <c:set var="status" value="${item.getOrder().getStatus()}"/>
+                                                    <td class="product-remove">
+                                                            ${status == 0 ? "Pending" : (status == 1 ? "Processing" :(status == 2?"Completed":"Canceled"))}
+                                                    </td>
+                                                </tr>
+                                            </c:forEach>
+                                            </tbody>
+                                            <!--End table body-->
+                                        </table>
+                                    </form>
+                                </c:when>
+                                <c:otherwise>
                                 <div style="width: 100%;height: 468px;display: flex;align-items: center;justify-content: center;">
-                                <img src="<c:url value="/static/images/no-product.png"/> " alt="no-product"/>
+                                    <img src="<c:url value="/static/images/no-product.png"/> " alt="no-product"/>
+                                    </c:otherwise>
+                                    </c:choose>
+                                </div>
+                                <div class="tab-pane" id="pending">
+                                    <div style="width: 100%;height: 468px;display: flex;align-items: center;justify-content: center;">
+                                        <img src="<c:url value="/static/images/no-product.png"/> " alt="no-product"/>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="processing">2</div>
+                                <div class="tab-pane" id="completed">3</div>
+                                <div class="tab-pane" id="canceled">4</div>
                             </div>
-                            </div>
-                            <div class="tab-pane" id="processing">2</div>
-                            <div class="tab-pane" id="completed">3</div>
-                            <div class="tab-pane" id="canceled">4</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!--End Start Blog-->
+        <!--End Start Blog-->
 
-</div>
+    </div>

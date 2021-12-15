@@ -148,3 +148,7 @@ function payment() {
         })
     }
 }
+
+function cancelOrder(order_id){
+    jQuery.ajax()
+}

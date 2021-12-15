@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 @WebServlet(urlPatterns = {"/api/payment"})
@@ -33,14 +35,24 @@ public class PaymentApi extends HttpServlet {
         Account account = (Account) session.getAttribute("account");
 
         Customer customer = account.getCustomer();
-        Store store = storeDao.getStoreById(1);
-        Order order = orderDao.getOrderById(orderDao.addOrder(customer));
-
+        List<Integer> listStoreIds = new ArrayList<>();
         for (Map.Entry<Integer, CartItem> entry : cart.entrySet()) {
-            orderItemDao.addOrderItem(order, entry.getValue().getProduct(), entry.getValue().getQuantity());
+            int id = entry.getValue().getProduct().getStock().getStore().getId();
+            if (!listStoreIds.contains(id)) listStoreIds.add(id);
+        }
 
-            Stock stock = stockDao.getStockByProduct(entry.getValue().getProduct().getId());
-            stockDao.updateStock(stock.getId(), stock.getQuantity() - entry.getValue().getQuantity());
+        for (Integer storeId : listStoreIds) {
+            Store store = storeDao.getStoreById(storeId);
+            Order order = orderDao.getOrderById(orderDao.addOrder(customer, store));
+
+            for (Map.Entry<Integer, CartItem> entry : cart.entrySet()) {
+                if (storeId == entry.getValue().getProduct().getStock().getStore().getId()) {
+                    orderItemDao.addOrderItem(order, entry.getValue().getProduct(), entry.getValue().getQuantity());
+
+                    Stock stock = stockDao.getStockByProduct(entry.getValue().getProduct().getId());
+                    stockDao.updateStock(stock.getId(), stock.getQuantity() - entry.getValue().getQuantity());
+                }
+            }
         }
 
         session.removeAttribute("cart");

@@ -38,13 +38,16 @@
                 <c:set var="cart" value="${sessionScope.cart}"/>
                 <c:set var="totalAmount" value="${0}"/>
                 <c:choose>
-                    <c:when test="${cart == null}">
+                    <c:when test="${empty cart}">
                         <tr>
                             <td colspan="4">- Cart is currently empty -</td>
                         </tr>
                     </c:when>
                     <c:otherwise>
+                        <c:forEach items="${stores}" var="store">
+                        <tr class="cart_item"><td colspan="4"><span style="font-weight: 600;">STORE:</span> ${store.value.name}</td></tr>
                         <c:forEach items="${cart}" var="item">
+                            <c:if test="${item.value.product.stock.store.id == store.key}">
                             <tr class="cart_item" id="cart-item${item.key}">
                                 <td class="product-remove">
                                     <a href="javascript:void(0);"
@@ -88,6 +91,8 @@
                                     <c:set var="totalAmount" value="${totalAmount + item.value.product.price * item.value.quantity}" />
                                 </td>
                             </tr>
+                            </c:if>
+                        </c:forEach>
                         </c:forEach>
                     </c:otherwise>
                 </c:choose>

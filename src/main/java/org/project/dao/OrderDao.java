@@ -17,13 +17,13 @@ public class OrderDao {
 
     //region [CRUD]
     // Method to CREATE an order in the database
-    public Integer addOrder(Customer customer) {
+    public Integer addOrder(Customer customer, Store store) {
         Session session = factory.openSession();
         Transaction tx = null;
         Integer orderID = null;
         try {
             tx = session.beginTransaction();
-            Order order = new Order(customer);
+            Order order = new Order(customer, store);
             orderID = (Integer) session.save(order);
             tx.commit();
         } catch (HibernateException e) {
@@ -110,4 +110,52 @@ public class OrderDao {
             return null;
         }
     }
+
+    // region [Orders]
+    // All orders
+    public List<?> getOrdersByCustomer(Integer customerId){
+        try (Session session = factory.openSession()) {
+            return session.createQuery("FROM Order WHERE customer.id = "+customerId+"").list();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    // status = 0 -> pending
+    public List<?> getOrdersPendingByCustomer(Integer customerId){
+        try (Session session = factory.openSession()) {
+            return session.createQuery("FROM Order WHERE customer.id = "+customerId+" AND status = 0").list();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    // status = 1 -> Processing
+    public List<?> getOrdersProcessingByCustomer(Integer customerId){
+        try (Session session = factory.openSession()) {
+            return session.createQuery("FROM Order WHERE customer.id = "+customerId+" AND status = 1").list();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    // status = 2 -> Completed
+    public List<?> getOrdersCompletedByCustomer(Integer customerId){
+        try (Session session = factory.openSession()) {
+            return session.createQuery("FROM Order WHERE customer.id = "+customerId+" AND status = 2").list();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    // status = 3 -> Canceled
+    public List<?> getOrdersCanceledByCustomer(Integer customerId){
+        try (Session session = factory.openSession()) {
+            return session.createQuery("FROM Order WHERE customer.id = "+customerId+" AND status = 3").list();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    // endregion
 }

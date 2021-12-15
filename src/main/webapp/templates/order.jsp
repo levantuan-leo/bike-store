@@ -75,67 +75,268 @@
                         <div class="tab-content" style="padding: 0 0 29px;height: 497px;overflow: auto;">
                             <div class="tab-pane active" id="all">
                                 <c:choose>
-                                <c:when test="${orderItems != null}">
-                                    <form>
-                                        <table class="shop_table cart">
-                                            <!--Table header-->
-                                            <thead>
-                                            <tr>
-                                                <th class="product-thumbnail">&nbsp;</th>
-                                                <th class="product-name">&nbsp;</th>
-                                                <th class="product-price">&nbsp;</th>
-                                                <th class="product-price">&nbsp;</th>
-                                            </tr>
-                                            </thead>
-                                            <!--End table header-->
-
-                                            <!--Table body-->
-                                            <tbody>
-                                            <c:forEach var="item" items="${orderItems}">
-                                                <tr class="cart_item">
-                                                    <td class="product-thumbnail">
-                                                        <a href="single-product.html">
-                                                            <img src="${item.getProduct().getPicture()}" alt="cart"/>
-                                                        </a>
-                                                    </td>
-                                                    <td class="product-name">
-                                                        <a href="single-product.html">${item.getProduct().getName()}</a>
-                                                        <span class="color">x${item.getQuantity()}</span>
-                                                    </td>
-                                                    <td class="product-price">
-                                                        <span class="amount">$${item.getProduct().getPrice()}</span>
-                                                    </td>
-                                                    <c:set var="status" value="${item.getOrder().getStatus()}"/>
-                                                    <td class="product-remove">
-                                                            ${status == 0 ? "Pending" : (status == 1 ? "Processing" :(status == 2?"Completed":"Canceled"))}
-                                                    </td>
+                                    <c:when test="${not empty orders}">
+                                        <form>
+                                            <table class="shop_table cart">
+                                                <!--Table header-->
+                                                <thead>
+                                                <tr>
+                                                    <th class="product-thumbnail">&nbsp;</th>
+                                                    <th class="product-name">&nbsp;</th>
+                                                    <th class="product-price">&nbsp;</th>
                                                 </tr>
-                                            </c:forEach>
-                                            </tbody>
-                                            <!--End table body-->
-                                        </table>
-                                    </form>
-                                </c:when>
-                                <c:otherwise>
-                                <div style="width: 100%;height: 468px;display: flex;align-items: center;justify-content: center;">
-                                    <img src="<c:url value="/static/images/no-product.png"/> " alt="no-product"/>
+                                                </thead>
+                                                <!--End table header-->
+
+                                                <!--Table body-->
+                                                <tbody>
+                                                <c:forEach var="order" items="${orders}">
+                                                    <tr class="cart_item">
+                                                        <td colspan="2"><span style="font-weight: 600;">STORE:</span> ${order.store.name}</td>
+                                                        <c:set var="status" value="${order.getStatus()}"/>
+                                                        <td class="product-price">
+                                                            <span style="float:left;font-size: 15px;font-weight: 600;color: ${status == 3 ? "#f44336" : (status == 2 ? "#29cc97" : "#fec400")}">
+                                                                ${status == 0 ? "PENDING" : (status == 1 ? "PROCESSING" :(status == 2?"COMPLETED":"CANCELED"))}
+                                                            </span>
+                                                        </td>
+                                                    </tr>
+                                                    <c:forEach var="item" items="${order.orderItems}">
+                                                    <tr class="cart_item">
+                                                        <td class="product-thumbnail">
+                                                            <a href="single-product.html">
+                                                                <img src="${item.getProduct().getPicture()}"
+                                                                     alt="cart"/>
+                                                            </a>
+                                                        </td>
+                                                        <td class="product-name">
+                                                            <a href="single-product.html">${item.getProduct().getName()}</a>
+                                                            <span style="margin: unset;" class="color">x${item.getQuantity()}</span>
+                                                        </td>
+                                                        <td class="product-price">
+                                                            <span class="amount">$${item.getProduct().getPrice()}</span>
+                                                        </td>
+                                                    </tr>
+                                                </c:forEach>
+                                                </c:forEach>
+                                                </tbody>
+                                                <!--End table body-->
+                                            </table>
+                                        </form>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <div style="width: 100%;height: 468px;display: flex;align-items: center;justify-content: center;">
+                                            <img style="max-width: 150px;" src="<c:url value="/static/images/no-product.png"/> "
+                                                 alt="no-product"/>
+                                        </div>
                                     </c:otherwise>
-                                    </c:choose>
-                                </div>
-                                <div class="tab-pane" id="pending">
-                                    <div style="width: 100%;height: 468px;display: flex;align-items: center;justify-content: center;">
-                                        <img src="<c:url value="/static/images/no-product.png"/> " alt="no-product"/>
-                                    </div>
-                                </div>
-                                <div class="tab-pane" id="processing">2</div>
-                                <div class="tab-pane" id="completed">3</div>
-                                <div class="tab-pane" id="canceled">4</div>
+                                </c:choose>
+                            </div>
+                            <div class="tab-pane" id="pending">
+                                <c:choose>
+                                    <c:when test="${not empty ordersPending}">
+                                        <form>
+                                            <table class="shop_table cart">
+                                                <!--Table header-->
+                                                <thead>
+                                                <tr>
+                                                    <th class="product-thumbnail">&nbsp;</th>
+                                                    <th class="product-name">&nbsp;</th>
+                                                    <th class="product-price">&nbsp;</th>
+                                                </tr>
+                                                </thead>
+                                                <!--End table header-->
+
+                                                <!--Table body-->
+                                                <tbody>
+                                                <c:forEach var="order" items="${ordersPending}">
+                                                    <tr class="cart_item">
+                                                        <td style="padding: 15px 0;" colspan="2"><span style="font-weight: 600;">STORE:</span> ${order.store.name}</td>
+                                                        <c:set var="status" value="${order.getStatus()}"/>
+                                                        <td style="padding: 15px 0;" class="product-remove">
+                                                            <a href="#" title="Canceled This Item"
+                                                               style="display: block; width: 100%; padding: 5px;background: #f44336;color: #fff;">
+                                                                Cancel
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <c:forEach var="item" items="${order.orderItems}">
+                                                        <tr class="cart_item">
+                                                            <td class="product-thumbnail">
+                                                                <a href="single-product.html">
+                                                                    <img src="${item.getProduct().getPicture()}"
+                                                                         alt="cart"/>
+                                                                </a>
+                                                            </td>
+                                                            <td class="product-name">
+                                                                <a href="single-product.html">${item.getProduct().getName()}</a>
+                                                                <span style="margin: unset;" class="color">x${item.getQuantity()}</span>
+                                                            </td>
+                                                            <td class="product-price">
+                                                                <span class="amount">$${item.getProduct().getPrice()}</span>
+                                                            </td>
+                                                        </tr>
+                                                    </c:forEach>
+                                                </c:forEach>
+                                                </tbody>
+                                                <!--End table body-->
+                                            </table>
+                                        </form>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <div style="width: 100%;height: 468px;display: flex;align-items: center;justify-content: center;">
+                                            <img style="max-width: 150px;" src="<c:url value="/static/images/no-product.png"/> "
+                                                 alt="no-product"/>
+                                        </div>
+                                    </c:otherwise>
+                                </c:choose>
+                            </div>
+                            <div class="tab-pane" id="processing">
+                                <c:choose>
+                                    <c:when test="${not empty orderItemsProcessing}">
+                                        <form>
+                                            <table class="shop_table cart">
+                                                <!--Table header-->
+                                                <thead>
+                                                <tr>
+                                                    <th class="product-thumbnail">&nbsp;</th>
+                                                    <th class="product-name">&nbsp;</th>
+                                                    <th class="product-price">&nbsp;</th>
+                                                </tr>
+                                                </thead>
+                                                <!--End table header-->
+
+                                                <!--Table body-->
+                                                <tbody>
+                                                <c:forEach var="item" items="${orderItemsProcessing}">
+                                                    <tr class="cart_item">
+                                                        <td class="product-thumbnail">
+                                                            <a href="single-product.html">
+                                                                <img src="${item.getProduct().getPicture()}"
+                                                                     alt="cart"/>
+                                                            </a>
+                                                        </td>
+                                                        <td class="product-name">
+                                                            <a href="single-product.html">${item.getProduct().getName()}</a>
+                                                            <span style="margin: unset;" class="color">x${item.getQuantity()}</span>
+                                                        </td>
+                                                        <td class="product-price">
+                                                            <span class="amount">$${item.getProduct().getPrice()}</span>
+                                                        </td>
+                                                    </tr>
+                                                </c:forEach>
+                                                </tbody>
+                                                <!--End table body-->
+                                            </table>
+                                        </form>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <div style="width: 100%;height: 468px;display: flex;align-items: center;justify-content: center;">
+                                            <img style="max-width: 150px;" src="<c:url value="/static/images/no-product.png"/> "
+                                                 alt="no-product"/>
+                                        </div>
+                                    </c:otherwise>
+                                </c:choose>
+                            </div>
+                            <div class="tab-pane" id="completed">
+                                <c:choose>
+                                    <c:when test="${not empty orderItemsCompleted}">
+                                        <form>
+                                            <table class="shop_table cart">
+                                                <!--Table header-->
+                                                <thead>
+                                                <tr>
+                                                    <th class="product-thumbnail">&nbsp;</th>
+                                                    <th class="product-name">&nbsp;</th>
+                                                    <th class="product-price">&nbsp;</th>
+                                                </tr>
+                                                </thead>
+                                                <!--End table header-->
+
+                                                <!--Table body-->
+                                                <tbody>
+                                                <c:forEach var="item" items="${orderItemsCompleted}">
+                                                    <tr class="cart_item">
+                                                        <td class="product-thumbnail">
+                                                            <a href="single-product.html">
+                                                                <img src="${item.getProduct().getPicture()}"
+                                                                     alt="cart"/>
+                                                            </a>
+                                                        </td>
+                                                        <td class="product-name">
+                                                            <a href="single-product.html">${item.getProduct().getName()}</a>
+                                                            <span style="margin: unset;" class="color">x${item.getQuantity()}</span>
+                                                        </td>
+                                                        <td class="product-price">
+                                                            <span class="amount">$${item.getProduct().getPrice()}</span>
+                                                        </td>
+                                                    </tr>
+                                                </c:forEach>
+                                                </tbody>
+                                                <!--End table body-->
+                                            </table>
+                                        </form>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <div style="width: 100%;height: 468px;display: flex;align-items: center;justify-content: center;">
+                                            <img  style="max-width: 150px;" src="<c:url value="/static/images/no-product.png"/> "
+                                                 alt="no-product"/>
+                                        </div>
+                                    </c:otherwise>
+                                </c:choose>
+                            </div>
+                            <div class="tab-pane" id="canceled">
+                                <c:choose>
+                                    <c:when test="${not empty orderItemsCanceled}">
+                                        <form>
+                                            <table class="shop_table cart">
+                                                <!--Table header-->
+                                                <thead>
+                                                <tr>
+                                                    <th class="product-thumbnail">&nbsp;</th>
+                                                    <th class="product-name">&nbsp;</th>
+                                                    <th class="product-price">&nbsp;</th>
+                                                </tr>
+                                                </thead>
+                                                <!--End table header-->
+
+                                                <!--Table body-->
+                                                <tbody>
+                                                <c:forEach var="item" items="${orderItemsCanceled}">
+                                                    <tr class="cart_item">
+                                                        <td class="product-thumbnail">
+                                                            <a href="single-product.html">
+                                                                <img src="${item.getProduct().getPicture()}"
+                                                                     alt="cart"/>
+                                                            </a>
+                                                        </td>
+                                                        <td class="product-name">
+                                                            <a href="single-product.html">${item.getProduct().getName()}</a>
+                                                            <span style="margin: unset;" class="color">x${item.getQuantity()}</span>
+                                                        </td>
+                                                        <td class="product-price">
+                                                            <span class="amount">$${item.getProduct().getPrice()}</span>
+                                                        </td>
+                                                    </tr>
+                                                </c:forEach>
+                                                </tbody>
+                                                <!--End table body-->
+                                            </table>
+                                        </form>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <div style="width: 100%;height: 468px;display: flex;align-items: center;justify-content: center;">
+                                            <img  style="max-width: 150px;" src="<c:url value="/static/images/no-product.png"/> "
+                                                 alt="no-product"/>
+                                        </div>
+                                    </c:otherwise>
+                                </c:choose>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!--End Start Blog-->
-
     </div>
+    <!--End Start Blog-->
+</div>
+

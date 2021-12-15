@@ -25,6 +25,9 @@ public class Store implements Serializable {
     private Customer customer;
 
     @OneToMany(mappedBy = "store")
+    private List<Order> orders;
+
+    @OneToMany(mappedBy = "store")
     private List<Stock> stocks;
 
     public int getId() {
@@ -89,5 +92,13 @@ public class Store implements Serializable {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 }

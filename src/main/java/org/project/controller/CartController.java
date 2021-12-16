@@ -27,15 +27,19 @@ public class CartController extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
 
         HttpSession session = req.getSession();
-        Map<Integer, CartItem> cart = cast(session.getAttribute("cart"));
+        Object o = session.getAttribute("cart");
 
-        Map<Integer, Store> stores = new HashMap<>();
-        for (Map.Entry<Integer, CartItem> entry : cart.entrySet()) {
-            int id = entry.getValue().getProduct().getStock().getStore().getId();
-            if (stores.get(id) == null) stores.put(id, storeDao.getStoreById(id));
+        if(o != null) {
+            Map<Integer, CartItem> cart = cast(o);
+
+            Map<Integer, Store> stores = new HashMap<>();
+            for (Map.Entry<Integer, CartItem> entry : cart.entrySet()) {
+                int id = entry.getValue().getProduct().getStock().getStore().getId();
+                if (stores.get(id) == null) stores.put(id, storeDao.getStoreById(id));
+            }
+
+            req.setAttribute("stores", stores);
         }
-
-        req.setAttribute("stores", stores);
 
         req.getRequestDispatcher("/templates/cart.jsp").forward(req, resp);
     }

@@ -197,3 +197,18 @@ function cancelOrder(order_id) {
         })
     }
 }
+
+function beSeller(){
+    jQuery.ajax({
+        type: 'GET',
+        url: 'api/change-role',
+        success:function (){
+            alert('You Became a Seller');
+        },
+        error: function (e){
+            alert('SELLER\nError: ' + e)
+        }
+
+    })
+}
+

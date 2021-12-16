@@ -68,7 +68,7 @@ public class StockDao {
         try (Session session = factory.openSession()) {
             Query<?> query =
                     session.createQuery("FROM Stock WHERE  store.id = " + storeId + "");
-            query.setFirstResult(index * 10 - 9);
+            query.setFirstResult(index * 10 - 10);
             query.setMaxResults(10);
             return query.list();
         } catch (HibernateException e) {

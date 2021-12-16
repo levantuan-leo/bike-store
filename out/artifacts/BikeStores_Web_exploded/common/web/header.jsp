@@ -9,7 +9,7 @@
         <div class="header-top">
             <ul class="pull-left">
                 <li>
-                    <a href="#">
+                    <a href="${sessionScope.account != null ? (sessionScope.account.role == 1 ? '/seller/home' : 'javascript:beSeller();') : 'javascript:alert(\'you need to login\');'}">
                         <b>Seller Channel</b>
                         <span class="tz-down"></span>
                     </a>

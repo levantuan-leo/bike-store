@@ -35,7 +35,7 @@
                 <!--Table body-->
                 <tbody>
 
-               <c:set var="totalAmount" value="${0}"/>
+                <c:set var="totalAmount" value="${0}"/>
                 <c:choose>
                     <c:when test="${empty sessionScope.cart}">
                         <tr>
@@ -45,54 +45,57 @@
                     <c:otherwise>
                         <c:set var="cart" value="${sessionScope.cart}"/>
                         <c:forEach items="${stores}" var="store">
-                        <tr class="cart_item"><td colspan="4"><span style="font-weight: 600;">STORE:</span> ${store.value.name}</td></tr>
-                        <c:forEach items="${cart}" var="item">
-                            <c:if test="${item.value.product.stock.store.id == store.key}">
-                            <tr class="cart_item" id="cart-item${item.key}">
-                                <td class="product-remove">
-                                    <a href="javascript:void(0);"
-                                       class="remove"
-                                       title="Remove this item"
-                                       onclick="deleteCartItem(${item.key})"
-                                    ></a>
-                                </td>
-                                <td class="product-thumbnail">
-                                    <a href="<c:url value="/product-single?productId=${item.key}"/>"><img
-                                            src="${item.value.product.picture}" alt="cart"/></a>
-                                </td>
+                            <tr class="cart_item">
+                                <td colspan="4"><span style="font-weight: 600;">STORE:</span> ${store.value.name}</td>
+                            </tr>
+                            <c:forEach items="${cart}" var="item">
+                                <c:if test="${item.value.product.stock.store.id == store.key}">
+                                    <tr class="cart_item" id="cart-item${item.key}">
+                                        <td class="product-remove">
+                                            <a href="javascript:void(0);"
+                                               class="remove"
+                                               title="Remove this item"
+                                               onclick="deleteCartItem(${item.key})"
+                                            ></a>
+                                        </td>
+                                        <td class="product-thumbnail">
+                                            <a href="<c:url value="/product-single?productId=${item.key}"/>"><img
+                                                    src="${item.value.product.picture}" alt="cart"/></a>
+                                        </td>
 
-                                <td class="product-name">
-                                    <a href="<c:url value="/product-single?productId=${item.key}"/>">${item.value.product.name}</a>
-                                    <span class="color">
+                                        <td class="product-name">
+                                            <a href="<c:url value="/product-single?productId=${item.key}"/>">${item.value.product.name}</a>
+                                            <span class="color">
                                     Color: <i class="orange-dark"></i>
                                 </span>
-                                </td>
-                                <td class="product-price">
-                                    <span class="amount">$${item.value.product.price}</span>
-                                </td>
+                                        </td>
+                                        <td class="product-price">
+                                            <span class="amount">$${item.value.product.price}</span>
+                                        </td>
 
-                                <td class="product-quantity">
-                                    <div class="quantity">
-                                        <input type="number"
-                                               step="1"
-                                               min="0"
-                                               name="cart"
-                                               value="${item.value.quantity}"
-                                               title="Qty"
-                                               class="input-text qty text"
-                                               size="4"
-                                               onblur="updateCartItem(this, ${item.key})"
-                                        >
-                                    </div>
-                                </td>
+                                        <td class="product-quantity">
+                                            <div class="quantity">
+                                                <input type="number"
+                                                       step="1"
+                                                       min="0"
+                                                       name="cart"
+                                                       value="${item.value.quantity}"
+                                                       title="Qty"
+                                                       class="input-text qty text"
+                                                       size="4"
+                                                       onblur="updateCartItem(this, ${item.key})"
+                                                >
+                                            </div>
+                                        </td>
 
-                                <td class="product-subtotal">
-                                    <span class="amount">$${item.value.product.price * item.value.quantity}</span>
-                                    <c:set var="totalAmount" value="${totalAmount + item.value.product.price * item.value.quantity}" />
-                                </td>
-                            </tr>
-                            </c:if>
-                        </c:forEach>
+                                        <td class="product-subtotal">
+                                            <span class="amount">$${item.value.product.price * item.value.quantity}</span>
+                                            <c:set var="totalAmount"
+                                                   value="${totalAmount + item.value.product.price * item.value.quantity}"/>
+                                        </td>
+                                    </tr>
+                                </c:if>
+                            </c:forEach>
                         </c:forEach>
                     </c:otherwise>
                 </c:choose>
@@ -131,7 +134,8 @@
                             </tbody>
                         </table>
                         <div style="background: #f4433b;;text-align: center;">
-                            <a href="<c:url value="/checkout"/>" style="display: block;color:#fff;font-weight: 500; padding: 10px 0;">Buy Now</a>
+                            <a href="<c:url value="/checkout"/>"
+                               style="display: block;color:#fff;font-weight: 500; padding: 10px 0;">Buy Now</a>
                         </div>
                     </div>
                 </div>

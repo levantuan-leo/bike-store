@@ -34,7 +34,7 @@ if ($addProductForm.length > 0) {
 function deleteProduct(product_id) {
     $.ajax({
         type: "POST",
-        url: "/seller/product?productId="+product_id,
+        url: "/seller/product?productId=" + product_id,
         success: function (data) {
             alert(data)
         },

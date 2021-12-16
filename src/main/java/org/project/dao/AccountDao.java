@@ -95,4 +95,22 @@ public class AccountDao {
             return null;
         }
     }
+
+    public void updateAccount(Integer AccountID, int role){
+        Session session = factory.openSession();
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            Account account = session.get(Account.class, AccountID);
+            account.setRole(role);
+            session.update(account);
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx != null)
+                tx.rollback();
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
 }
